@@ -17,10 +17,13 @@ CCSprite* bullet;
 CCSprite* ufok1;
 CCSprite* starBgrL0_0;
 CCSprite* starBgrL0_1;
+CCSprite* starBgrL1_0;
+CCSprite* starBgrL1_1;
 
 CGPoint screenCenter;
 
 const float BULLET_SPEED = 90.0;
+const float STAR_LAYER0_SPEED = -100.0;
 const float STAR_LAYER1_SPEED = -130.0;
 
 
@@ -43,15 +46,29 @@ const float STAR_LAYER1_SPEED = -130.0;
     CGSize size = [[CCDirector sharedDirector] winSize];
     screenCenter = CGPointMake(size.width/2, size.height/2);
     
-    // starBgr
-    starBgrL0_0 = [[CCSprite spriteWithFile:@"starBgr.png"] retain];
-    starBgrL0_0.position = CGPointMake(screenCenter.x, screenCenter.y);
-    [self addChild:starBgrL0_0];
+    {
+        // starBgr
+        starBgrL0_0 = [[CCSprite spriteWithFile:@"starBgr.png"] retain];
+        starBgrL0_0.position = CGPointMake(screenCenter.x, screenCenter.y);
+        [self addChild:starBgrL0_0];
+        
+        // stars - above the screen
+        starBgrL0_1 = [[CCSprite spriteWithFile:@"starBgr.png"] retain];
+        starBgrL0_1.position = CGPointMake(screenCenter.x, screenCenter.y + 480);
+        [self addChild:starBgrL0_1];
+    }
     
-    // stars - above the screen
-    starBgrL0_1 = [[CCSprite spriteWithFile:@"starBgr.png"] retain];
-    starBgrL0_1.position = CGPointMake(screenCenter.x, screenCenter.y + 480);
-    [self addChild:starBgrL0_1];
+    {
+        // starBgr
+        starBgrL1_0 = [[CCSprite spriteWithFile:@"starBgr2.png"] retain];
+        starBgrL1_0.position = CGPointMake(screenCenter.x, screenCenter.y);
+        [self addChild:starBgrL1_0];
+        
+        // stars - above the screen
+        starBgrL1_1 = [[CCSprite spriteWithFile:@"starBgr2.png"] retain];
+        starBgrL1_1.position = CGPointMake(screenCenter.x, screenCenter.y + 480);
+        [self addChild:starBgrL1_1]; 
+    }
     
     // player
     player = [[CCSprite spriteWithFile:@"player.png"] retain];
@@ -135,18 +152,21 @@ const float STAR_LAYER1_SPEED = -130.0;
 
 #pragma mark - stars animation
 
--(void)animateStarSprite:(CCSprite*)stars withDeltaTime:(ccTime)deltaTime {
-    float delta = STAR_LAYER1_SPEED * deltaTime;
+-(void)animateStarSprite:(CCSprite*)stars withDeltaTime:(ccTime)deltaTime andSpeed:(CGFloat)speed {
+    float delta = speed * deltaTime;
     
     stars.position = CGPointMake(stars.position.x, stars.position.y + delta); 
     
-    if (stars.position.y <= screenCenter.y - 480)
-        stars.position = CGPointMake(stars.position.x, stars.position.y + 240 + 480);
+    if (stars.position.y <= screenCenter.y -480)
+        stars.position = CGPointMake(stars.position.x, 240 + 480);
 }
 
 -(void)animateStarLayer:(NSInteger)layerNr withDeltaTime:(ccTime)dt {
-    [self animateStarSprite:starBgrL0_0 withDeltaTime:dt];
-    [self animateStarSprite:starBgrL0_1 withDeltaTime:dt];
+    [self animateStarSprite:starBgrL0_0 withDeltaTime:dt andSpeed:STAR_LAYER0_SPEED];
+    [self animateStarSprite:starBgrL0_1 withDeltaTime:dt andSpeed:STAR_LAYER0_SPEED];
+    
+    [self animateStarSprite:starBgrL1_0 withDeltaTime:dt andSpeed:STAR_LAYER1_SPEED];
+    [self animateStarSprite:starBgrL1_1 withDeltaTime:dt andSpeed:STAR_LAYER1_SPEED];
 }
 
 -(void)animateStarsWithDeltaTime:(ccTime)dt {

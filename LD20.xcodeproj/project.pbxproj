@@ -127,6 +127,7 @@
 		40FE3734136E028B0029BBB6 /* LaserCannonScreen.png in Resources */ = {isa = PBXBuildFile; fileRef = 40FE3731136E028B0029BBB6 /* LaserCannonScreen.png */; };
 		40FE3736136E15900029BBB6 /* titleScreen.png in Resources */ = {isa = PBXBuildFile; fileRef = 40FE3735136E15900029BBB6 /* titleScreen.png */; };
 		40FE3738136E1A240029BBB6 /* starBgr.png in Resources */ = {isa = PBXBuildFile; fileRef = 40FE3737136E1A240029BBB6 /* starBgr.png */; };
+		40FE373B136E27FE0029BBB6 /* starBgr2.png in Resources */ = {isa = PBXBuildFile; fileRef = 40FE373A136E27FE0029BBB6 /* starBgr2.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -372,6 +373,7 @@
 		40FE3731136E028B0029BBB6 /* LaserCannonScreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = LaserCannonScreen.png; path = Resources/LaserCannonScreen.png; sourceTree = "<group>"; };
 		40FE3735136E15900029BBB6 /* titleScreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = titleScreen.png; path = Resources/titleScreen.png; sourceTree = "<group>"; };
 		40FE3737136E1A240029BBB6 /* starBgr.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = starBgr.png; path = Resources/starBgr.png; sourceTree = "<group>"; };
+		40FE373A136E27FE0029BBB6 /* starBgr2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = starBgr2.png; path = Resources/starBgr2.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -768,7 +770,7 @@
 			isa = PBXGroup;
 			children = (
 				40FE3739136E1A2A0029BBB6 /* intro */,
-				40FE3737136E1A240029BBB6 /* starBgr.png */,
+				40FE373C136E28020029BBB6 /* stars */,
 			);
 			name = SceneViews;
 			sourceTree = "<group>";
@@ -791,6 +793,15 @@
 				40FE3731136E028B0029BBB6 /* LaserCannonScreen.png */,
 			);
 			name = intro;
+			sourceTree = "<group>";
+		};
+		40FE373C136E28020029BBB6 /* stars */ = {
+			isa = PBXGroup;
+			children = (
+				40FE3737136E1A240029BBB6 /* starBgr.png */,
+				40FE373A136E27FE0029BBB6 /* starBgr2.png */,
+			);
+			name = stars;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -852,6 +863,7 @@
 				40FE3734136E028B0029BBB6 /* LaserCannonScreen.png in Resources */,
 				40FE3736136E15900029BBB6 /* titleScreen.png in Resources */,
 				40FE3738136E1A240029BBB6 /* starBgr.png in Resources */,
+				40FE373B136E27FE0029BBB6 /* starBgr2.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
