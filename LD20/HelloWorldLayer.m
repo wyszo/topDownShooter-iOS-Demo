@@ -7,11 +7,14 @@
 //
 
 
-// Import the interfaces
 #import "HelloWorldLayer.h"
 
-// HelloWorldLayer implementation
 @implementation HelloWorldLayer
+
+CCSprite* player;
+CCSprite* bullet;
+CCSprite* ufok1;
+
 
 +(CCScene *) scene
 {
@@ -28,11 +31,28 @@
 	return scene;
 }
 
-// on "init" you need to initialize your instance
+-(void)loadLevel {
+    // player
+    player = [CCSprite spriteWithFile:@"player.png"];
+    player.position = CGPointMake(100, 100);
+    player.scale = 0.5f;
+    [self addChild:player];
+    
+    // bullet
+    bullet = [CCSprite spriteWithFile:@"bullet.png"];
+    bullet.position = CGPointMake(200, 100);
+    bullet.scale = 0.5;
+    [self addChild:bullet];
+    
+    // enemy 
+    ufok1 = [CCSprite spriteWithFile:@"ufok1.png"];
+    ufok1.position = CGPointMake(200, 300);
+    ufok1.scale = 0.5;
+    [self addChild:ufok1];
+}
+
 -(id) init
 {
-	// always call "super" init
-	// Apple recommends to re-assign "self" with the "super" return value
 	if( (self=[super init])) {
 		
 		// create and initialize a Label
@@ -46,18 +66,14 @@
 		
 		// add the label as a child to this Layer
 		[self addChild: label];
+        
+        [self loadLevel];
 	}
 	return self;
 }
 
-// on "dealloc" you need to release all your retained objects
 - (void) dealloc
 {
-	// in case you have something to dealloc, do it in this method
-	// in this particular example nothing needs to be released.
-	// cocos2d will automatically release all the children (Label)
-	
-	// don't forget to call "super dealloc"
 	[super dealloc];
 }
 @end
