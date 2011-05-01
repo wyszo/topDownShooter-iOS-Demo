@@ -75,8 +75,8 @@
 	
 	// Run the intro Scene
     CCScene* sceneToRun;
-    // sceneToRun = [HelloWorldLayer scene];
-    sceneToRun = [IntroScene scene];
+     sceneToRun = [HelloWorldLayer scene];
+    sceneToRun = [IntroScene scene]; // nie zapomnieć odkomentować
 	[[CCDirector sharedDirector] runWithScene: sceneToRun];
 }
 

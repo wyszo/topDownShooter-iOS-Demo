@@ -126,6 +126,7 @@
 		40FE3733136E028B0029BBB6 /* Intro2.png in Resources */ = {isa = PBXBuildFile; fileRef = 40FE3730136E028B0029BBB6 /* Intro2.png */; };
 		40FE3734136E028B0029BBB6 /* LaserCannonScreen.png in Resources */ = {isa = PBXBuildFile; fileRef = 40FE3731136E028B0029BBB6 /* LaserCannonScreen.png */; };
 		40FE3736136E15900029BBB6 /* titleScreen.png in Resources */ = {isa = PBXBuildFile; fileRef = 40FE3735136E15900029BBB6 /* titleScreen.png */; };
+		40FE3738136E1A240029BBB6 /* starBgr.png in Resources */ = {isa = PBXBuildFile; fileRef = 40FE3737136E1A240029BBB6 /* starBgr.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -370,6 +371,7 @@
 		40FE3730136E028B0029BBB6 /* Intro2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Intro2.png; path = Resources/Intro2.png; sourceTree = "<group>"; };
 		40FE3731136E028B0029BBB6 /* LaserCannonScreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = LaserCannonScreen.png; path = Resources/LaserCannonScreen.png; sourceTree = "<group>"; };
 		40FE3735136E15900029BBB6 /* titleScreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = titleScreen.png; path = Resources/titleScreen.png; sourceTree = "<group>"; };
+		40FE3737136E1A240029BBB6 /* starBgr.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = starBgr.png; path = Resources/starBgr.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -765,10 +767,8 @@
 		40FE372A136DFECD0029BBB6 /* SceneViews */ = {
 			isa = PBXGroup;
 			children = (
-				40FE3735136E15900029BBB6 /* titleScreen.png */,
-				40FE372F136E028B0029BBB6 /* Intro1.png */,
-				40FE3730136E028B0029BBB6 /* Intro2.png */,
-				40FE3731136E028B0029BBB6 /* LaserCannonScreen.png */,
+				40FE3739136E1A2A0029BBB6 /* intro */,
+				40FE3737136E1A240029BBB6 /* starBgr.png */,
 			);
 			name = SceneViews;
 			sourceTree = "<group>";
@@ -780,6 +780,17 @@
 				40FE372C136DFFB00029BBB6 /* SceneSnippet.m */,
 			);
 			name = SceneSnippet;
+			sourceTree = "<group>";
+		};
+		40FE3739136E1A2A0029BBB6 /* intro */ = {
+			isa = PBXGroup;
+			children = (
+				40FE3735136E15900029BBB6 /* titleScreen.png */,
+				40FE372F136E028B0029BBB6 /* Intro1.png */,
+				40FE3730136E028B0029BBB6 /* Intro2.png */,
+				40FE3731136E028B0029BBB6 /* LaserCannonScreen.png */,
+			);
+			name = intro;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -840,6 +851,7 @@
 				40FE3733136E028B0029BBB6 /* Intro2.png in Resources */,
 				40FE3734136E028B0029BBB6 /* LaserCannonScreen.png in Resources */,
 				40FE3736136E15900029BBB6 /* titleScreen.png in Resources */,
+				40FE3738136E1A240029BBB6 /* starBgr.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
