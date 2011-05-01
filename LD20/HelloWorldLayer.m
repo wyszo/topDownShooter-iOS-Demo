@@ -8,6 +8,7 @@
 
 
 #import "HelloWorldLayer.h"
+#import "CCTouchDispatcher.h"
 
 @implementation HelloWorldLayer
 
@@ -15,6 +16,7 @@ CCSprite* player;
 CCSprite* bullet;
 CCSprite* ufok1;
 
+const float BULLET_SPEED = 90.0;
 
 +(CCScene *) scene
 {
@@ -51,6 +53,10 @@ CCSprite* ufok1;
     [self addChild:ufok1];
 }
 
+-(void)nextFrame:(ccTime)deltaTime {
+    bullet.position = CGPointMake(bullet.position.x, bullet.position.y + BULLET_SPEED * deltaTime);
+}
+
 -(id) init
 {
 	if( (self=[super init])) {
@@ -68,6 +74,11 @@ CCSprite* ufok1;
 		[self addChild: label];
         
         [self loadLevel];
+        
+        self.isTouchEnabled = YES;
+        
+        // schedule update
+        [self schedule:@selector(nextFrame:)];        
 	}
 	return self;
 }
@@ -76,4 +87,22 @@ CCSprite* ufok1;
 {
 	[super dealloc];
 }
+
+#pragma mark - touch dispatch
+
+- (void)registerWithTouchDispatcher {
+    [[CCTouchDispatcher sharedDispatcher] addTargetedDelegate:self priority:0 swallowsTouches:YES];
+}
+
+- (BOOL)ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event {
+    return YES;
+}
+
+- (void)ccTouchEnded:(UITouch *)touch withEvent:(UIEvent *)event {
+    CGPoint location = [self convertTouchToNodeSpace:touch];
+    
+    [bullet stopAllActions];
+    [bullet runAction:[CCMoveTo actionWithDuration:1 position:location]];
+}
+
 @end

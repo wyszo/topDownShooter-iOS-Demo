@@ -120,6 +120,11 @@
 		40FE36AB136DD9B40029BBB6 /* player.png in Resources */ = {isa = PBXBuildFile; fileRef = 40FE36AA136DD9B40029BBB6 /* player.png */; };
 		40FE371F136DDCB10029BBB6 /* bullet.png in Resources */ = {isa = PBXBuildFile; fileRef = 40FE371D136DDCB10029BBB6 /* bullet.png */; };
 		40FE3720136DDCB10029BBB6 /* ufok1.png in Resources */ = {isa = PBXBuildFile; fileRef = 40FE371E136DDCB10029BBB6 /* ufok1.png */; };
+		40FE3724136DFE6C0029BBB6 /* IntroScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 40FE3723136DFE6C0029BBB6 /* IntroScene.m */; };
+		40FE372D136DFFB00029BBB6 /* SceneSnippet.m in Sources */ = {isa = PBXBuildFile; fileRef = 40FE372C136DFFB00029BBB6 /* SceneSnippet.m */; };
+		40FE3732136E028B0029BBB6 /* Intro1.png in Resources */ = {isa = PBXBuildFile; fileRef = 40FE372F136E028B0029BBB6 /* Intro1.png */; };
+		40FE3733136E028B0029BBB6 /* Intro2.png in Resources */ = {isa = PBXBuildFile; fileRef = 40FE3730136E028B0029BBB6 /* Intro2.png */; };
+		40FE3734136E028B0029BBB6 /* LaserCannonScreen.png in Resources */ = {isa = PBXBuildFile; fileRef = 40FE3731136E028B0029BBB6 /* LaserCannonScreen.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -356,6 +361,13 @@
 		40FE36AA136DD9B40029BBB6 /* player.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = player.png; path = Resources/player.png; sourceTree = "<group>"; };
 		40FE371D136DDCB10029BBB6 /* bullet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bullet.png; path = Resources/bullet.png; sourceTree = "<group>"; };
 		40FE371E136DDCB10029BBB6 /* ufok1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ufok1.png; path = Resources/ufok1.png; sourceTree = "<group>"; };
+		40FE3722136DFE6C0029BBB6 /* IntroScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntroScene.h; sourceTree = "<group>"; };
+		40FE3723136DFE6C0029BBB6 /* IntroScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntroScene.m; sourceTree = "<group>"; };
+		40FE372B136DFFB00029BBB6 /* SceneSnippet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SceneSnippet.h; sourceTree = "<group>"; };
+		40FE372C136DFFB00029BBB6 /* SceneSnippet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SceneSnippet.m; sourceTree = "<group>"; };
+		40FE372F136E028B0029BBB6 /* Intro1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Intro1.png; path = Resources/Intro1.png; sourceTree = "<group>"; };
+		40FE3730136E028B0029BBB6 /* Intro2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Intro2.png; path = Resources/Intro2.png; sourceTree = "<group>"; };
+		40FE3731136E028B0029BBB6 /* LaserCannonScreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = LaserCannonScreen.png; path = Resources/LaserCannonScreen.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -412,16 +424,12 @@
 		40FE3550136DD0560029BBB6 /* LD20 */ = {
 			isa = PBXGroup;
 			children = (
-				40FE3656136DD0580029BBB6 /* LICENSE_cocos2d.txt */,
-				40FE3665136DD0580029BBB6 /* LICENSE_CocosDenshion.txt */,
-				40FE3670136DD0580029BBB6 /* LICENSE_TouchJSON.txt */,
-				40FE3696136DD0590029BBB6 /* LICENSE_FontLabel.txt */,
+				40FE3726136DFE910029BBB6 /* New Group */,
+				40FE3729136DFEC00029BBB6 /* Licenses */,
 				40FE369B136DD0590029BBB6 /* AppDelegate.h */,
 				40FE369C136DD0590029BBB6 /* AppDelegate.m */,
 				40FE369E136DD0590029BBB6 /* RootViewController.h */,
 				40FE369F136DD0590029BBB6 /* RootViewController.m */,
-				40FE36A1136DD0590029BBB6 /* HelloWorldLayer.h */,
-				40FE36A2136DD0590029BBB6 /* HelloWorldLayer.m */,
 				40FE36A4136DD0590029BBB6 /* GameConfig.h */,
 				40FE3551136DD0560029BBB6 /* Resources */,
 				40FE3565136DD0560029BBB6 /* cocos2d */,
@@ -437,6 +445,7 @@
 		40FE3551136DD0560029BBB6 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				40FE372A136DFECD0029BBB6 /* SceneViews */,
 				40FE36AC136DD9B70029BBB6 /* Sprites */,
 				40FE3554136DD0560029BBB6 /* fps_images.png */,
 				40FE355A136DD0560029BBB6 /* Icon-Small.png */,
@@ -704,6 +713,72 @@
 			name = Sprites;
 			sourceTree = "<group>";
 		};
+		40FE3721136DFE4A0029BBB6 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				40FE372E136DFFB30029BBB6 /* SceneSnippet */,
+				40FE3725136DFE8E0029BBB6 /* Intro */,
+				40FE3728136DFEAB0029BBB6 /* HelloWorld */,
+			);
+			name = Scenes;
+			sourceTree = "<group>";
+		};
+		40FE3725136DFE8E0029BBB6 /* Intro */ = {
+			isa = PBXGroup;
+			children = (
+				40FE3722136DFE6C0029BBB6 /* IntroScene.h */,
+				40FE3723136DFE6C0029BBB6 /* IntroScene.m */,
+			);
+			name = Intro;
+			sourceTree = "<group>";
+		};
+		40FE3726136DFE910029BBB6 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+				40FE3721136DFE4A0029BBB6 /* Scenes */,
+			);
+			name = "New Group";
+			sourceTree = "<group>";
+		};
+		40FE3728136DFEAB0029BBB6 /* HelloWorld */ = {
+			isa = PBXGroup;
+			children = (
+				40FE36A1136DD0590029BBB6 /* HelloWorldLayer.h */,
+				40FE36A2136DD0590029BBB6 /* HelloWorldLayer.m */,
+			);
+			name = HelloWorld;
+			sourceTree = "<group>";
+		};
+		40FE3729136DFEC00029BBB6 /* Licenses */ = {
+			isa = PBXGroup;
+			children = (
+				40FE3656136DD0580029BBB6 /* LICENSE_cocos2d.txt */,
+				40FE3665136DD0580029BBB6 /* LICENSE_CocosDenshion.txt */,
+				40FE3670136DD0580029BBB6 /* LICENSE_TouchJSON.txt */,
+				40FE3696136DD0590029BBB6 /* LICENSE_FontLabel.txt */,
+			);
+			name = Licenses;
+			sourceTree = "<group>";
+		};
+		40FE372A136DFECD0029BBB6 /* SceneViews */ = {
+			isa = PBXGroup;
+			children = (
+				40FE372F136E028B0029BBB6 /* Intro1.png */,
+				40FE3730136E028B0029BBB6 /* Intro2.png */,
+				40FE3731136E028B0029BBB6 /* LaserCannonScreen.png */,
+			);
+			name = SceneViews;
+			sourceTree = "<group>";
+		};
+		40FE372E136DFFB30029BBB6 /* SceneSnippet */ = {
+			isa = PBXGroup;
+			children = (
+				40FE372B136DFFB00029BBB6 /* SceneSnippet.h */,
+				40FE372C136DFFB00029BBB6 /* SceneSnippet.m */,
+			);
+			name = SceneSnippet;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -758,6 +833,9 @@
 				40FE36AB136DD9B40029BBB6 /* player.png in Resources */,
 				40FE371F136DDCB10029BBB6 /* bullet.png in Resources */,
 				40FE3720136DDCB10029BBB6 /* ufok1.png in Resources */,
+				40FE3732136E028B0029BBB6 /* Intro1.png in Resources */,
+				40FE3733136E028B0029BBB6 /* Intro2.png in Resources */,
+				40FE3734136E028B0029BBB6 /* LaserCannonScreen.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -866,6 +944,8 @@
 				40FE369D136DD0590029BBB6 /* AppDelegate.m in Sources */,
 				40FE36A0136DD0590029BBB6 /* RootViewController.m in Sources */,
 				40FE36A3136DD0590029BBB6 /* HelloWorldLayer.m in Sources */,
+				40FE3724136DFE6C0029BBB6 /* IntroScene.m in Sources */,
+				40FE372D136DFFB00029BBB6 /* SceneSnippet.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
