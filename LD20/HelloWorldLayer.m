@@ -15,6 +15,10 @@
 CCSprite* player;
 CCSprite* bullet;
 CCSprite* ufok1;
+CCSprite* starBgrL_2_0;
+CCSprite* starBgrL_2_1;
+CCSprite* starBgrL_1_0;
+CCSprite* starBgrL_1_1;
 CCSprite* starBgrL0_0;
 CCSprite* starBgrL0_1;
 CCSprite* starBgrL1_0;
@@ -23,6 +27,8 @@ CCSprite* starBgrL1_1;
 CGPoint screenCenter;
 
 const float BULLET_SPEED = 90.0;
+const float STAR_LAYER_2_SPEED = -60.0;
+const float STAR_LAYER_1_SPEED = -70.0;
 const float STAR_LAYER0_SPEED = -100.0;
 const float STAR_LAYER1_SPEED = -130.0;
 
@@ -42,9 +48,31 @@ const float STAR_LAYER1_SPEED = -130.0;
 	return scene;
 }
 
--(void)loadLevel {
-    CGSize size = [[CCDirector sharedDirector] winSize];
-    screenCenter = CGPointMake(size.width/2, size.height/2);
+-(void)setupStars {
+    {
+        // starBgr
+        starBgrL_2_0 = [[CCSprite spriteWithFile:@"starBgr-2.png"] retain];
+        starBgrL_2_0.position = CGPointMake(screenCenter.x, screenCenter.y);
+        [self addChild:starBgrL_2_0];
+        
+        // stars - above the screen
+        starBgrL_2_1 = [[CCSprite spriteWithFile:@"starBgr-2.png"] retain];
+        starBgrL_2_1.position = CGPointMake(screenCenter.x, screenCenter.y + 480);
+        [self addChild:starBgrL_2_1];
+    }
+    
+    
+    {
+        // starBgr
+        starBgrL_1_0 = [[CCSprite spriteWithFile:@"starBgr-1.png"] retain];
+        starBgrL_1_0.position = CGPointMake(screenCenter.x, screenCenter.y);
+        [self addChild:starBgrL_1_0];
+        
+        // stars - above the screen
+        starBgrL_1_1 = [[CCSprite spriteWithFile:@"starBgr-1.png"] retain];
+        starBgrL_1_1.position = CGPointMake(screenCenter.x, screenCenter.y + 480);
+        [self addChild:starBgrL_1_1];
+    }
     
     {
         // starBgr
@@ -69,6 +97,14 @@ const float STAR_LAYER1_SPEED = -130.0;
         starBgrL1_1.position = CGPointMake(screenCenter.x, screenCenter.y + 480);
         [self addChild:starBgrL1_1]; 
     }
+
+}
+
+-(void)loadLevel {
+    CGSize size = [[CCDirector sharedDirector] winSize];
+    screenCenter = CGPointMake(size.width/2, size.height/2);
+    
+    [self setupStars];
     
     // player
     player = [[CCSprite spriteWithFile:@"player.png"] retain];
@@ -117,6 +153,10 @@ const float STAR_LAYER1_SPEED = -130.0;
         
         self.isTouchEnabled = YES;
         
+        // accelerometer
+        //self.isAccelerometerEnabled = YES;
+        //[[UIAccelerometer sharedAccelerometer] setUpdateInterval:1/60];
+        
         // schedule update
         [self schedule:@selector(nextFrame:)];        
 	}
@@ -131,6 +171,12 @@ const float STAR_LAYER1_SPEED = -130.0;
     [bullet release];
     [ufok1 release];
 	[super dealloc];
+}
+
+#pragma mark - accelerometer
+
+- (void)accelerometer:(UIAccelerometer *)accelerometer didAccelerate:(UIAcceleration *)acceleration {
+    
 }
 
 #pragma mark - touch dispatch
@@ -162,6 +208,12 @@ const float STAR_LAYER1_SPEED = -130.0;
 }
 
 -(void)animateStarLayer:(NSInteger)layerNr withDeltaTime:(ccTime)dt {
+    [self animateStarSprite:starBgrL_2_0 withDeltaTime:dt andSpeed:STAR_LAYER_2_SPEED];
+    [self animateStarSprite:starBgrL_2_1 withDeltaTime:dt andSpeed:STAR_LAYER_2_SPEED];
+    
+    [self animateStarSprite:starBgrL_1_0 withDeltaTime:dt andSpeed:STAR_LAYER_1_SPEED];
+    [self animateStarSprite:starBgrL_1_1 withDeltaTime:dt andSpeed:STAR_LAYER_1_SPEED];
+    
     [self animateStarSprite:starBgrL0_0 withDeltaTime:dt andSpeed:STAR_LAYER0_SPEED];
     [self animateStarSprite:starBgrL0_1 withDeltaTime:dt andSpeed:STAR_LAYER0_SPEED];
     

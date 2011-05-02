@@ -128,6 +128,8 @@
 		40FE3736136E15900029BBB6 /* titleScreen.png in Resources */ = {isa = PBXBuildFile; fileRef = 40FE3735136E15900029BBB6 /* titleScreen.png */; };
 		40FE3738136E1A240029BBB6 /* starBgr.png in Resources */ = {isa = PBXBuildFile; fileRef = 40FE3737136E1A240029BBB6 /* starBgr.png */; };
 		40FE373B136E27FE0029BBB6 /* starBgr2.png in Resources */ = {isa = PBXBuildFile; fileRef = 40FE373A136E27FE0029BBB6 /* starBgr2.png */; };
+		40FE373E136E2ABD0029BBB6 /* starBgr-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 40FE373D136E2ABD0029BBB6 /* starBgr-1.png */; };
+		40FE3740136E2CB90029BBB6 /* starBgr-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 40FE373F136E2CB90029BBB6 /* starBgr-2.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -374,6 +376,8 @@
 		40FE3735136E15900029BBB6 /* titleScreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = titleScreen.png; path = Resources/titleScreen.png; sourceTree = "<group>"; };
 		40FE3737136E1A240029BBB6 /* starBgr.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = starBgr.png; path = Resources/starBgr.png; sourceTree = "<group>"; };
 		40FE373A136E27FE0029BBB6 /* starBgr2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = starBgr2.png; path = Resources/starBgr2.png; sourceTree = "<group>"; };
+		40FE373D136E2ABD0029BBB6 /* starBgr-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "starBgr-1.png"; path = "Resources/starBgr-1.png"; sourceTree = "<group>"; };
+		40FE373F136E2CB90029BBB6 /* starBgr-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "starBgr-2.png"; path = "Resources/starBgr-2.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -798,6 +802,8 @@
 		40FE373C136E28020029BBB6 /* stars */ = {
 			isa = PBXGroup;
 			children = (
+				40FE373F136E2CB90029BBB6 /* starBgr-2.png */,
+				40FE373D136E2ABD0029BBB6 /* starBgr-1.png */,
 				40FE3737136E1A240029BBB6 /* starBgr.png */,
 				40FE373A136E27FE0029BBB6 /* starBgr2.png */,
 			);
@@ -864,6 +870,8 @@
 				40FE3736136E15900029BBB6 /* titleScreen.png in Resources */,
 				40FE3738136E1A240029BBB6 /* starBgr.png in Resources */,
 				40FE373B136E27FE0029BBB6 /* starBgr2.png in Resources */,
+				40FE373E136E2ABD0029BBB6 /* starBgr-1.png in Resources */,
+				40FE3740136E2CB90029BBB6 /* starBgr-2.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
