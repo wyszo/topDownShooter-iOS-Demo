@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		40A8C34E13A0FF7A0009690E /* StarLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 40A8C34D13A0FF7A0009690E /* StarLayer.m */; };
 		40A8C35113A107A00009690E /* Consts.m in Sources */ = {isa = PBXBuildFile; fileRef = 40A8C35013A107A00009690E /* Consts.m */; };
+		40A8C35513A10F8C0009690E /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = 40A8C35413A10F8C0009690E /* Player.m */; };
 		40FE3541136DD0560029BBB6 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40FE3540136DD0560029BBB6 /* QuartzCore.framework */; };
 		40FE3543136DD0560029BBB6 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40FE3542136DD0560029BBB6 /* OpenGLES.framework */; };
 		40FE3545136DD0560029BBB6 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40FE3544136DD0560029BBB6 /* OpenAL.framework */; };
@@ -139,6 +140,8 @@
 		40A8C34D13A0FF7A0009690E /* StarLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StarLayer.m; sourceTree = "<group>"; };
 		40A8C34F13A107A00009690E /* Consts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Consts.h; sourceTree = "<group>"; };
 		40A8C35013A107A00009690E /* Consts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Consts.m; sourceTree = "<group>"; };
+		40A8C35313A10F8C0009690E /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Player.h; sourceTree = "<group>"; };
+		40A8C35413A10F8C0009690E /* Player.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Player.m; sourceTree = "<group>"; };
 		40FE353C136DD0560029BBB6 /* LD20.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LD20.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		40FE3540136DD0560029BBB6 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		40FE3542136DD0560029BBB6 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -414,6 +417,15 @@
 				40A8C35013A107A00009690E /* Consts.m */,
 			);
 			name = Objects;
+			sourceTree = "<group>";
+		};
+		40A8C35213A10F7E0009690E /* Actors */ = {
+			isa = PBXGroup;
+			children = (
+				40A8C35313A10F8C0009690E /* Player.h */,
+				40A8C35413A10F8C0009690E /* Player.m */,
+			);
+			name = Actors;
 			sourceTree = "<group>";
 		};
 		40FE3531136DD0560029BBB6 = {
@@ -762,6 +774,7 @@
 		40FE3726136DFE910029BBB6 /* MyCode */ = {
 			isa = PBXGroup;
 			children = (
+				40A8C35213A10F7E0009690E /* Actors */,
 				40A8C34B13A0FF660009690E /* Objects */,
 				40FE3721136DFE4A0029BBB6 /* Scenes */,
 			);
@@ -1002,6 +1015,7 @@
 				40FE372D136DFFB00029BBB6 /* SceneSnippet.m in Sources */,
 				40A8C34E13A0FF7A0009690E /* StarLayer.m in Sources */,
 				40A8C35113A107A00009690E /* Consts.m in Sources */,
+				40A8C35513A10F8C0009690E /* Player.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -11,7 +11,7 @@
 
 
 @implementation Consts
-@synthesize screenCenter;
+@synthesize screenCenter, windowSize;
 
 static Consts* instance;
 
@@ -24,9 +24,9 @@ static Consts* instance;
 }
 
 - (void)initVariables {
-
-    CGSize size = [[CCDirector sharedDirector] winSize];
-    screenCenter = CGPointMake(size.width/2, size.height/2);
+    
+    windowSize = [[CCDirector sharedDirector] winSize];
+    screenCenter = CGPointMake(windowSize.width/2, windowSize.height/2);
 }
 
 - (id)init {

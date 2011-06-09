@@ -11,6 +11,7 @@
 #import "StarLayer.h"
 #import "CCTouchDispatcher.h"
 #import "Consts.h"
+#import "Player.h"
 
 
 @interface GameLayer() 
@@ -19,12 +20,6 @@
 
 
 @implementation GameLayer
-
-CCSprite* player;
-CCSprite* bullet;
-CCSprite* ufok1;
-StarLayer* starLayer;
-
 
 +(CCScene *) scene
 {
@@ -41,29 +36,39 @@ StarLayer* starLayer;
 	return scene;
 }
 
+- (void)addSampleLabelToLayer:(CCLayer*)layer {
+    // ask director the the window size
+    // CGSize size = [[CCDirector sharedDirector] winSize];
+    
+    // create and initialize a Label
+    //		CCLabelTTF *label = [CCLabelTTF labelWithString:@"Hello World" fontName:@"Marker Felt" fontSize:64];
+    
+    // position the label on the center of the screen
+    //		label.position =  ccp( size.width /2 , size.height/2 );
+    
+    // add the label as a child to this Layer
+    //		[self addChild: label];
+}
+
+
 -(id) init
 {
 	if( (self=[super init])) {
-		
-		// ask director the the window size
-		// CGSize size = [[CCDirector sharedDirector] winSize];
         
-		// create and initialize a Label
-        //		CCLabelTTF *label = [CCLabelTTF labelWithString:@"Hello World" fontName:@"Marker Felt" fontSize:64];
+        // sample label
+        [self addSampleLabelToLayer:self];
         
-		// position the label on the center of the screen
-        //		label.position =  ccp( size.width /2 , size.height/2 );
-		
-		// add the label as a child to this Layer
-        //		[self addChild: label];
-        
-        starLayer = [[StarLayer alloc] initOnLayer:self];        
+        // init variables
+        starLayer = [[StarLayer alloc] initOnLayer:self];    
+        player = [[Player alloc] initOnLayer:self];
         [self loadLevel];        
         self.isTouchEnabled = YES;
         
-        // accelerometer
-        //self.isAccelerometerEnabled = YES;
-        //[[UIAccelerometer sharedAccelerometer] setUpdateInterval:1/60];
+        // enable accelerometer
+        if (ACCELEROMETER_ENABLED) {
+            self.isAccelerometerEnabled = YES;
+            [[UIAccelerometer sharedAccelerometer] setUpdateInterval:1/60];
+        }
         
         // schedule update
         [self schedule:@selector(nextFrame:)];        
@@ -80,14 +85,8 @@ StarLayer* starLayer;
 }
 
 -(void)loadLevel {
-    // CGSize size = [[CCDirector sharedDirector] winSize];
-    // screenCenter = CGPointMake(size.width/2, size.height/2);
-
-    // player
-    player = [[CCSprite spriteWithFile:@"player.png"] retain];
-    player.position = CGPointMake(100, 100);
-    player.scale = 0.5f;
-    [self addChild:player];
+    
+    [player resetState];
     
     // bullet
     bullet = [[CCSprite spriteWithFile:@"bullet.png"] retain];
@@ -102,6 +101,9 @@ StarLayer* starLayer;
     [self addChild:ufok1];
 }
 
+/**
+ * Krok czasu symulacji 
+ */ 
 -(void)nextFrame:(ccTime)deltaTime {
     // bullets
     bullet.position = CGPointMake(bullet.position.x, bullet.position.y + BULLET_SPEED * deltaTime);
@@ -119,6 +121,14 @@ StarLayer* starLayer;
 
 #pragma mark - touch dispatch
 
+/**
+ * Procedura obsługi tapnięć 
+ */ 
+- (void)userTappedAtPoint:(CGPoint)point {
+    [bullet stopAllActions];
+    [bullet runAction:[CCMoveTo actionWithDuration:1 position:point]];
+}
+
 - (void)registerWithTouchDispatcher {
     [[CCTouchDispatcher sharedDispatcher] addTargetedDelegate:self priority:0 swallowsTouches:YES];
 }
@@ -129,9 +139,7 @@ StarLayer* starLayer;
 
 - (void)ccTouchEnded:(UITouch *)touch withEvent:(UIEvent *)event {
     CGPoint location = [self convertTouchToNodeSpace:touch];
-    
-    [bullet stopAllActions];
-    [bullet runAction:[CCMoveTo actionWithDuration:1 position:location]];
+    [self userTappedAtPoint:location];
 }
 
 @end
