@@ -1,5 +1,5 @@
 //
-//  HelloWorldLayer.h
+//  GameLayer.h
 //  LD20
 //
 //  Created by tomek on 5/1/11.
@@ -13,6 +13,5 @@
 }
 
 +(CCScene *) scene;
--(void)animateStarsWithDeltaTime:(ccTime)dt;
 
 @end
