@@ -11,7 +11,7 @@
 #import "AppDelegate.h"
 #import "IntroScene.h"
 #import "GameConfig.h"
-#import "HelloWorldLayer.h"
+#import "GameLayer.h"
 #import "RootViewController.h"
 
 @implementation AppDelegate
@@ -75,8 +75,12 @@
 	
 	// Run the intro Scene
     CCScene* sceneToRun;
-    sceneToRun = [HelloWorldLayer scene];
-    //sceneToRun = [IntroScene scene]; // nie zapomnieć odkomentować
+    sceneToRun = [GameLayer scene];
+    
+#ifndef DEBUG
+        sceneToRun = [IntroScene scene]; 
+#endif
+    
 	[[CCDirector sharedDirector] runWithScene: sceneToRun];
 }
 

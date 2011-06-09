@@ -116,7 +116,7 @@
 		40FE369A136DD0590029BBB6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 40FE3699136DD0590029BBB6 /* main.m */; };
 		40FE369D136DD0590029BBB6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 40FE369C136DD0590029BBB6 /* AppDelegate.m */; };
 		40FE36A0136DD0590029BBB6 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40FE369F136DD0590029BBB6 /* RootViewController.m */; };
-		40FE36A3136DD0590029BBB6 /* HelloWorldLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 40FE36A2136DD0590029BBB6 /* HelloWorldLayer.m */; };
+		40FE36A3136DD0590029BBB6 /* GameLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 40FE36A2136DD0590029BBB6 /* GameLayer.m */; };
 		40FE36AB136DD9B40029BBB6 /* player.png in Resources */ = {isa = PBXBuildFile; fileRef = 40FE36AA136DD9B40029BBB6 /* player.png */; };
 		40FE371F136DDCB10029BBB6 /* bullet.png in Resources */ = {isa = PBXBuildFile; fileRef = 40FE371D136DDCB10029BBB6 /* bullet.png */; };
 		40FE3720136DDCB10029BBB6 /* ufok1.png in Resources */ = {isa = PBXBuildFile; fileRef = 40FE371E136DDCB10029BBB6 /* ufok1.png */; };
@@ -360,8 +360,8 @@
 		40FE369C136DD0590029BBB6 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		40FE369E136DD0590029BBB6 /* RootViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		40FE369F136DD0590029BBB6 /* RootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
-		40FE36A1136DD0590029BBB6 /* HelloWorldLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HelloWorldLayer.h; sourceTree = "<group>"; };
-		40FE36A2136DD0590029BBB6 /* HelloWorldLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HelloWorldLayer.m; sourceTree = "<group>"; };
+		40FE36A1136DD0590029BBB6 /* GameLayer.h */ = {isa = PBXFileReference; path = GameLayer.h; sourceTree = "<group>"; };
+		40FE36A2136DD0590029BBB6 /* GameLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GameLayer.m; sourceTree = "<group>"; };
 		40FE36A4136DD0590029BBB6 /* GameConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameConfig.h; sourceTree = "<group>"; };
 		40FE36AA136DD9B40029BBB6 /* player.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = player.png; path = Resources/player.png; sourceTree = "<group>"; };
 		40FE371D136DDCB10029BBB6 /* bullet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bullet.png; path = Resources/bullet.png; sourceTree = "<group>"; };
@@ -753,8 +753,8 @@
 		40FE3728136DFEAB0029BBB6 /* HelloWorld */ = {
 			isa = PBXGroup;
 			children = (
-				40FE36A1136DD0590029BBB6 /* HelloWorldLayer.h */,
-				40FE36A2136DD0590029BBB6 /* HelloWorldLayer.m */,
+				40FE36A1136DD0590029BBB6 /* GameLayer.h */,
+				40FE36A2136DD0590029BBB6 /* GameLayer.m */,
 			);
 			name = HelloWorld;
 			sourceTree = "<group>";
@@ -979,7 +979,7 @@
 				40FE369A136DD0590029BBB6 /* main.m in Sources */,
 				40FE369D136DD0590029BBB6 /* AppDelegate.m in Sources */,
 				40FE36A0136DD0590029BBB6 /* RootViewController.m in Sources */,
-				40FE36A3136DD0590029BBB6 /* HelloWorldLayer.m in Sources */,
+				40FE36A3136DD0590029BBB6 /* GameLayer.m in Sources */,
 				40FE3724136DFE6C0029BBB6 /* IntroScene.m in Sources */,
 				40FE372D136DFFB00029BBB6 /* SceneSnippet.m in Sources */,
 			);
@@ -1075,6 +1075,7 @@
 				40FE36A9136DD0590029BBB6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

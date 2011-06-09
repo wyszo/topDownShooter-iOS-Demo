@@ -7,7 +7,7 @@
 //
 
 #import "IntroScene.h"
-#import "HelloWorldLayer.h"
+#import "GameLayer.h"
 
 
 @implementation IntroScene
@@ -121,7 +121,7 @@ int animOffset = 20; // intro animation offsets
 
 - (void)jumpToNextView:(ccTime)dt {
     [self unschedule:@selector(jumpToNextView:)];    
-    CCScene* mainScene = [HelloWorldLayer scene];
+    CCScene* mainScene = [GameLayer scene];
     [[CCDirector sharedDirector] replaceScene:mainScene];    
 }
 
