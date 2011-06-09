@@ -17,7 +17,7 @@ static const float STAR_LAYER_1_SPEED = -70.0;
 static const float STAR_LAYER0_SPEED = -100.0;
 static const float STAR_LAYER1_SPEED = -130.0;
 
-static const BOOL ACCELEROMETER_ENABLED = NO;
+static const BOOL ACCELEROMETER_ENABLED = YES;
 
 
 @interface Consts : NSObject {

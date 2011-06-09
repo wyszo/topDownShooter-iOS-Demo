@@ -67,7 +67,7 @@
         // enable accelerometer
         if (ACCELEROMETER_ENABLED) {
             self.isAccelerometerEnabled = YES;
-            [[UIAccelerometer sharedAccelerometer] setUpdateInterval:1/60];
+            [[UIAccelerometer sharedAccelerometer] setUpdateInterval:1/30];
         }
         
         // schedule update
@@ -115,9 +115,39 @@
 
 #pragma mark - accelerometer
 
-- (void)accelerometer:(UIAccelerometer *)accelerometer didAccelerate:(UIAcceleration *)acceleration {
+- (void)accelerometer:(UIAccelerometer*)accelerometer didAccelerate:(UIAcceleration*)acceleration
+{
+    static float prevX = 0;
+
+    float accelX = (float) acceleration.x;
+
+        // 'wygaszenie' ruchów przy zmianie kierunków
+        //#define kFilterFactor 0.05f
+        //float accelX = (float) acceleration.x * kFilterFactor + (1-kFilterFactor)*prevX;
+        
+    prevX = accelX;
     
+    // przesunięcie pojazdu na podstawie odczytu    
+    if(player)
+    {
+        // oblicz prędkość
+        float speed = -80 * -accelX;
+        
+        // ogranicz prędkość
+        /*
+         int max = 10;
+        if(speed > max)
+            speed = max;
+        else if(speed < -max)
+            speed = -max;
+        */
+        
+        // Nie pozwól graczowi wylecieć poza obszar gry   
+        if((accelX >0 || player.sprite.position.x > player.sprite.textureRect.size.width / 2) && ( accelX < 0 || player.sprite.position.x < 320 - player.sprite.textureRect.size.width / 2))
+        [player.sprite setPosition:ccp(player.sprite.position.x + speed,player.sprite.position.y)];
+    }
 }
+
 
 #pragma mark - touch dispatch
 

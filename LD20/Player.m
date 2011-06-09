@@ -10,9 +10,10 @@
 
 
 @implementation Player
+@synthesize sprite;
 
 - (void)resetState {
-    sprite.position = CGPointMake(100, 100);
+    sprite.position = CGPointMake(100, 60);
 }
 
 - (id)initOnLayer:(CCLayer*)layer
@@ -27,6 +28,11 @@
         [self resetState];
     }
     return self;
+}
+
+- (void)dealloc {
+    [sprite release];
+    [super dealloc];
 }
 
 @end

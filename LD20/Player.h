@@ -13,6 +13,8 @@
     CCSprite* sprite;
 }
 
+@property(nonatomic, retain) CCSprite* sprite;
+
 - (void)resetState;
 
 @end
