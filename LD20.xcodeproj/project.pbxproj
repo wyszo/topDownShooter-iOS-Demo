@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		40A8C34E13A0FF7A0009690E /* StarLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 40A8C34D13A0FF7A0009690E /* StarLayer.m */; };
+		40A8C35113A107A00009690E /* Consts.m in Sources */ = {isa = PBXBuildFile; fileRef = 40A8C35013A107A00009690E /* Consts.m */; };
 		40FE3541136DD0560029BBB6 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40FE3540136DD0560029BBB6 /* QuartzCore.framework */; };
 		40FE3543136DD0560029BBB6 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40FE3542136DD0560029BBB6 /* OpenGLES.framework */; };
 		40FE3545136DD0560029BBB6 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40FE3544136DD0560029BBB6 /* OpenAL.framework */; };
@@ -136,6 +137,8 @@
 /* Begin PBXFileReference section */
 		40A8C34C13A0FF7A0009690E /* StarLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StarLayer.h; sourceTree = "<group>"; };
 		40A8C34D13A0FF7A0009690E /* StarLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StarLayer.m; sourceTree = "<group>"; };
+		40A8C34F13A107A00009690E /* Consts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Consts.h; sourceTree = "<group>"; };
+		40A8C35013A107A00009690E /* Consts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Consts.m; sourceTree = "<group>"; };
 		40FE353C136DD0560029BBB6 /* LD20.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LD20.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		40FE3540136DD0560029BBB6 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		40FE3542136DD0560029BBB6 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -407,6 +410,8 @@
 			children = (
 				40A8C34C13A0FF7A0009690E /* StarLayer.h */,
 				40A8C34D13A0FF7A0009690E /* StarLayer.m */,
+				40A8C34F13A107A00009690E /* Consts.h */,
+				40A8C35013A107A00009690E /* Consts.m */,
 			);
 			name = Objects;
 			sourceTree = "<group>";
@@ -996,6 +1001,7 @@
 				40FE3724136DFE6C0029BBB6 /* IntroScene.m in Sources */,
 				40FE372D136DFFB00029BBB6 /* SceneSnippet.m in Sources */,
 				40A8C34E13A0FF7A0009690E /* StarLayer.m in Sources */,
+				40A8C35113A107A00009690E /* Consts.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

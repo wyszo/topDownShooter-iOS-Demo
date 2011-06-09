@@ -7,6 +7,12 @@
 //
 
 #import "StarLayer.h"
+#import "Consts.h"
+
+
+@interface StarLayer() 
+- (void)setupStarsOnLayer:(CCLayer*)layer;
+@end
 
 
 @implementation StarLayer
@@ -20,12 +26,6 @@ CCSprite* starBgrL0_0;
 CCSprite* starBgrL0_1;
 CCSprite* starBgrL1_0;
 CCSprite* starBgrL1_1;
-
-// layers velocities
-const float STAR_LAYER_2_SPEED = -60.0;
-const float STAR_LAYER_1_SPEED = -70.0;
-const float STAR_LAYER0_SPEED = -100.0;
-const float STAR_LAYER1_SPEED = -130.0;
 
 
 #pragma mark -
@@ -59,10 +59,9 @@ const float STAR_LAYER1_SPEED = -130.0;
     return sprite;
 }
 
--(void)setupStarsOnLayer:(CCLayer*)layer {
+- (void)setupStarsOnLayer:(CCLayer*)layer {
     
-    CGSize size = [[CCDirector sharedDirector] winSize];
-    CGPoint screenCenter = CGPointMake(size.width/2, size.height/2);
+    CGPoint screenCenter = [[Consts getInstance] screenCenter];
 
     starBgrL_2_0 = [[self spriteWithFileName:@"starBgr-2.png" onLayer:layer withPosition:CGPointMake(screenCenter.x, screenCenter.y)] retain];
     
@@ -87,33 +86,30 @@ const float STAR_LAYER1_SPEED = -130.0;
 
 #pragma mark - stars animation
 
--(void)animateStarSprite:(CCSprite*)stars withDeltaTime:(ccTime)deltaTime andSpeed:(CGFloat)speed {
+- (void)animateStarSprite:(CCSprite*)stars withDeltaTime:(ccTime)deltaTime andSpeed:(CGFloat)speed {
     float delta = speed * deltaTime;
-        
-    CGSize size = [[CCDirector sharedDirector] winSize];
-    CGPoint screenCenter = CGPointMake(size.width/2, size.height/2);
-    
+
     stars.position = CGPointMake(stars.position.x, stars.position.y + delta); 
     
-    if (stars.position.y <= screenCenter.y -480)
+    if (stars.position.y <= screenCenter_Y -480)
         stars.position = CGPointMake(stars.position.x, 240 + 480);
 }
 
--(void)animateStarLayer:(NSInteger)layerNr withDeltaTime:(ccTime)dt {
-    [self animateStarSprite:starBgrL_2_0 withDeltaTime:dt andSpeed:STAR_LAYER_2_SPEED];
-    [self animateStarSprite:starBgrL_2_1 withDeltaTime:dt andSpeed:STAR_LAYER_2_SPEED];
+- (void)animateStarLayer:(NSInteger)layerNr withDeltaTime:(ccTime)dt {
+    [self animateStarSprite:starBgrL_2_0 withDeltaTime:dt andSpeed:[[Consts getInstance] STAR_LAYER_2_SPEED]];
+    [self animateStarSprite:starBgrL_2_1 withDeltaTime:dt andSpeed:[[Consts getInstance] STAR_LAYER_2_SPEED]];
     
-    [self animateStarSprite:starBgrL_1_0 withDeltaTime:dt andSpeed:STAR_LAYER_1_SPEED];
-    [self animateStarSprite:starBgrL_1_1 withDeltaTime:dt andSpeed:STAR_LAYER_1_SPEED];
+    [self animateStarSprite:starBgrL_1_0 withDeltaTime:dt andSpeed:[[Consts getInstance] STAR_LAYER_1_SPEED]];
+    [self animateStarSprite:starBgrL_1_1 withDeltaTime:dt andSpeed:[[Consts getInstance] STAR_LAYER_1_SPEED]];
     
-    [self animateStarSprite:starBgrL0_0 withDeltaTime:dt andSpeed:STAR_LAYER0_SPEED];
-    [self animateStarSprite:starBgrL0_1 withDeltaTime:dt andSpeed:STAR_LAYER0_SPEED];
+    [self animateStarSprite:starBgrL0_0 withDeltaTime:dt andSpeed:[[Consts getInstance] STAR_LAYER0_SPEED]];
+    [self animateStarSprite:starBgrL0_1 withDeltaTime:dt andSpeed:[[Consts getInstance] STAR_LAYER0_SPEED]];
     
-    [self animateStarSprite:starBgrL1_0 withDeltaTime:dt andSpeed:STAR_LAYER1_SPEED];
-    [self animateStarSprite:starBgrL1_1 withDeltaTime:dt andSpeed:STAR_LAYER1_SPEED];
+    [self animateStarSprite:starBgrL1_0 withDeltaTime:dt andSpeed:[[Consts getInstance] STAR_LAYER1_SPEED]];
+    [self animateStarSprite:starBgrL1_1 withDeltaTime:dt andSpeed:[[Consts getInstance] STAR_LAYER1_SPEED]];
 }
 
--(void)animateStarsWithDeltaTime:(ccTime)dt {
+- (void)animateStarsWithDeltaTime:(ccTime)dt {
     [self animateStarLayer:0 withDeltaTime:dt];
 }
 

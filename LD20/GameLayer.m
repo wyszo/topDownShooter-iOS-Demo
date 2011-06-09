@@ -10,6 +10,13 @@
 #import "GameLayer.h"
 #import "StarLayer.h"
 #import "CCTouchDispatcher.h"
+#import "Consts.h"
+
+
+@interface GameLayer() 
+- (void)loadLevel;
+@end
+
 
 @implementation GameLayer
 
@@ -17,10 +24,6 @@ CCSprite* player;
 CCSprite* bullet;
 CCSprite* ufok1;
 StarLayer* starLayer;
-
-CGPoint screenCenter;
-
-const float BULLET_SPEED = 90.0;
 
 
 +(CCScene *) scene
@@ -43,7 +46,7 @@ const float BULLET_SPEED = 90.0;
 	if( (self=[super init])) {
 		
 		// ask director the the window size
-		CGSize size = [[CCDirector sharedDirector] winSize];
+		// CGSize size = [[CCDirector sharedDirector] winSize];
         
 		// create and initialize a Label
         //		CCLabelTTF *label = [CCLabelTTF labelWithString:@"Hello World" fontName:@"Marker Felt" fontSize:64];
@@ -54,10 +57,8 @@ const float BULLET_SPEED = 90.0;
 		// add the label as a child to this Layer
         //		[self addChild: label];
         
-        starLayer = [[StarLayer alloc] initOnLayer:self];
-        
-        [self loadLevel];
-        
+        starLayer = [[StarLayer alloc] initOnLayer:self];        
+        [self loadLevel];        
         self.isTouchEnabled = YES;
         
         // accelerometer
@@ -79,11 +80,9 @@ const float BULLET_SPEED = 90.0;
 }
 
 -(void)loadLevel {
-    CGSize size = [[CCDirector sharedDirector] winSize];
-    screenCenter = CGPointMake(size.width/2, size.height/2);
-    
-   // [self setupStars];
-    
+    // CGSize size = [[CCDirector sharedDirector] winSize];
+    // screenCenter = CGPointMake(size.width/2, size.height/2);
+
     // player
     player = [[CCSprite spriteWithFile:@"player.png"] retain];
     player.position = CGPointMake(100, 100);

@@ -12,6 +12,8 @@
 @interface StarLayer : NSObject {
     
 }
--(void)animateStarsWithDeltaTime:(ccTime)dt;
+
+- (id)initOnLayer:(CCLayer*)layer;
+- (void)animateStarsWithDeltaTime:(ccTime)dt;
 
 @end
