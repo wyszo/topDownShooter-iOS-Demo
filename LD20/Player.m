@@ -7,6 +7,7 @@
 //
 
 #import "Player.h"
+#import "Consts.h"
 
 
 @implementation Player
@@ -46,7 +47,7 @@
      */
     
     // Nie pozwól graczowi wylecieć poza obszar gry   
-    if((speed > 0 || sprite.position.x > sprite.textureRect.size.width) && (speed < 0 || sprite.position.x < 320 - sprite.textureRect.size.width))
+    if((speed > 0 || sprite.position.x > sprite.textureRect.size.width) && (speed < 0 || sprite.position.x < [[Consts getInstance] windowSize].width - sprite.textureRect.size.width))
     [sprite setPosition:ccp(sprite.position.x + speed,sprite.position.y)];
 }
 

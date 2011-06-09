@@ -8,12 +8,10 @@
 
 #import "cocos2d.h"
 
-@class StarLayer, Player;
+@class StarLayer, BattlefieldManager;
 @interface GameLayer : CCLayer {
-    CCSprite* bullet;
-    CCSprite* ufok1;
-    Player* player;
     StarLayer* starLayer;
+    BattlefieldManager* battlefield;
 }
 
 +(CCScene *) scene;

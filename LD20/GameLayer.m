@@ -12,6 +12,7 @@
 #import "CCTouchDispatcher.h"
 #import "Consts.h"
 #import "Player.h"
+#import "BattlefieldManager.h"
 
 
 @interface GameLayer() 
@@ -60,7 +61,7 @@
         
         // init variables
         starLayer = [[StarLayer alloc] initOnLayer:self];    
-        player = [[Player alloc] initOnLayer:self];
+        battlefield = [[BattlefieldManager alloc] initOnLayer:self];
         [self loadLevel];        
         self.isTouchEnabled = YES;
         
@@ -78,37 +79,21 @@
 
 - (void) dealloc
 {
-    [player release];
-    [bullet release];
-    [ufok1 release];
+    [battlefield release];
 	[super dealloc];
 }
 
 -(void)loadLevel {
     
-    [player resetState];
-    
-    // bullet
-    bullet = [[CCSprite spriteWithFile:@"bullet.png"] retain];
-    bullet.position = CGPointMake(200, 100);
-    bullet.scale = 0.5;
-    [self addChild:bullet];
-    
-    // enemy 
-    ufok1 = [[CCSprite spriteWithFile:@"ufok1.png"] retain];
-    ufok1.position = CGPointMake(200, 300);
-    ufok1.scale = 0.5;
-    [self addChild:ufok1];
+    [battlefield resetState];
 }
 
 /**
  * Krok czasu symulacji 
  */ 
 -(void)nextFrame:(ccTime)deltaTime {
-    // bullets
-    bullet.position = CGPointMake(bullet.position.x, bullet.position.y + BULLET_SPEED * deltaTime);
-    
-    // stars 
+
+    [battlefield nextFrame:deltaTime];
     [starLayer animateStarsWithDeltaTime:deltaTime];
 }
 
@@ -127,7 +112,7 @@
     prevX = accelX;
     
     float speed = -80 * -accelX;
-    [player moveWithSpeed:speed];
+    [battlefield.player moveWithSpeed:speed];
 }
 
 
@@ -137,8 +122,8 @@
  * Procedura obsługi tapnięć 
  */ 
 - (void)userTappedAtPoint:(CGPoint)point {
-    [bullet stopAllActions];
-    [bullet runAction:[CCMoveTo actionWithDuration:1 position:point]];
+    
+    [battlefield userTappedAtPoint:point];
 }
 
 - (void)registerWithTouchDispatcher {
