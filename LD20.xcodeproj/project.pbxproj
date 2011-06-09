@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		40017D9D13A172490021B852 /* Enemy.m in Sources */ = {isa = PBXBuildFile; fileRef = 40017D9C13A172490021B852 /* Enemy.m */; };
+		40017DA113A172FF0021B852 /* Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 40017DA013A172FF0021B852 /* Util.m */; };
 		40A8C34E13A0FF7A0009690E /* StarLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 40A8C34D13A0FF7A0009690E /* StarLayer.m */; };
 		40A8C35113A107A00009690E /* Consts.m in Sources */ = {isa = PBXBuildFile; fileRef = 40A8C35013A107A00009690E /* Consts.m */; };
 		40A8C35513A10F8C0009690E /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = 40A8C35413A10F8C0009690E /* Player.m */; };
@@ -137,6 +139,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		40017D9B13A172490021B852 /* Enemy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Enemy.h; sourceTree = "<group>"; };
+		40017D9C13A172490021B852 /* Enemy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Enemy.m; sourceTree = "<group>"; };
+		40017D9F13A172FF0021B852 /* Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Util.h; sourceTree = "<group>"; };
+		40017DA013A172FF0021B852 /* Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Util.m; sourceTree = "<group>"; };
 		40A8C34C13A0FF7A0009690E /* StarLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StarLayer.h; sourceTree = "<group>"; };
 		40A8C34D13A0FF7A0009690E /* StarLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StarLayer.m; sourceTree = "<group>"; };
 		40A8C34F13A107A00009690E /* Consts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Consts.h; sourceTree = "<group>"; };
@@ -418,6 +424,8 @@
 				40A8C34D13A0FF7A0009690E /* StarLayer.m */,
 				40A8C34F13A107A00009690E /* Consts.h */,
 				40A8C35013A107A00009690E /* Consts.m */,
+				40017D9F13A172FF0021B852 /* Util.h */,
+				40017DA013A172FF0021B852 /* Util.m */,
 			);
 			name = Objects;
 			sourceTree = "<group>";
@@ -427,6 +435,8 @@
 			children = (
 				40A8C35313A10F8C0009690E /* Player.h */,
 				40A8C35413A10F8C0009690E /* Player.m */,
+				40017D9B13A172490021B852 /* Enemy.h */,
+				40017D9C13A172490021B852 /* Enemy.m */,
 			);
 			name = Actors;
 			sourceTree = "<group>";
@@ -1030,6 +1040,8 @@
 				40A8C35113A107A00009690E /* Consts.m in Sources */,
 				40A8C35513A10F8C0009690E /* Player.m in Sources */,
 				40A8C35B13A120400009690E /* BattlefieldManager.m in Sources */,
+				40017D9D13A172490021B852 /* Enemy.m in Sources */,
+				40017DA113A172FF0021B852 /* Util.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

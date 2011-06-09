@@ -19,7 +19,6 @@
     
     // ... 
     CCSprite* bullet;
-    CCSprite* ufok1;
 }
 
 @property (nonatomic,retain) Player* player; 

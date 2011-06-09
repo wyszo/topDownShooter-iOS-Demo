@@ -9,13 +9,14 @@
 #import "BattlefieldManager.h"
 #import "Player.h"
 #import "Consts.h"
+#import "Util.h"
 
 
 @implementation BattlefieldManager
 @synthesize player;
 
 NSString* BULLET_SPRITE_FNAME = @"bulletSmall.png";
-NSString* UFOK_SPRITE_FNAME = @"ufok1Small.png";
+
 
 - (void)resetState {
     [player resetState];
@@ -23,29 +24,9 @@ NSString* UFOK_SPRITE_FNAME = @"ufok1Small.png";
 
 #pragma mark - sprite utilities
 
-- (CCSprite*)createRetainSpriteWithFName:(NSString*)fname onLayer:(CCLayer*)layer withPos:(CGPoint)pos andZOrder:(int)zOrder {
-    
-    CCSprite* newSprite = [CCSprite spriteWithFile:fname];
-    [newSprite retain];
-    [layer addChild:newSprite z:zOrder];
-    newSprite.position = pos;
-    
-    return newSprite;
-}
 
 - (CCSprite*)createBulletSpriteOnWithPos:(CGPoint)pos andZOrder:(int)zOrder {
-    return [self createRetainSpriteWithFName:BULLET_SPRITE_FNAME onLayer:canvasLayer withPos:pos andZOrder:zOrder];
-}
-
-- (CCSprite*)createUfokSpriteOnWithPos:(CGPoint)pos andZOrder:(int)zOrder {
-    return [self createRetainSpriteWithFName:UFOK_SPRITE_FNAME onLayer:canvasLayer withPos:pos andZOrder:zOrder];
-}
-
-- (CCSprite*)createUfokSprite {
-    CCSprite* newSprite = [CCSprite spriteWithFile:UFOK_SPRITE_FNAME];
-    
-    [newSprite retain];
-    return newSprite;
+    return [[Util getInstance] createRetainSpriteWithFName:BULLET_SPRITE_FNAME onLayer:canvasLayer withPos:pos andZOrder:zOrder];
 }
 
 #pragma mark - class lifecycle
@@ -56,16 +37,11 @@ NSString* UFOK_SPRITE_FNAME = @"ufok1Small.png";
         canvasLayer = layer;
         player = [[Player alloc] initOnLayer:layer];
         [self resetState];
-                
-        // bullet
-        bullet = [self createBulletSpriteOnWithPos:CGPointMake(200, 300) andZOrder:PLAYER_BULLET_Z];
-        
-        // bullet = [[self createBulletSpriteWithPos:CGPointMake(200, 100)] retain];
         
         // enemy 
-        ufok1 = [[self createUfokSprite] retain];
-        ufok1.position = CGPointMake(200, 300);
-        [layer addChild:ufok1 z:ENEMY_SHIP_Z];
+        // ufok1 = [[self createUfokSprite] retain];
+        // ufok1.position = CGPointMake(200, 300);
+        //[layer addChild:ufok1 z:ENEMY_SHIP_Z];
         
         // player bullets, enemy bullets
         playerBullets = [[NSMutableArray array] retain];
@@ -80,7 +56,7 @@ NSString* UFOK_SPRITE_FNAME = @"ufok1Small.png";
     
     [player release];
     [bullet release];
-    [ufok1 release];
+    //[ufok1 release];
     [super dealloc];
 }
 
