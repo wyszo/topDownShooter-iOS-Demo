@@ -11,17 +11,17 @@
 
 static const float BULLET_SPEED = 90;
 
+// star layers velocities
+static const float STAR_LAYER_2_SPEED = -60.0;
+static const float STAR_LAYER_1_SPEED = -70.0;
+static const float STAR_LAYER0_SPEED = -100.0;
+static const float STAR_LAYER1_SPEED = -130.0;
+
 
 @interface Consts : NSObject {
 }
 
 @property(nonatomic) CGPoint screenCenter;
-
-// star layers velocities
-@property(nonatomic) float STAR_LAYER_2_SPEED;
-@property(nonatomic) float STAR_LAYER_1_SPEED;
-@property(nonatomic) float STAR_LAYER0_SPEED;
-@property(nonatomic) float STAR_LAYER1_SPEED;
 
 + (Consts*)getInstance;
 
