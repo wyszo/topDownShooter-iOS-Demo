@@ -101,12 +101,19 @@ NSString* UFOK_SPRITE_FNAME = @"ufok1Small.png";
     CCSprite* newBullet = [[CCSprite spriteWithFile:BULLET_SPRITE_FNAME] retain];
     
     newBullet.position = player.sprite.position;
-    
-    float time = 2;
+    float lifetime = 2;
     float deltaY = [[Consts getInstance] windowSize].height;
     
-    // setup movement
-    [newBullet runAction:[CCMoveTo actionWithDuration:time position:CGPointMake(newBullet.position.x, newBullet.position.y + deltaY)]];
+    // setup movement & bullet cleanup after move anim 
+    id moveAction = [CCMoveTo actionWithDuration:lifetime position:CGPointMake(newBullet.position.x, newBullet.position.y + deltaY)];
+    
+    id removeAction = [CCCallBlockN actionWithBlock:^(CCNode *node) {
+        [playerBullets removeObject:node];
+        [node removeFromParentAndCleanup:YES];
+    }];
+    
+    id actionsSequence = [CCSequence actions:moveAction, removeAction, nil];
+    [newBullet runAction:actionsSequence];
     
     // add to canvas & bullets list
     [canvasLayer addChild:newBullet z:PLAYER_BULLET_Z];    
