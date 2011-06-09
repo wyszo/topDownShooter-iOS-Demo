@@ -11,7 +11,11 @@
 
 @class Player;
 @interface BattlefieldManager : NSObject {
-    Player* player; 
+    Player* player;
+    CCLayer* canvasLayer;
+    
+    NSMutableArray* playerBullets;
+    NSMutableArray* enemyBullets;
     
     // ... 
     CCSprite* bullet;

@@ -23,7 +23,7 @@
         
         // add player main sprite 
         sprite = [[CCSprite spriteWithFile:@"playerSmall.png"] retain];
-        [layer addChild:sprite];
+        [layer addChild:sprite z:PLAYER_SHIP_Z];
         
         [self resetState];
     }

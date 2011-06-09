@@ -11,14 +11,21 @@
 
 static const float BULLET_SPEED = 90;
 
+// settings
+static const BOOL ACCELEROMETER_ENABLED = YES;
+
 // star layers velocities
 static const float STAR_LAYER_2_SPEED = -60.0;
 static const float STAR_LAYER_1_SPEED = -70.0;
 static const float STAR_LAYER0_SPEED = -100.0;
 static const float STAR_LAYER1_SPEED = -130.0;
 
-static const BOOL ACCELEROMETER_ENABLED = YES;
-
+// sprite ordering
+static const int STAR_LAYER_Z = 0;
+static const int PLAYER_BULLET_Z = 1;
+static const int ENEMY_BULLET_Z = 2;
+static const int ENEMY_SHIP_Z = 3;
+static const int PLAYER_SHIP_Z = 4;
 
 @interface Consts : NSObject {
 }
