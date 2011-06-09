@@ -16,5 +16,6 @@
 @property(nonatomic, retain) CCSprite* sprite;
 
 - (void)resetState;
+- (void)moveWithSpeed:(double)speed;
 
 @end

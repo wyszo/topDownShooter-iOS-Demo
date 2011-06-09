@@ -21,9 +21,8 @@
 	if((self=[super init])) {
         
         // add player main sprite 
-        sprite = [[CCSprite spriteWithFile:@"player.png"] retain];
+        sprite = [[CCSprite spriteWithFile:@"playerSmall.png"] retain];
         [layer addChild:sprite];
-        sprite.scale = 0.5f;
         
         [self resetState];
     }
@@ -33,6 +32,22 @@
 - (void)dealloc {
     [sprite release];
     [super dealloc];
+}
+
+- (void)moveWithSpeed:(double)speed {
+    
+    // ogranicz prędkość
+    /*
+     int max = 10;
+     if(speed > max)
+     speed = max;
+     else if(speed < -max)
+     speed = -max;
+     */
+    
+    // Nie pozwól graczowi wylecieć poza obszar gry   
+    if((speed > 0 || sprite.position.x > sprite.textureRect.size.width) && (speed < 0 || sprite.position.x < 320 - sprite.textureRect.size.width))
+    [sprite setPosition:ccp(sprite.position.x + speed,sprite.position.y)];
 }
 
 @end

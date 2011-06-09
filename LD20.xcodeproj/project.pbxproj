@@ -10,6 +10,7 @@
 		40A8C34E13A0FF7A0009690E /* StarLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 40A8C34D13A0FF7A0009690E /* StarLayer.m */; };
 		40A8C35113A107A00009690E /* Consts.m in Sources */ = {isa = PBXBuildFile; fileRef = 40A8C35013A107A00009690E /* Consts.m */; };
 		40A8C35513A10F8C0009690E /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = 40A8C35413A10F8C0009690E /* Player.m */; };
+		40A8C35713A11D460009690E /* playerSmall.png in Resources */ = {isa = PBXBuildFile; fileRef = 40A8C35613A11D460009690E /* playerSmall.png */; };
 		40FE3541136DD0560029BBB6 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40FE3540136DD0560029BBB6 /* QuartzCore.framework */; };
 		40FE3543136DD0560029BBB6 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40FE3542136DD0560029BBB6 /* OpenGLES.framework */; };
 		40FE3545136DD0560029BBB6 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40FE3544136DD0560029BBB6 /* OpenAL.framework */; };
@@ -120,7 +121,6 @@
 		40FE369D136DD0590029BBB6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 40FE369C136DD0590029BBB6 /* AppDelegate.m */; };
 		40FE36A0136DD0590029BBB6 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40FE369F136DD0590029BBB6 /* RootViewController.m */; };
 		40FE36A3136DD0590029BBB6 /* GameLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 40FE36A2136DD0590029BBB6 /* GameLayer.m */; };
-		40FE36AB136DD9B40029BBB6 /* player.png in Resources */ = {isa = PBXBuildFile; fileRef = 40FE36AA136DD9B40029BBB6 /* player.png */; };
 		40FE371F136DDCB10029BBB6 /* bullet.png in Resources */ = {isa = PBXBuildFile; fileRef = 40FE371D136DDCB10029BBB6 /* bullet.png */; };
 		40FE3720136DDCB10029BBB6 /* ufok1.png in Resources */ = {isa = PBXBuildFile; fileRef = 40FE371E136DDCB10029BBB6 /* ufok1.png */; };
 		40FE3724136DFE6C0029BBB6 /* IntroScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 40FE3723136DFE6C0029BBB6 /* IntroScene.m */; };
@@ -142,6 +142,7 @@
 		40A8C35013A107A00009690E /* Consts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Consts.m; sourceTree = "<group>"; };
 		40A8C35313A10F8C0009690E /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Player.h; sourceTree = "<group>"; };
 		40A8C35413A10F8C0009690E /* Player.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Player.m; sourceTree = "<group>"; };
+		40A8C35613A11D460009690E /* playerSmall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = playerSmall.png; path = Resources/playerSmall.png; sourceTree = "<group>"; };
 		40FE353C136DD0560029BBB6 /* LD20.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LD20.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		40FE3540136DD0560029BBB6 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		40FE3542136DD0560029BBB6 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -372,7 +373,6 @@
 		40FE36A1136DD0590029BBB6 /* GameLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameLayer.h; sourceTree = "<group>"; };
 		40FE36A2136DD0590029BBB6 /* GameLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GameLayer.m; sourceTree = "<group>"; };
 		40FE36A4136DD0590029BBB6 /* GameConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameConfig.h; sourceTree = "<group>"; };
-		40FE36AA136DD9B40029BBB6 /* player.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = player.png; path = Resources/player.png; sourceTree = "<group>"; };
 		40FE371D136DDCB10029BBB6 /* bullet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bullet.png; path = Resources/bullet.png; sourceTree = "<group>"; };
 		40FE371E136DDCB10029BBB6 /* ufok1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ufok1.png; path = Resources/ufok1.png; sourceTree = "<group>"; };
 		40FE3722136DFE6C0029BBB6 /* IntroScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntroScene.h; sourceTree = "<group>"; };
@@ -745,7 +745,7 @@
 		40FE36AC136DD9B70029BBB6 /* Sprites */ = {
 			isa = PBXGroup;
 			children = (
-				40FE36AA136DD9B40029BBB6 /* player.png */,
+				40A8C35613A11D460009690E /* playerSmall.png */,
 				40FE371D136DDCB10029BBB6 /* bullet.png */,
 				40FE371E136DDCB10029BBB6 /* ufok1.png */,
 			);
@@ -892,7 +892,6 @@
 				40FE355B136DD0560029BBB6 /* Icon-Small.png in Resources */,
 				40FE355F136DD0560029BBB6 /* Icon.png in Resources */,
 				40FE3564136DD0560029BBB6 /* iTunesArtwork in Resources */,
-				40FE36AB136DD9B40029BBB6 /* player.png in Resources */,
 				40FE371F136DDCB10029BBB6 /* bullet.png in Resources */,
 				40FE3720136DDCB10029BBB6 /* ufok1.png in Resources */,
 				40FE3732136E028B0029BBB6 /* Intro1.png in Resources */,
@@ -903,6 +902,7 @@
 				40FE373B136E27FE0029BBB6 /* starBgr2.png in Resources */,
 				40FE373E136E2ABD0029BBB6 /* starBgr-1.png in Resources */,
 				40FE3740136E2CB90029BBB6 /* starBgr-2.png in Resources */,
+				40A8C35713A11D460009690E /* playerSmall.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
