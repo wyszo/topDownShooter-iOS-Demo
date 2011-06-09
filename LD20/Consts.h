@@ -29,6 +29,7 @@ static const int PLAYER_SHIP_Z = 4;
 
 // time constraints
 static const float CANNON_RELOAD_TIME = 0.4f;
+static const float TOUCH_EVENTS_REPEAT_INTERVAL = 0.2f;
 
 // other
 static const int PLAYER_START_POS_X = 100;

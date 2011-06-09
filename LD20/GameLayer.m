@@ -22,6 +22,9 @@
 
 @implementation GameLayer
 
+BOOL userTouchesScreen = NO;
+CGPoint lastTapLocation;
+
 +(CCScene *) scene
 {
 	// 'scene' is an autorelease object.
@@ -130,13 +133,27 @@
     [[CCTouchDispatcher sharedDispatcher] addTargetedDelegate:self priority:0 swallowsTouches:YES];
 }
 
+// jeśli user dotyka ekranu, generuje powtórne tapnięcie 
+- (void)userTapEventRepeat {
+    if (userTouchesScreen) 
+        [self userTappedAtPoint:lastTapLocation]; 
+}
+
 - (BOOL)ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event {
+    CGPoint location = [self convertTouchToNodeSpace:touch];
+    [self userTappedAtPoint:location];
+    lastTapLocation = location;
+    userTouchesScreen = YES;
+    
+    [self schedule:@selector(userTapEventRepeat) interval:TOUCH_EVENTS_REPEAT_INTERVAL];
+    
     return YES;
 }
 
 - (void)ccTouchEnded:(UITouch *)touch withEvent:(UIEvent *)event {
-    CGPoint location = [self convertTouchToNodeSpace:touch];
-    [self userTappedAtPoint:location];
+    userTouchesScreen = NO;
+    
+    [self unschedule:@selector(userTapEventRepeat)];
 }
 
 @end
