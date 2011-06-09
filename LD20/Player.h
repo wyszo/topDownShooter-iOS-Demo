@@ -11,11 +11,14 @@
 
 @interface Player : NSObject {
     CCSprite* sprite;
+    BOOL _cannonReloaded;
 }
 
 @property(nonatomic, retain) CCSprite* sprite;
+@property(nonatomic, readonly) BOOL cannonReloaded;
 
 - (void)resetState;
 - (void)moveWithSpeed:(double)speed;
+- (void)reloadCannon;
 
 @end

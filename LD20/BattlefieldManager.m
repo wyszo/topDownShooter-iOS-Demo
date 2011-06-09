@@ -84,20 +84,19 @@ NSString* UFOK_SPRITE_FNAME = @"ufok1Small.png";
     [super dealloc];
 }
 
+#pragma mark - bullets management
+
 - (void)checkBulletsCollisions {
     
 }
 
-- (void)movePlayerBullets {
+- (void)spawnEnemyBulletFromPos:(CGPoint)point {
     
 }
 
-- (void)moveEnemyBullets {
-    // bullets
-    //    bullet.position = CGPointMake(bullet.position.x, bullet.position.y + BULLET_SPEED * deltaTime);
-}
-
 - (void)spawnPlayerBullet {
+    [player reloadCannon];
+    
     CCSprite* newBullet = [[CCSprite spriteWithFile:BULLET_SPRITE_FNAME] retain];
     
     newBullet.position = player.sprite.position;
@@ -123,8 +122,6 @@ NSString* UFOK_SPRITE_FNAME = @"ufok1Small.png";
 -(void)nextFrame:(ccTime)deltaTime {
     
     [self checkBulletsCollisions];
-    [self movePlayerBullets];
-    [self moveEnemyBullets];
 }
 
 /**
@@ -132,10 +129,8 @@ NSString* UFOK_SPRITE_FNAME = @"ufok1Small.png";
  */ 
 - (void)userTappedAtPoint:(CGPoint)point {
     
-    [self spawnPlayerBullet];
-    
-//    [bullet stopAllActions];
-//    [bullet runAction:[CCMoveTo actionWithDuration:1 position:point]];
+    if (player.cannonReloaded)
+        [self spawnPlayerBullet];
 }
 
 @end

@@ -27,6 +27,13 @@ static const int ENEMY_BULLET_Z = 2;
 static const int ENEMY_SHIP_Z = 3;
 static const int PLAYER_SHIP_Z = 4;
 
+// time constraints
+static const float CANNON_RELOAD_TIME = 0.4f;
+
+// other
+static const int PLAYER_START_POS_X = 100;
+static const int PLAYER_START_POS_Y = 60;
+
 @interface Consts : NSObject {
 }
 

@@ -11,10 +11,11 @@
 
 
 @implementation Player
-@synthesize sprite;
+@synthesize sprite, cannonReloaded = _cannonReloaded;
 
 - (void)resetState {
-    sprite.position = CGPointMake(100, 60);
+    _cannonReloaded = YES;
+    sprite.position = CGPointMake(PLAYER_START_POS_X, PLAYER_START_POS_Y);
 }
 
 - (id)initOnLayer:(CCLayer*)layer
@@ -49,6 +50,18 @@
     // Nie pozwól graczowi wylecieć poza obszar gry   
     if((speed > 0 || sprite.position.x > sprite.textureRect.size.width) && (speed < 0 || sprite.position.x < [[Consts getInstance] windowSize].width - sprite.textureRect.size.width))
     [sprite setPosition:ccp(sprite.position.x + speed,sprite.position.y)];
+}
+
+- (void)shootingTimerUpdate {
+    _cannonReloaded = YES;
+}
+
+- (void)reloadCannon {
+    _cannonReloaded = NO;
+    
+    id action = [CCCallFunc actionWithTarget:self selector:@selector(shootingTimerUpdate)];
+    id delay = [CCDelayTime actionWithDuration:CANNON_RELOAD_TIME];
+    [sprite runAction:[CCSequence actions:delay, action, nil]];
 }
 
 @end
