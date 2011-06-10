@@ -10,6 +10,13 @@
 #import "Player.h"
 #import "Consts.h"
 #import "Util.h"
+#import "Enemy.h"
+
+@interface BattlefieldManager() 
+- (void)spawnEnemy;
+- (void)scheduleNextSpawnEnemyAction;
+- (CCSprite*)createBulletSpriteOnWithPos:(CGPoint)pos andZOrder:(int)zOrder;
+@end
 
 
 @implementation BattlefieldManager
@@ -20,13 +27,6 @@ NSString* BULLET_SPRITE_FNAME = @"bulletSmall.png";
 
 - (void)resetState {
     [player resetState];
-}
-
-#pragma mark - sprite utilities
-
-
-- (CCSprite*)createBulletSpriteOnWithPos:(CGPoint)pos andZOrder:(int)zOrder {
-    return [[Util getInstance] createRetainSpriteWithFName:BULLET_SPRITE_FNAME onLayer:canvasLayer withPos:pos andZOrder:zOrder];
 }
 
 #pragma mark - class lifecycle
@@ -46,6 +46,11 @@ NSString* BULLET_SPRITE_FNAME = @"bulletSmall.png";
         // player bullets, enemy bullets
         playerBullets = [[NSMutableArray array] retain];
         enemyBullets = [[NSMutableArray array] retain];
+        
+        // napływanie nowych wrogów     
+        [self scheduleNextSpawnEnemyAction];
+        
+
     }
     return self;
 }
@@ -58,6 +63,22 @@ NSString* BULLET_SPRITE_FNAME = @"bulletSmall.png";
     [bullet release];
     //[ufok1 release];
     [super dealloc];
+}
+
+#pragma mark - spawning enemies
+
+- (void)spawnEnemy {
+    // enemies!!!
+    [enemyBullets addObject:[[Enemy alloc] initOnLayer:canvasLayer withZOrder:ENEMY_SHIP_Z andParentCollection:enemyBullets]];
+    
+    [self scheduleNextSpawnEnemyAction];
+}
+
+- (void)scheduleNextSpawnEnemyAction {
+    id action = [CCCallFunc actionWithTarget:self selector:@selector(spawnEnemy)];
+    float deltaTime = [Enemy randSpawnNextEnemyInterval];
+    id delay = [CCDelayTime actionWithDuration:deltaTime];
+    [CANVAS runAction:[CCSequence actions:delay, action, nil]];
 }
 
 #pragma mark - bullets management
@@ -76,7 +97,7 @@ NSString* BULLET_SPRITE_FNAME = @"bulletSmall.png";
     CCSprite* newBullet = [[CCSprite spriteWithFile:BULLET_SPRITE_FNAME] retain];
     
     newBullet.position = player.sprite.position;
-    float lifetime = 2;
+    float lifetime = 1.0f/BULLET_SPEED;
     float deltaY = [[Consts getInstance] windowSize].height;
     
     // setup movement & bullet cleanup after move anim 
@@ -107,6 +128,12 @@ NSString* BULLET_SPRITE_FNAME = @"bulletSmall.png";
     
     if (player.cannonReloaded)
         [self spawnPlayerBullet];
+}
+
+#pragma mark - sprite utilities
+
+- (CCSprite*)createBulletSpriteOnWithPos:(CGPoint)pos andZOrder:(int)zOrder {
+    return [[Util getInstance] createRetainSpriteWithFName:BULLET_SPRITE_FNAME onLayer:canvasLayer withPos:pos andZOrder:zOrder];
 }
 
 @end

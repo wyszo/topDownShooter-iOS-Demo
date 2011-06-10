@@ -15,8 +15,9 @@ static Util* instance;
 
 + (Util*)getInstance {
     @synchronized(self) {
-        if (instance == NULL)
+        if (instance == NULL) {
             instance = [[Util alloc] init];
+        }        
     }
     return instance; 
 }

@@ -6,10 +6,13 @@
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
+#import "cocos2d.h"
+
 #define screenCenter_X [[Consts getInstance] screenCenter].x
 #define screenCenter_Y [[Consts getInstance] screenCenter].y
+#define CANVAS [Consts getInstance].canvasLayer
 
-static const float BULLET_SPEED = 90;
+static const float BULLET_SPEED = 0.5f;
 
 // settings
 static const BOOL ACCELEROMETER_ENABLED = YES;
@@ -31,15 +34,22 @@ static const int PLAYER_SHIP_Z = 4;
 static const float CANNON_RELOAD_TIME = 0.4f;
 static const float TOUCH_EVENTS_REPEAT_INTERVAL = 0.2f;
 
+// spawn enemies
+static const float SPAWN_NEXT_ENEMY_MIN_TIME_INTERVAL = 1.5f;
+static const float SPAWN_NEXT_ENEMY_MAX_TIME_INTERVAL = 3.5f;
+static const float ENEMY_SPEED = 0.35f;
+
 // other
 static const int PLAYER_START_POS_X = 100;
 static const int PLAYER_START_POS_Y = 60;
+
 
 @interface Consts : NSObject {
 }
 
 @property(nonatomic) CGPoint screenCenter;
 @property(nonatomic) CGSize windowSize;
+@property(nonatomic, retain) CCLayer* canvasLayer;
 
 + (Consts*)getInstance;
 

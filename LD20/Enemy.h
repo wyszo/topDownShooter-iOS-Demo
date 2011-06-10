@@ -12,9 +12,12 @@
 @interface Enemy : NSObject {
     CCSprite* ufok1;
     int hp;
+    NSMutableArray* parentCollection;
 }
 
+- (id)initOnLayer:(CCLayer*)layer withZOrder:(int)zOrder andParentCollection:(NSMutableArray*)collection;
 - (void)injureWithHp:(int)hp;
 - (BOOL)isAlive;
++ (float)randSpawnNextEnemyInterval;
 
 @end

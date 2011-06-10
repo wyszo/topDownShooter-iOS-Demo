@@ -11,7 +11,7 @@
 
 
 @implementation Consts
-@synthesize screenCenter, windowSize;
+@synthesize screenCenter, windowSize, canvasLayer;
 
 static Consts* instance;
 
@@ -34,6 +34,11 @@ static Consts* instance;
         [self initVariables];
     }
     return self;
+}
+
+- (void)dealloc {
+    [canvasLayer release];
+    [super dealloc];
 }
 
 @end

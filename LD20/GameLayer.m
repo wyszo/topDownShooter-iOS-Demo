@@ -25,6 +25,9 @@
 BOOL userTouchesScreen = NO;
 CGPoint lastTapLocation;
 
+
+#pragma mark - scene lifecycle 
+
 +(CCScene *) scene
 {
 	// 'scene' is an autorelease object.
@@ -62,6 +65,9 @@ CGPoint lastTapLocation;
         // sample label
         [self addSampleLabelToLayer:self];
         
+        // setup canvas
+        [Consts getInstance].canvasLayer = self;
+        
         // init variables
         starLayer = [[StarLayer alloc] initOnLayer:self];    
         battlefield = [[BattlefieldManager alloc] initOnLayer:self];
@@ -85,6 +91,8 @@ CGPoint lastTapLocation;
     [battlefield release];
 	[super dealloc];
 }
+
+#pragma mark - level lifecycle
 
 -(void)loadLevel {
     
