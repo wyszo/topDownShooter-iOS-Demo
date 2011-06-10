@@ -49,4 +49,36 @@ static Util* instance;
     return result;
 }
 
+// 0 <= coef <= 1
++ (CGRect)scaleRect:(CGRect)rect by:(double)coef {
+    CGRect result = rect;
+    
+    result.origin.x = rect.origin.x + (rect.size.width * (1-coef) * 0.5);
+    result.origin.y = rect.origin.y + (rect.size.height * (1-coef) * 0.5);
+    result.size.width *= coef;
+    result.size.height *= coef;
+    
+    return result;
+}
+
+/**
+ * tolerancja - oznacza przeskalowanie sprite'ów przed sprawdzeniem kolizji o zadany współczynnik
+ */
++ (BOOL)sprite:(CCSprite*)spr1 collidesWithSprite:(CCSprite*)spr2 withTolerance:(float)tolerance {
+    // set rects
+    CGRect rect1 = spr1.textureRect; 
+    rect1.origin = spr1.position;
+    
+    CGRect rect2 = spr2.textureRect;
+    rect2.origin = spr2.position;
+    
+    // apply tolerance
+    rect1 = [Util scaleRect:rect1 by:(1-tolerance)];
+    rect2 = [Util scaleRect:rect2 by:(1-tolerance)];
+    
+    // check collision
+    BOOL result = CGRectIntersectsRect(rect1, rect2);
+    return result;
+}
+
 @end

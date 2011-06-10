@@ -159,9 +159,21 @@ NSString* BULLET_SPRITE_FNAME = @"bulletSmall.png";
     [playerBullets addObject:newBullet];
 }
 
--(void)nextFrame:(ccTime)deltaTime {
+#pragma mark - collisions
+
+- (void)checkPlayerEnemiesCollisions {
+    for (Enemy* enemy in enemies) 
+        if ([Util sprite:enemy.ufok1 collidesWithSprite:player.sprite withTolerance:0.5]) {
+            NSLog(@"DEAD!!!");
+        }
+}
+
+#pragma mark - simulation step
+
+- (void)nextFrame:(ccTime)deltaTime {
     
     [self checkBulletsCollisions];
+    [self checkPlayerEnemiesCollisions];
 }
 
 /**

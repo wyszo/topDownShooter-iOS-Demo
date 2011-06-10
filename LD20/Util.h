@@ -18,7 +18,9 @@
 @property (nonatomic) int score;
 
 - (CCSprite*)createRetainSpriteWithFName:(NSString*)fname onLayer:(CCLayer*)layer withPos:(CGPoint)pos andZOrder:(int)zOrder;
++ (CGRect)scaleRect:(CGRect)rect by:(double)coef;
 + (BOOL)pointWithX:(double)x y:(double)y colidedWithObjectWithX:(double)objX y:(double)objY width:(double)objWidth andHeight:(double)objHeight;
++ (BOOL)sprite:(CCSprite*)spr1 collidesWithSprite:(CCSprite*)spr2 withTolerance:(float)tolerance;
 
 + (Util*)getInstance;
 
