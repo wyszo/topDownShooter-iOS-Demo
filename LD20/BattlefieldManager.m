@@ -46,6 +46,7 @@ NSString* BULLET_SPRITE_FNAME = @"bulletSmall.png";
         // player bullets, enemy bullets
         playerBullets = [[NSMutableArray array] retain];
         enemyBullets = [[NSMutableArray array] retain];
+        enemies = [[NSMutableArray array] retain];
         
         // napływanie nowych wrogów     
         [self scheduleNextSpawnEnemyAction];
@@ -58,19 +59,16 @@ NSString* BULLET_SPRITE_FNAME = @"bulletSmall.png";
 - (void)dealloc {
     [playerBullets release];
     [enemyBullets release];
+    [enemies release];
     
     [player release];
-    [bullet release];
-    //[ufok1 release];
     [super dealloc];
 }
 
 #pragma mark - spawning enemies
 
 - (void)spawnEnemy {
-    // enemies!!!
-    [enemyBullets addObject:[[Enemy alloc] initOnLayer:canvasLayer withZOrder:ENEMY_SHIP_Z andParentCollection:enemyBullets]];
-    
+    [enemies addObject:[[Enemy alloc] initOnLayer:canvasLayer withZOrder:ENEMY_SHIP_Z andParentCollection:enemies]];
     [self scheduleNextSpawnEnemyAction];
 }
 
@@ -84,10 +82,55 @@ NSString* BULLET_SPRITE_FNAME = @"bulletSmall.png";
 #pragma mark - bullets management
 
 - (void)checkBulletsCollisions {
+    // sprawdź każdy z każdym 
+    int bulletX, bulletY, bulletWidth, bulletHeight;
+    int bulletCenterX, bulletCenterY;
+    int enemyX, enemyY, enemyWidth, enemyHeight;
     
+    NSMutableArray* bulletsToRemove = [NSMutableArray array];
+    BOOL nextIteration = NO;
+    
+    for (CCSprite* bullet in playerBullets) {
+        nextIteration = NO;
+        
+        for (Enemy* enemy in enemies) {
+            // bullet info
+            bulletX = bullet.position.x;
+            bulletY = bullet.position.y;
+            bulletWidth = bullet.textureRect.size.width;
+            bulletHeight = bullet.textureRect.size.height;
+            bulletCenterX = bulletX + bulletWidth/2;
+            bulletCenterY = bulletY + bulletHeight/2;            
+            
+            // enemy info 
+            enemyWidth = enemy.ufok1.textureRect.size.width;
+            enemyHeight = enemy.ufok1.textureRect.size.height;
+            enemyX = enemy.ufok1.position.x - enemyWidth/2;
+            enemyY = enemy.ufok1.position.y;
+            
+            // najpierw czy jest na tej samej wysokości
+            if (bulletCenterY > enemyY && bulletCenterY < enemyY + enemyHeight) {
+                // potem czy jest na tej samej szerokości                
+                if (bulletCenterX > enemyX && bulletX < enemyX + enemyWidth) { 
+                    
+                    // trafiony!
+                    [bulletsToRemove addObject:bullet];
+                    nextIteration = YES;
+                    break;
+                }
+            }            
+        }
+        if (nextIteration) 
+            continue;
+    }
+    
+    for (CCSprite* bullet in bulletsToRemove) 
+        [bullet removeFromParentAndCleanup:YES];
+    [playerBullets removeObjectsInArray:bulletsToRemove];
 }
 
 - (void)spawnEnemyBulletFromPos:(CGPoint)point {
+    // jeśli już to to powinno być w klasie Enemy
     
 }
 

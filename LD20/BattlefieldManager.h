@@ -16,9 +16,7 @@
     
     NSMutableArray* playerBullets;
     NSMutableArray* enemyBullets;
-    
-    // ... 
-    CCSprite* bullet;
+    NSMutableArray* enemies;
 }
 
 @property (nonatomic,retain) Player* player; 

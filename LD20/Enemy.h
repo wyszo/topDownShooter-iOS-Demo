@@ -15,6 +15,8 @@
     NSMutableArray* parentCollection;
 }
 
+@property(nonatomic, retain) CCSprite* ufok1;
+
 - (id)initOnLayer:(CCLayer*)layer withZOrder:(int)zOrder andParentCollection:(NSMutableArray*)collection;
 - (void)injureWithHp:(int)hp;
 - (BOOL)isAlive;

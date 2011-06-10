@@ -17,6 +17,7 @@
 
 
 @implementation Enemy
+@synthesize ufok1;
 
 NSString* UFOK_SPRITE_FNAME = @"ufok1Small.png";
 
@@ -37,14 +38,12 @@ NSString* UFOK_SPRITE_FNAME = @"ufok1Small.png";
 - (id)initOnLayer:(CCLayer*)layer withZOrder:(int)zOrder andParentCollection:(NSMutableArray*)collection
 {
 	if((self=[super init])) {
-        // wylosowanie pozycji startowej
-//        CGPoint pos = CGPointMake(arc4random() % 320L, arc4random() % 400L);
         
         // init vars
         hp = 100;
         parentCollection = collection;
         
-        // losuj pozycję startową
+        // losowanie pozycji startowej 
         float ufokTexWidth = ufok1.textureRect.size.width;
         float minX = ufokTexWidth;
         int spawnSpaceWidth = [[Consts getInstance] windowSize].width - 2*ufokTexWidth;
@@ -58,6 +57,11 @@ NSString* UFOK_SPRITE_FNAME = @"ufok1Small.png";
         [self setupMovement];
     }
     return self;
+}
+
+- (void)dealloc {
+    [ufok1 release];
+    [super dealloc];
 }
 
 - (void)injureWithHp:(int)deltaHp {

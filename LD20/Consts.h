@@ -14,7 +14,7 @@
 #define SCREEN_HEIGHT [[Consts getInstance] windowSize].height
 #define CANVAS [Consts getInstance].canvasLayer
 
-static const float BULLET_SPEED = 0.5f;
+static const float BULLET_SPEED = 0.9f;
 
 // settings
 static const BOOL ACCELEROMETER_ENABLED = YES;
@@ -33,7 +33,7 @@ static const int ENEMY_SHIP_Z = 3;
 static const int PLAYER_SHIP_Z = 4;
 
 // time constraints
-static const float CANNON_RELOAD_TIME = 0.4f;
+static const float CANNON_RELOAD_TIME = 0.26f;
 static const float TOUCH_EVENTS_REPEAT_INTERVAL = 0.2f;
 
 // spawn enemies
