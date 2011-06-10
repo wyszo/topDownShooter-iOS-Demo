@@ -14,6 +14,7 @@
 @synthesize sprite, cannonReloaded = _cannonReloaded;
 
 - (void)resetState {
+    SCORE = 0;
     _cannonReloaded = YES;
     sprite.position = CGPointMake(PLAYER_START_POS_X, PLAYER_START_POS_Y);
 }

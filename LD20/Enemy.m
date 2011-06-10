@@ -13,6 +13,7 @@
 @interface Enemy() 
 - (CCSprite*)createUfokSpriteOnLayer:(CCLayer*)layer withPos:(CGPoint)pos andZOrder:(int)zOrder;
 - (void)setupMovement;
+- (void)destroySelf;
 @end
 
 
@@ -66,24 +67,34 @@ NSString* UFOK_SPRITE_FNAME = @"ufok1Small.png";
 
 - (void)injureWithHp:(int)deltaHp {
     hp -= deltaHp;
-}
+    
+    if (hp <= 0) {
+        // usuń wierzchołek, usuń z listy wrogów
+        [self destroySelf];
+        SCORE += SCORE_INCREMENT_VAL;
+    }
+} 
 
 - (BOOL)isAlive {
     if (hp <= 0)
-        return NO;
+        return NO; 
     else return YES;
+}
+
+- (void)destroySelf {
+    [parentCollection removeObject:self];
+    [ufok1 removeFromParentAndCleanup:YES]; 
 }
 
 - (void)setupStrightDownMovement {
     float movementLifetime = 1.0/ENEMY_SPEED; 
-    float deltaY = [[Consts getInstance] windowSize].height + 2*ENEMY_SPAWN_POS_Y_OFFSET;
-    
+    float deltaY = [[Consts getInstance] windowSize].height + 2*ENEMY_SPAWN_POS_Y_OFFSET; 
+     
     // setup movement & bullet cleanup after move anim 
     id moveAction = [CCMoveTo actionWithDuration:movementLifetime position:CGPointMake(ufok1.position.x, ufok1.position.y - deltaY)];
     
     id removeAction = [CCCallBlockN actionWithBlock:^(CCNode *node) {
-        [parentCollection removeObject:self];
-        [node removeFromParentAndCleanup:YES];
+        [self destroySelf];
     }];
     
     id actionsSequence = [CCSequence actions:moveAction, removeAction, nil];

@@ -10,6 +10,7 @@
 
 
 @implementation Util
+@synthesize score = _score;
 
 static Util* instance;
 
@@ -32,6 +33,20 @@ static Util* instance;
     return newSprite;
 }
 
+- (void)setScore:(int)score {
+    _score = score;
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"scoreUpdated" object:self];
+}
 
++ (BOOL)pointWithX:(double)x y:(double)y colidedWithObjectWithX:(double)objX y:(double)objY width:(double)objWidth andHeight:(double)objHeight {
+    BOOL result = NO;
+    
+    // sprawdzenie  wysokości
+    if (y > objY && y < objY + objHeight) 
+        // sprawdzenie szerokości                
+        if (x > objX && x < objX + objWidth) 
+            result = YES;
+    return result;
+}
 
 @end

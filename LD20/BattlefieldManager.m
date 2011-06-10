@@ -34,14 +34,10 @@ NSString* BULLET_SPRITE_FNAME = @"bulletSmall.png";
 - (id)initOnLayer:(CCLayer*)layer
 {
 	if((self=[super init])) {
+        // init vars
         canvasLayer = layer;
         player = [[Player alloc] initOnLayer:layer];
         [self resetState];
-        
-        // enemy 
-        // ufok1 = [[self createUfokSprite] retain];
-        // ufok1.position = CGPointMake(200, 300);
-        //[layer addChild:ufok1 z:ENEMY_SHIP_Z];
         
         // player bullets, enemy bullets
         playerBullets = [[NSMutableArray array] retain];
@@ -50,8 +46,6 @@ NSString* BULLET_SPRITE_FNAME = @"bulletSmall.png";
         
         // napływanie nowych wrogów     
         [self scheduleNextSpawnEnemyAction];
-        
-
     }
     return self;
 }
@@ -64,6 +58,7 @@ NSString* BULLET_SPRITE_FNAME = @"bulletSmall.png";
     [player release];
     [super dealloc];
 }
+
 
 #pragma mark - spawning enemies
 
@@ -88,6 +83,7 @@ NSString* BULLET_SPRITE_FNAME = @"bulletSmall.png";
     int enemyX, enemyY, enemyWidth, enemyHeight;
     
     NSMutableArray* bulletsToRemove = [NSMutableArray array];
+    NSMutableArray* enemiesToBeHit = [NSMutableArray array];
     BOOL nextIteration = NO;
     
     for (CCSprite* bullet in playerBullets) {
@@ -108,25 +104,29 @@ NSString* BULLET_SPRITE_FNAME = @"bulletSmall.png";
             enemyX = enemy.ufok1.position.x - enemyWidth/2;
             enemyY = enemy.ufok1.position.y;
             
-            // najpierw czy jest na tej samej wysokości
-            if (bulletCenterY > enemyY && bulletCenterY < enemyY + enemyHeight) {
-                // potem czy jest na tej samej szerokości                
-                if (bulletCenterX > enemyX && bulletX < enemyX + enemyWidth) { 
-                    
-                    // trafiony!
-                    [bulletsToRemove addObject:bullet];
-                    nextIteration = YES;
-                    break;
-                }
-            }            
+            // collision check
+            if ([Util pointWithX:bulletX y:bulletY colidedWithObjectWithX:enemyX y:enemyY width:enemyWidth andHeight:enemyHeight]) {
+
+                // trafiony!
+                [bulletsToRemove addObject:bullet];
+                [enemiesToBeHit addObject:enemy];
+                nextIteration = YES;
+                break;
+            }         
         }
         if (nextIteration) 
             continue;
     }
     
+    // usuń pociski, które trafiły w cel
     for (CCSprite* bullet in bulletsToRemove) 
         [bullet removeFromParentAndCleanup:YES];
     [playerBullets removeObjectsInArray:bulletsToRemove];
+    
+    // usuń zabitych wrogów
+    for (Enemy* enemy in enemiesToBeHit) {
+        [enemy injureWithHp:BULLET_HIT_TAKES_HP];
+    }
 }
 
 - (void)spawnEnemyBulletFromPos:(CGPoint)point {

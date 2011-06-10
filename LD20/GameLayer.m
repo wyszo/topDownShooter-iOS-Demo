@@ -43,30 +43,24 @@ CGPoint lastTapLocation;
 	return scene;
 }
 
-- (void)addSampleLabelToLayer:(CCLayer*)layer {
-    // ask director the the window size
-    // CGSize size = [[CCDirector sharedDirector] winSize];
-    
-    // create and initialize a Label
-    //		CCLabelTTF *label = [CCLabelTTF labelWithString:@"Hello World" fontName:@"Marker Felt" fontSize:64];
-    
-    // position the label on the center of the screen
-    //		label.position =  ccp( size.width /2 , size.height/2 );
-    
-    // add the label as a child to this Layer
-    //		[self addChild: label];
+-(void)setupScoreLabel {
+    scoreLbl = [CCLabelTTF labelWithString:@"Score: 0" fontName:@"Marker Felt" fontSize:16];
+    scoreLbl.position = ccp(160,16);
+    [self addChild: scoreLbl z:GUI_LABELS_Z];
 }
-
 
 -(id) init
 {
 	if( (self=[super init])) {
         
-        // sample label
-        [self addSampleLabelToLayer:self];
-        
         // setup canvas
         [Consts getInstance].canvasLayer = self;
+        
+        // setup labels
+        [self setupScoreLabel];
+        
+        // register for notifications
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(scoreUpdated) name:@"scoreUpdated" object:nil];
         
         // init variables
         starLayer = [[StarLayer alloc] initOnLayer:self];    
@@ -90,6 +84,13 @@ CGPoint lastTapLocation;
 {
     [battlefield release];
 	[super dealloc];
+}
+
+#pragma mark - gui elements
+
+- (void)scoreUpdated {
+    NSString* str = [NSString stringWithFormat:@"Score: %d", SCORE];
+    [scoreLbl setString:str];    
 }
 
 #pragma mark - level lifecycle

@@ -12,6 +12,7 @@
 @interface GameLayer : CCLayer {
     StarLayer* starLayer;
     BattlefieldManager* battlefield;
+    CCLabelTTF* scoreLbl;
 }
 
 +(CCScene *) scene;
