@@ -11,11 +11,13 @@
 #import "Consts.h"
 #import "Util.h"
 #import "Enemy.h"
+#import "ResultsScene.h"
 
 @interface BattlefieldManager() 
 - (void)spawnEnemy;
 - (void)scheduleNextSpawnEnemyAction;
 - (CCSprite*)createBulletSpriteOnWithPos:(CGPoint)pos andZOrder:(int)zOrder;
+- (void)startGame;
 @end
 
 
@@ -25,9 +27,36 @@
 NSString* BULLET_SPRITE_FNAME = @"bulletSmall.png";
 
 
+- (void)resetObjectLists {
+    // reset - player bullets
+    for (CCSprite* bullet in playerBullets) {
+        [bullet removeFromParentAndCleanup:NO];
+    }
+    [playerBullets removeAllObjects];
+    
+    // reset - enemies
+    for (Enemy* enemy in enemies) {
+        [enemy.ufok1 removeFromParentAndCleanup:YES];
+    }
+    [enemies removeAllObjects];
+    
+    // reset - enemy bullets
+    for (CCSprite* enemyBullet in enemyBullets) {
+        ;
+    }
+    [enemyBullets removeAllObjects];
+    
+    [self startGame];
+}
+
 - (void)resetState {
     [player resetState];
-    gameInProgress = YES;
+    [self resetObjectLists];
+}
+
+- (void)startGame {
+    // generowanie nowych wrogów     
+    [self scheduleNextSpawnEnemyAction];
 }
 
 #pragma mark - class lifecycle
@@ -44,10 +73,7 @@ NSString* BULLET_SPRITE_FNAME = @"bulletSmall.png";
         playerBullets = [[NSMutableArray array] retain];
         enemyBullets = [[NSMutableArray array] retain];
         enemies = [[NSMutableArray array] retain];
-        
-        // napływanie nowych wrogów     
-        [self scheduleNextSpawnEnemyAction];
-    }
+    }   
     return self;
 }
 
@@ -108,7 +134,7 @@ NSString* BULLET_SPRITE_FNAME = @"bulletSmall.png";
             // collision check
             if ([Util pointWithX:bulletX y:bulletY colidedWithObjectWithX:enemyX y:enemyY width:enemyWidth andHeight:enemyHeight]) {
 
-                // trafiony!
+                // trafiony
                 [bulletsToRemove addObject:bullet];
                 [enemiesToBeHit addObject:enemy];
                 nextIteration = YES;
@@ -164,18 +190,14 @@ NSString* BULLET_SPRITE_FNAME = @"bulletSmall.png";
 
 - (void)checkPlayerEnemiesCollisions {
     for (Enemy* enemy in enemies) 
-        if ([Util sprite:enemy.ufok1 collidesWithSprite:player.sprite withTolerance:0.5]) {
+        if ([Util sprite:enemy.ufok1 collidesWithSprite:player.sprite withTolerance:0.35]) {
             
             NSLog(@"DEAD!!!");
-            gameInProgress = NO;
+            double score = SCORE;
             [CANVAS stopAllActions];
-            
-            {
-                NSString* str = @"Game Over";
-                CCLabelTTF* resultsLbl = [CCLabelTTF labelWithString:str fontName:@"Marker Felt" fontSize:56];
-                resultsLbl.position = ccp(100, 200);
-                [CANVAS addChild: resultsLbl z:55];  
-            }
+            [self resetState];
+            [ResultsScene setScore:score];
+            [ResultsScene pushResultsScreen];
         }
 }
 
@@ -183,10 +205,8 @@ NSString* BULLET_SPRITE_FNAME = @"bulletSmall.png";
 
 - (void)nextFrame:(ccTime)deltaTime {
     
-    if (gameInProgress) {
-        [self checkBulletsCollisions];
-        [self checkPlayerEnemiesCollisions];
-    }
+    [self checkBulletsCollisions];
+    [self checkPlayerEnemiesCollisions];
 }
 
 /**

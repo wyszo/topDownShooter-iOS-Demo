@@ -14,5 +14,7 @@
 }
 
 +(CCScene*) scene;
++(void) pushResultsScreen;
++(void) setScore:(double)aScore;
 
 @end

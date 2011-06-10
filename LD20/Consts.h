@@ -53,6 +53,10 @@ static const int PLAYER_START_POS_Y = 60;
 static const float BULLET_SPEED = 0.5f;
 static const int BULLET_HIT_TAKES_HP = 34;
 
+// results screen
+static const int GAME_OVER_LBL_SIZE = 36;
+static const int YOUR_SCORE_LBL_SIZE = 20;
+
 // other
 static const int SCORE_INCREMENT_VAL = 10;
 
