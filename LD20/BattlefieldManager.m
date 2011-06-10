@@ -27,6 +27,7 @@ NSString* BULLET_SPRITE_FNAME = @"bulletSmall.png";
 
 - (void)resetState {
     [player resetState];
+    gameInProgress = YES;
 }
 
 #pragma mark - class lifecycle
@@ -164,7 +165,17 @@ NSString* BULLET_SPRITE_FNAME = @"bulletSmall.png";
 - (void)checkPlayerEnemiesCollisions {
     for (Enemy* enemy in enemies) 
         if ([Util sprite:enemy.ufok1 collidesWithSprite:player.sprite withTolerance:0.5]) {
+            
             NSLog(@"DEAD!!!");
+            gameInProgress = NO;
+            [CANVAS stopAllActions];
+            
+            {
+                NSString* str = @"Game Over";
+                CCLabelTTF* resultsLbl = [CCLabelTTF labelWithString:str fontName:@"Marker Felt" fontSize:56];
+                resultsLbl.position = ccp(100, 200);
+                [CANVAS addChild: resultsLbl z:55];  
+            }
         }
 }
 
@@ -172,8 +183,10 @@ NSString* BULLET_SPRITE_FNAME = @"bulletSmall.png";
 
 - (void)nextFrame:(ccTime)deltaTime {
     
-    [self checkBulletsCollisions];
-    [self checkPlayerEnemiesCollisions];
+    if (gameInProgress) {
+        [self checkBulletsCollisions];
+        [self checkPlayerEnemiesCollisions];
+    }
 }
 
 /**

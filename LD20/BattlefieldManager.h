@@ -17,6 +17,8 @@
     NSMutableArray* playerBullets;
     NSMutableArray* enemyBullets;
     NSMutableArray* enemies;
+    
+    BOOL gameInProgress;
 }
 
 @property (nonatomic,retain) Player* player; 
