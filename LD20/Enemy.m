@@ -29,6 +29,8 @@ NSString* UFOK_SPRITE_FNAME = @"ufok1Small.png";
     float span = max - min;
     
     float timeInterval = min + (arc4random() % (int)(span*100)) * 0.01;
+    // NSLog(@"spawn enemies time interval: %f", timeInterval);
+    
     return timeInterval;
 }
 
@@ -47,7 +49,8 @@ NSString* UFOK_SPRITE_FNAME = @"ufok1Small.png";
         float minX = ufokTexWidth;
         int spawnSpaceWidth = [[Consts getInstance] windowSize].width - 2*ufokTexWidth;
         
-        CGPoint pos = CGPointMake(minX + arc4random() % spawnSpaceWidth, 250);
+        float posY = SCREEN_HEIGHT + ENEMY_SPAWN_POS_Y_OFFSET;
+        CGPoint pos = CGPointMake(minX + arc4random() % spawnSpaceWidth, posY);
         
         // dodanie ufoka 
         ufok1 = [self createUfokSpriteOnLayer:layer withPos:pos andZOrder:zOrder];
@@ -69,10 +72,10 @@ NSString* UFOK_SPRITE_FNAME = @"ufok1Small.png";
 
 - (void)setupStrightDownMovement {
     float movementLifetime = 1.0/ENEMY_SPEED; 
-    float deltaY = -[[Consts getInstance] windowSize].height;
+    float deltaY = [[Consts getInstance] windowSize].height + 2*ENEMY_SPAWN_POS_Y_OFFSET;
     
     // setup movement & bullet cleanup after move anim 
-    id moveAction = [CCMoveTo actionWithDuration:movementLifetime position:CGPointMake(ufok1.position.x, ufok1.position.y + deltaY)];
+    id moveAction = [CCMoveTo actionWithDuration:movementLifetime position:CGPointMake(ufok1.position.x, ufok1.position.y - deltaY)];
     
     id removeAction = [CCCallBlockN actionWithBlock:^(CCNode *node) {
         [parentCollection removeObject:self];

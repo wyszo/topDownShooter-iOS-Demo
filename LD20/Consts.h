@@ -10,6 +10,8 @@
 
 #define screenCenter_X [[Consts getInstance] screenCenter].x
 #define screenCenter_Y [[Consts getInstance] screenCenter].y
+#define SCREEN_WIDTH [[Consts getInstance] windowSize].width
+#define SCREEN_HEIGHT [[Consts getInstance] windowSize].height
 #define CANVAS [Consts getInstance].canvasLayer
 
 static const float BULLET_SPEED = 0.5f;
@@ -35,9 +37,10 @@ static const float CANNON_RELOAD_TIME = 0.4f;
 static const float TOUCH_EVENTS_REPEAT_INTERVAL = 0.2f;
 
 // spawn enemies
-static const float SPAWN_NEXT_ENEMY_MIN_TIME_INTERVAL = 1.5f;
-static const float SPAWN_NEXT_ENEMY_MAX_TIME_INTERVAL = 3.5f;
+static const float SPAWN_NEXT_ENEMY_MIN_TIME_INTERVAL = 0.1f;
+static const float SPAWN_NEXT_ENEMY_MAX_TIME_INTERVAL = 1.3f;
 static const float ENEMY_SPEED = 0.35f;
+static const float ENEMY_SPAWN_POS_Y_OFFSET = 50;
 
 // other
 static const int PLAYER_START_POS_X = 100;
