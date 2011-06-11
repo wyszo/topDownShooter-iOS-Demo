@@ -9,6 +9,7 @@
 #import "cocos2d.h"
 
 #define SCORE [Util getInstance].score
+#define PLAYER_NAME [Util getInstance].playerName
 
 
 @interface Util : NSObject {
@@ -16,6 +17,7 @@
 }
 
 @property (nonatomic) int score;
+@property (nonatomic, retain) NSString* playerName;
 
 - (CCSprite*)createRetainSpriteWithFName:(NSString*)fname onLayer:(CCLayer*)layer withPos:(CGPoint)pos andZOrder:(int)zOrder;
 + (CGRect)scaleRect:(CGRect)rect by:(double)coef;

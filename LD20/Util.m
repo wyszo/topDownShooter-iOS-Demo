@@ -11,6 +11,7 @@
 
 @implementation Util
 @synthesize score = _score;
+@synthesize playerName;
 
 static Util* instance;
 
@@ -18,9 +19,15 @@ static Util* instance;
     @synchronized(self) {
         if (instance == NULL) {
             instance = [[Util alloc] init];
+            PLAYER_NAME = @"anonymous pilot";
         }        
     }
     return instance; 
+}
+
+- (void)dealloc {
+    [playerName release];
+    [super dealloc];
 }
 
 - (CCSprite*)createRetainSpriteWithFName:(NSString*)fname onLayer:(CCLayer*)layer withPos:(CGPoint)pos andZOrder:(int)zOrder {

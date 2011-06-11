@@ -9,12 +9,13 @@
 #import "cocos2d.h"
 
 
-@class CCUIViewWrapper;
+@class CCUIViewWrapper, EnterNameUIViewController;
 @interface EnterNameScene : CCLayer {
     UIView* view;
+    EnterNameUIViewController* enterNameVC;
     CCUIViewWrapper* viewWrapper;
 }
 
-+(CCScene*) scene;
++(CCScene*)scene;
 
 @end

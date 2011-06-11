@@ -8,6 +8,7 @@
 
 #import "EnterNameScene.h"
 #import "CCUIViewWrapper.h"
+#import "EnterNameUIViewController.h"
 
 
 @implementation EnterNameScene
@@ -22,23 +23,17 @@
 }
 
 - (void)addUIView {
-    view = [[UIView alloc] init];
-        
-        UILabel* lbl = [[UILabel alloc] init];
-        lbl.text = @"bla";
-        lbl.frame = CGRectMake(0, 0, 200, 200);
-        [view addSubview:lbl];
     
+    enterNameVC = [[EnterNameUIViewController alloc] init];
+    view = enterNameVC.view;
     viewWrapper = [CCUIViewWrapper wrapperForUIView:view];
-    // viewWrapper.contentSzie = ;
-    // viewWrapper.position = ;
     [self addChild:viewWrapper];
 }
 
 - (id)init {
     if ((self = [super init])) {
         
-        self.isTouchEnabled = YES;
+        // self.isTouchEnabled = YES;
         
         [self addUIView];
     }
@@ -51,24 +46,6 @@
     
     [view release];
     [super dealloc];
-}
-
-#pragma mark - touch dispatch
-
-- (void)registerWithTouchDispatcher {
-    [[CCTouchDispatcher sharedDispatcher] addTargetedDelegate:self priority:0 swallowsTouches:YES];
-    
-    // TODO: ... 
-}
-
-- (BOOL)ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event {
-    return YES;
-}
-
-- (void)ccTouchEnded:(UITouch *)touch withEvent:(UIEvent *)event {
-    CGPoint location = [self convertTouchToNodeSpace:touch];
-    
-    // [sprite runAction:[CCMoveTo actionWithDuration:1 position:location]];
 }
 
 @end

@@ -13,6 +13,8 @@
 		404E1E4113A276A600FC0C22 /* HTTPConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 404E1E4013A276A600FC0C22 /* HTTPConnection.m */; };
 		404E1E4E13A3854B00FC0C22 /* CCUIViewWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 404E1E4D13A3854B00FC0C22 /* CCUIViewWrapper.m */; };
 		404E1E5113A3865600FC0C22 /* EnterNameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 404E1E5013A3865600FC0C22 /* EnterNameScene.m */; };
+		404E1E5613A38A1800FC0C22 /* EnterNameUIViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 404E1E5413A38A1800FC0C22 /* EnterNameUIViewController.m */; };
+		404E1E5713A38A1800FC0C22 /* EnterNameUIViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 404E1E5513A38A1800FC0C22 /* EnterNameUIViewController.xib */; };
 		40A8C34E13A0FF7A0009690E /* StarLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 40A8C34D13A0FF7A0009690E /* StarLayer.m */; };
 		40A8C35113A107A00009690E /* Consts.m in Sources */ = {isa = PBXBuildFile; fileRef = 40A8C35013A107A00009690E /* Consts.m */; };
 		40A8C35513A10F8C0009690E /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = 40A8C35413A10F8C0009690E /* Player.m */; };
@@ -155,6 +157,9 @@
 		404E1E4D13A3854B00FC0C22 /* CCUIViewWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCUIViewWrapper.m; sourceTree = "<group>"; };
 		404E1E4F13A3865600FC0C22 /* EnterNameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnterNameScene.h; sourceTree = "<group>"; };
 		404E1E5013A3865600FC0C22 /* EnterNameScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnterNameScene.m; sourceTree = "<group>"; };
+		404E1E5313A38A1800FC0C22 /* EnterNameUIViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnterNameUIViewController.h; sourceTree = "<group>"; };
+		404E1E5413A38A1800FC0C22 /* EnterNameUIViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnterNameUIViewController.m; sourceTree = "<group>"; };
+		404E1E5513A38A1800FC0C22 /* EnterNameUIViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EnterNameUIViewController.xib; sourceTree = "<group>"; };
 		40A8C34C13A0FF7A0009690E /* StarLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StarLayer.h; sourceTree = "<group>"; };
 		40A8C34D13A0FF7A0009690E /* StarLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StarLayer.m; sourceTree = "<group>"; };
 		40A8C34F13A107A00009690E /* Consts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Consts.h; sourceTree = "<group>"; };
@@ -461,6 +466,9 @@
 			children = (
 				404E1E4F13A3865600FC0C22 /* EnterNameScene.h */,
 				404E1E5013A3865600FC0C22 /* EnterNameScene.m */,
+				404E1E5313A38A1800FC0C22 /* EnterNameUIViewController.h */,
+				404E1E5413A38A1800FC0C22 /* EnterNameUIViewController.m */,
+				404E1E5513A38A1800FC0C22 /* EnterNameUIViewController.xib */,
 			);
 			name = EnterName;
 			sourceTree = "<group>";
@@ -978,6 +986,7 @@
 				40A8C35713A11D460009690E /* playerSmall.png in Resources */,
 				40A8C35D13A123D70009690E /* bulletSmall.png in Resources */,
 				40A8C35F13A124050009690E /* ufok1Small.png in Resources */,
+				404E1E5713A38A1800FC0C22 /* EnterNameUIViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1098,6 +1107,7 @@
 				404E1E4113A276A600FC0C22 /* HTTPConnection.m in Sources */,
 				404E1E4E13A3854B00FC0C22 /* CCUIViewWrapper.m in Sources */,
 				404E1E5113A3865600FC0C22 /* EnterNameScene.m in Sources */,
+				404E1E5613A38A1800FC0C22 /* EnterNameUIViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

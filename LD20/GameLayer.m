@@ -49,6 +49,12 @@ CGPoint lastTapLocation;
     [self addChild: scoreLbl z:GUI_LABELS_Z];
 }
 
+-(void)setupNameLabel {
+    CCLabelTTF* nameLbl = [CCLabelTTF labelWithString:PLAYER_NAME fontName:@"Marker Felt" fontSize:14];
+    nameLbl.position = ccp(260,16);
+    [self addChild: nameLbl z:GUI_LABELS_Z];
+}
+
 -(id) init
 {
 	if( (self=[super init])) {
@@ -58,6 +64,7 @@ CGPoint lastTapLocation;
         
         // setup labels
         [self setupScoreLabel];
+        [self setupNameLabel];
         
         // register for notifications
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(scoreUpdated) name:@"scoreUpdated" object:nil];
