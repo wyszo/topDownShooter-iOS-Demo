@@ -8,6 +8,7 @@
 
 #import "IntroScene.h"
 #import "GameLayer.h"
+#import "EnterNameScene.h"
 
 
 @implementation IntroScene
@@ -121,8 +122,10 @@ int animOffset = 20; // intro animation offsets
 
 - (void)jumpToNextView:(ccTime)dt {
     [self unschedule:@selector(jumpToNextView:)];    
-    CCScene* mainScene = [GameLayer scene];
-    [[CCDirector sharedDirector] replaceScene:mainScene];    
+    
+    CCScene* nextScene = [EnterNameScene scene];
+    // CCScene* nextScene = [GameLayer scene];      
+    [[CCDirector sharedDirector] replaceScene:nextScene];    
 }
 
 #pragma mark - touch dispatch
