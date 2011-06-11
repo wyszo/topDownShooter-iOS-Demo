@@ -10,6 +10,7 @@
 		40017D9D13A172490021B852 /* Enemy.m in Sources */ = {isa = PBXBuildFile; fileRef = 40017D9C13A172490021B852 /* Enemy.m */; };
 		40017DA113A172FF0021B852 /* Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 40017DA013A172FF0021B852 /* Util.m */; };
 		40017DA513A2512E0021B852 /* ResultsScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 40017DA413A2512E0021B852 /* ResultsScene.m */; };
+		404E1E4113A276A600FC0C22 /* HTTPConnectionDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 404E1E4013A276A600FC0C22 /* HTTPConnectionDelegate.m */; };
 		40A8C34E13A0FF7A0009690E /* StarLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 40A8C34D13A0FF7A0009690E /* StarLayer.m */; };
 		40A8C35113A107A00009690E /* Consts.m in Sources */ = {isa = PBXBuildFile; fileRef = 40A8C35013A107A00009690E /* Consts.m */; };
 		40A8C35513A10F8C0009690E /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = 40A8C35413A10F8C0009690E /* Player.m */; };
@@ -144,8 +145,10 @@
 		40017D9C13A172490021B852 /* Enemy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Enemy.m; sourceTree = "<group>"; };
 		40017D9F13A172FF0021B852 /* Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Util.h; sourceTree = "<group>"; };
 		40017DA013A172FF0021B852 /* Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Util.m; sourceTree = "<group>"; };
-		40017DA313A2512E0021B852 /* ResultsScene.h */ = {isa = PBXFileReference; fileEncoding = 4; path = ResultsScene.h; sourceTree = "<group>"; };
+		40017DA313A2512E0021B852 /* ResultsScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResultsScene.h; sourceTree = "<group>"; };
 		40017DA413A2512E0021B852 /* ResultsScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultsScene.m; sourceTree = "<group>"; };
+		404E1E3F13A276A600FC0C22 /* HTTPConnectionDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTPConnectionDelegate.h; sourceTree = "<group>"; };
+		404E1E4013A276A600FC0C22 /* HTTPConnectionDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTTPConnectionDelegate.m; sourceTree = "<group>"; };
 		40A8C34C13A0FF7A0009690E /* StarLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StarLayer.h; sourceTree = "<group>"; };
 		40A8C34D13A0FF7A0009690E /* StarLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StarLayer.m; sourceTree = "<group>"; };
 		40A8C34F13A107A00009690E /* Consts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Consts.h; sourceTree = "<group>"; };
@@ -427,6 +430,15 @@
 				40017DA413A2512E0021B852 /* ResultsScene.m */,
 			);
 			name = DeathScene;
+			sourceTree = "<group>";
+		};
+		404E1E3D13A2768900FC0C22 /* Communication */ = {
+			isa = PBXGroup;
+			children = (
+				404E1E3F13A276A600FC0C22 /* HTTPConnectionDelegate.h */,
+				404E1E4013A276A600FC0C22 /* HTTPConnectionDelegate.m */,
+			);
+			name = Communication;
 			sourceTree = "<group>";
 		};
 		40A8C34B13A0FF660009690E /* Objects */ = {
@@ -809,6 +821,7 @@
 		40FE3726136DFE910029BBB6 /* MyCode */ = {
 			isa = PBXGroup;
 			children = (
+				404E1E3D13A2768900FC0C22 /* Communication */,
 				40A8C35813A120300009690E /* Managers */,
 				40A8C35213A10F7E0009690E /* Actors */,
 				40A8C34B13A0FF660009690E /* Objects */,
@@ -1056,6 +1069,7 @@
 				40017D9D13A172490021B852 /* Enemy.m in Sources */,
 				40017DA113A172FF0021B852 /* Util.m in Sources */,
 				40017DA513A2512E0021B852 /* ResultsScene.m in Sources */,
+				404E1E4113A276A600FC0C22 /* HTTPConnectionDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

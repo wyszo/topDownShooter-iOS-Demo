@@ -8,6 +8,7 @@
 
 #import "ResultsScene.h"
 #import "Consts.h"
+#import "HTTPConnectionDelegate.h"
 
 
 @implementation ResultsScene
@@ -50,11 +51,31 @@ static int score;
     [self addLabelWithText:[NSString stringWithFormat:@"Your score: %d",score] size:YOUR_SCORE_LBL_SIZE onPosition:CGPointMake(SCREEN_WIDTH/2, y)];
 }
 
+- (void)sendDummyHttpFrame {
+    // fajnie by było, gdyby na tą dummy ramkę serwer zwracał aktualną listę highscoresów
+    
+    if (HTTP_CONNECTION_ENABLED) 
+    {
+        NSURL* url = [NSURL URLWithString:@"http://127.0.0.1:80"];
+        
+        NSTimeInterval timeout = 60.0;
+        NSMutableURLRequest* req = [NSMutableURLRequest requestWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:timeout];
+        [req setHTTPMethod:@"POST"]; // ? 
+        NSData* data = [NSData data];
+        [req setHTTPBody:data];
+        
+        HTTPConnectionDelegate* delegate = [[HTTPConnectionDelegate alloc] init]; // autorelease];
+        
+        NSURLConnection* connection = [NSURLConnection connectionWithRequest:req delegate:delegate];
+    }
+}
+
 - (id)init {
     if ((self = [super init])) {
         self.isTouchEnabled = YES;
      
         [self addScreenLabels];
+        [self sendDummyHttpFrame];
     }
     return self;
 }

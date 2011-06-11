@@ -59,6 +59,7 @@ static const int YOUR_SCORE_LBL_SIZE = 20;
 
 // other
 static const int SCORE_INCREMENT_VAL = 10;
+static const BOOL HTTP_CONNECTION_ENABLED = NO;
 
 
 @interface Consts : NSObject {
