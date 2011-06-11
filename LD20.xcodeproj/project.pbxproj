@@ -11,6 +11,7 @@
 		40017DA113A172FF0021B852 /* Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 40017DA013A172FF0021B852 /* Util.m */; };
 		40017DA513A2512E0021B852 /* ResultsScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 40017DA413A2512E0021B852 /* ResultsScene.m */; };
 		404E1E4113A276A600FC0C22 /* HTTPConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 404E1E4013A276A600FC0C22 /* HTTPConnection.m */; };
+		404E1E4E13A3854B00FC0C22 /* CCUIViewWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 404E1E4D13A3854B00FC0C22 /* CCUIViewWrapper.m */; };
 		40A8C34E13A0FF7A0009690E /* StarLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 40A8C34D13A0FF7A0009690E /* StarLayer.m */; };
 		40A8C35113A107A00009690E /* Consts.m in Sources */ = {isa = PBXBuildFile; fileRef = 40A8C35013A107A00009690E /* Consts.m */; };
 		40A8C35513A10F8C0009690E /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = 40A8C35413A10F8C0009690E /* Player.m */; };
@@ -147,8 +148,10 @@
 		40017DA013A172FF0021B852 /* Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Util.m; sourceTree = "<group>"; };
 		40017DA313A2512E0021B852 /* ResultsScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResultsScene.h; sourceTree = "<group>"; };
 		40017DA413A2512E0021B852 /* ResultsScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultsScene.m; sourceTree = "<group>"; };
-		404E1E3F13A276A600FC0C22 /* HTTPConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; path = HTTPConnection.h; sourceTree = "<group>"; };
+		404E1E3F13A276A600FC0C22 /* HTTPConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTPConnection.h; sourceTree = "<group>"; };
 		404E1E4013A276A600FC0C22 /* HTTPConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTTPConnection.m; sourceTree = "<group>"; };
+		404E1E4C13A3854B00FC0C22 /* CCUIViewWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCUIViewWrapper.h; sourceTree = "<group>"; };
+		404E1E4D13A3854B00FC0C22 /* CCUIViewWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCUIViewWrapper.m; sourceTree = "<group>"; };
 		40A8C34C13A0FF7A0009690E /* StarLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StarLayer.h; sourceTree = "<group>"; };
 		40A8C34D13A0FF7A0009690E /* StarLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StarLayer.m; sourceTree = "<group>"; };
 		40A8C34F13A107A00009690E /* Consts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Consts.h; sourceTree = "<group>"; };
@@ -441,6 +444,15 @@
 			name = Communication;
 			sourceTree = "<group>";
 		};
+		404E1E4B13A3852F00FC0C22 /* Wrappers */ = {
+			isa = PBXGroup;
+			children = (
+				404E1E4C13A3854B00FC0C22 /* CCUIViewWrapper.h */,
+				404E1E4D13A3854B00FC0C22 /* CCUIViewWrapper.m */,
+			);
+			name = Wrappers;
+			sourceTree = "<group>";
+		};
 		40A8C34B13A0FF660009690E /* Objects */ = {
 			isa = PBXGroup;
 			children = (
@@ -509,6 +521,7 @@
 		40FE3550136DD0560029BBB6 /* LD20 */ = {
 			isa = PBXGroup;
 			children = (
+				404E1E4B13A3852F00FC0C22 /* Wrappers */,
 				40FE3726136DFE910029BBB6 /* MyCode */,
 				40FE3729136DFEC00029BBB6 /* Licenses */,
 				40FE369B136DD0590029BBB6 /* AppDelegate.h */,
@@ -1070,6 +1083,7 @@
 				40017DA113A172FF0021B852 /* Util.m in Sources */,
 				40017DA513A2512E0021B852 /* ResultsScene.m in Sources */,
 				404E1E4113A276A600FC0C22 /* HTTPConnection.m in Sources */,
+				404E1E4E13A3854B00FC0C22 /* CCUIViewWrapper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
