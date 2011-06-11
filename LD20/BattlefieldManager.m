@@ -188,16 +188,19 @@ NSString* BULLET_SPRITE_FNAME = @"bulletSmall.png";
 
 #pragma mark - collisions
 
-- (void)checkPlayerEnemiesCollisions {
+- (void)checkPlayerEnemiesCollisions {    
     for (Enemy* enemy in enemies) 
         if ([Util sprite:enemy.ufok1 collidesWithSprite:player.sprite withTolerance:0.35]) {
             
             NSLog(@"DEAD!!!");
             double score = SCORE;
-            [CANVAS stopAllActions];
-            [self resetState];
-            [ResultsScene setScore:score];
-            [ResultsScene pushResultsScreen];
+            
+            if (!CHEAT_PLAYER_INVINCIBLE) {
+                [CANVAS stopAllActions];
+                [self resetState];
+                [ResultsScene setScore:score];
+                [ResultsScene pushResultsScreen];
+            }
         }
 }
 

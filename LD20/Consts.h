@@ -40,14 +40,23 @@ static const float CANNON_RELOAD_TIME = 0.28f;
 static const float TOUCH_EVENTS_REPEAT_INTERVAL = 0.2f;
 
 // spawn enemies
-static const float SPAWN_NEXT_ENEMY_MIN_TIME_INTERVAL = 0.1f;
-static const float SPAWN_NEXT_ENEMY_MAX_TIME_INTERVAL = 1.3f;
+static const float SPAWN_NEXT_ENEMY_MIN_TIME_INTERVAL = 0.4f;
+static const float SPAWN_NEXT_ENEMY_MAX_TIME_INTERVAL = 1.6f;
 static const float ENEMY_SPEED = 0.35f;
 static const float ENEMY_SPAWN_POS_Y_OFFSET = 50;
+
+// enemy movement
+static const float ENEMY_BEZIER_HORIZONTAL_SPAN = 200;
+static const float ENEMY_BEZIER_CONTROL_POINT_1_Y = 300;
+static const float ENEMY_BEZIER_CONTROL_POINT_2_Y = 100;
+static const float ENEMY_BEZIER_CONTROL_POINT_VERTICAL_SPAN = 50;
 
 // player
 static const int PLAYER_START_POS_X = 100;
 static const int PLAYER_START_POS_Y = 60;
+
+// cheats
+static const BOOL CHEAT_PLAYER_INVINCIBLE = NO;
 
 // bullets
 static const float BULLET_SPEED = 0.5f;
