@@ -8,7 +8,7 @@
 
 #import "ResultsScene.h"
 #import "Consts.h"
-#import "HTTPConnectionDelegate.h"
+#import "HTTPConnection.h"
 
 
 @implementation ResultsScene
@@ -55,19 +55,7 @@ static int score;
     // fajnie by było, gdyby na tą dummy ramkę serwer zwracał aktualną listę highscoresów
     
     if (HTTP_CONNECTION_ENABLED) 
-    {
-        NSURL* url = [NSURL URLWithString:@"http://127.0.0.1:80"];
-        
-        NSTimeInterval timeout = 60.0;
-        NSMutableURLRequest* req = [NSMutableURLRequest requestWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:timeout];
-        [req setHTTPMethod:@"POST"]; // ? 
-        NSData* data = [NSData data];
-        [req setHTTPBody:data];
-        
-        HTTPConnectionDelegate* delegate = [[HTTPConnectionDelegate alloc] init]; // autorelease];
-        
-        NSURLConnection* connection = [NSURLConnection connectionWithRequest:req delegate:delegate];
-    }
+        [HTTPConnection sendDummyHttpFrame];
 }
 
 - (id)init {
