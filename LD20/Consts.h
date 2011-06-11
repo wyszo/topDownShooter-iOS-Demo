@@ -64,7 +64,12 @@ static const int BULLET_HIT_TAKES_HP = 34;
 
 // results screen
 static const int GAME_OVER_LBL_SIZE = 36;
+static const int PLAYER_NAME_LBL_SIZE = 18;
 static const int YOUR_SCORE_LBL_SIZE = 20;
+
+static const int GAME_OVER_LBL_Y_OFFSET = 60;
+static const int PLAYER_NAME_LBL_Y_OFFSET = 105;
+static const int YOUR_SCORE_LBL_Y_OFFSET = 150;
 
 // other
 static const int SCORE_INCREMENT_VAL = 10;

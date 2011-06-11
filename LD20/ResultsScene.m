@@ -43,11 +43,15 @@ static int score;
 
 - (void)addScreenLabels {
     // Game Over
-    double y = SCREEN_HEIGHT - 60;
+    double y = SCREEN_HEIGHT - GAME_OVER_LBL_Y_OFFSET;
     [self addLabelWithText:@"GameOver" size:GAME_OVER_LBL_SIZE onPosition:CGPointMake(SCREEN_WIDTH/2, y)];
     
+    // Player Name
+    y = SCREEN_HEIGHT - PLAYER_NAME_LBL_Y_OFFSET;
+    [self addLabelWithText:PLAYER_NAME size:PLAYER_NAME_LBL_SIZE onPosition:CGPointMake(SCREEN_WIDTH/2, y)];
+    
     // Your score
-    y = SCREEN_HEIGHT - 120;
+    y = SCREEN_HEIGHT - YOUR_SCORE_LBL_Y_OFFSET;
     [self addLabelWithText:[NSString stringWithFormat:@"Your score: %d",score] size:YOUR_SCORE_LBL_SIZE onPosition:CGPointMake(SCREEN_WIDTH/2, y)];
 }
 
