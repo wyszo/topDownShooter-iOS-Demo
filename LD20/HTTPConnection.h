@@ -14,6 +14,6 @@
 }
 
 +(HTTPConnection*)getInstance;
-+(void)sendDummyHttpFrame;
++(void)sendSimplePostRequest;
 
 @end

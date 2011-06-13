@@ -14,6 +14,7 @@
 }
 
 @property (nonatomic, retain) IBOutlet UITextField* nameTF;
+@property (nonatomic, retain) IBOutlet UITextField* customServerTF;
 
 -(IBAction)loginAndDeploy;
 

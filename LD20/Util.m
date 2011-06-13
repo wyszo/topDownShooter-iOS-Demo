@@ -11,7 +11,7 @@
 
 @implementation Util
 @synthesize score = _score;
-@synthesize playerName;
+@synthesize playerName, customServerAddr;
 
 static Util* instance;
 
@@ -25,7 +25,15 @@ static Util* instance;
     return instance; 
 }
 
++ (NSString*)getServerAddress {
+    NSString* result = CUSTOM_SERVER_ADDR;
+    if ([result length] == 0)
+        result = [NSString stringWithString:(NSString*)DEFAULT_SERVER_ADDR];
+    return result;
+}
+
 - (void)dealloc {
+    [customServerAddr release];
     [playerName release];
     [super dealloc];
 }

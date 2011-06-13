@@ -15,6 +15,7 @@
 		404E1E5113A3865600FC0C22 /* EnterNameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 404E1E5013A3865600FC0C22 /* EnterNameScene.m */; };
 		404E1E5613A38A1800FC0C22 /* EnterNameUIViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 404E1E5413A38A1800FC0C22 /* EnterNameUIViewController.m */; };
 		404E1E5713A38A1800FC0C22 /* EnterNameUIViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 404E1E5513A38A1800FC0C22 /* EnterNameUIViewController.xib */; };
+		4088F64513A6AD8A003CFF90 /* Crypto.m in Sources */ = {isa = PBXBuildFile; fileRef = 4088F64413A6AD8A003CFF90 /* Crypto.m */; };
 		40A8C34E13A0FF7A0009690E /* StarLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 40A8C34D13A0FF7A0009690E /* StarLayer.m */; };
 		40A8C35113A107A00009690E /* Consts.m in Sources */ = {isa = PBXBuildFile; fileRef = 40A8C35013A107A00009690E /* Consts.m */; };
 		40A8C35513A10F8C0009690E /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = 40A8C35413A10F8C0009690E /* Player.m */; };
@@ -160,6 +161,8 @@
 		404E1E5313A38A1800FC0C22 /* EnterNameUIViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnterNameUIViewController.h; sourceTree = "<group>"; };
 		404E1E5413A38A1800FC0C22 /* EnterNameUIViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnterNameUIViewController.m; sourceTree = "<group>"; };
 		404E1E5513A38A1800FC0C22 /* EnterNameUIViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EnterNameUIViewController.xib; sourceTree = "<group>"; };
+		4088F64313A6AD8A003CFF90 /* Crypto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Crypto.h; sourceTree = "<group>"; };
+		4088F64413A6AD8A003CFF90 /* Crypto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Crypto.m; sourceTree = "<group>"; };
 		40A8C34C13A0FF7A0009690E /* StarLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StarLayer.h; sourceTree = "<group>"; };
 		40A8C34D13A0FF7A0009690E /* StarLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StarLayer.m; sourceTree = "<group>"; };
 		40A8C34F13A107A00009690E /* Consts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Consts.h; sourceTree = "<group>"; };
@@ -448,6 +451,8 @@
 			children = (
 				404E1E3F13A276A600FC0C22 /* HTTPConnection.h */,
 				404E1E4013A276A600FC0C22 /* HTTPConnection.m */,
+				4088F64313A6AD8A003CFF90 /* Crypto.h */,
+				4088F64413A6AD8A003CFF90 /* Crypto.m */,
 			);
 			name = Communication;
 			sourceTree = "<group>";
@@ -1108,6 +1113,7 @@
 				404E1E4E13A3854B00FC0C22 /* CCUIViewWrapper.m in Sources */,
 				404E1E5113A3865600FC0C22 /* EnterNameScene.m in Sources */,
 				404E1E5613A38A1800FC0C22 /* EnterNameUIViewController.m in Sources */,
+				4088F64513A6AD8A003CFF90 /* Crypto.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

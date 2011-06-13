@@ -71,9 +71,14 @@ static const int GAME_OVER_LBL_Y_OFFSET = 60;
 static const int PLAYER_NAME_LBL_Y_OFFSET = 105;
 static const int YOUR_SCORE_LBL_Y_OFFSET = 150;
 
+// connection params
+static const BOOL HTTP_CONNECTION_ENABLED = YES;
+static const NSTimeInterval HTTP_CONNECTION_TIMEOUT = 60.0;
+extern const NSString* DEFAULT_SERVER_ADDR;
+
+
 // other
 static const int SCORE_INCREMENT_VAL = 10;
-static const BOOL HTTP_CONNECTION_ENABLED = NO;
 
 
 @interface Consts : NSObject {

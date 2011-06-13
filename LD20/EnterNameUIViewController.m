@@ -13,19 +13,20 @@
 
 
 @implementation EnterNameUIViewController
-@synthesize nameTF;
+@synthesize nameTF, customServerTF;
 
-- (id)initW
+- (id)init
 {
     self = [super initWithNibName:@"EnterNameUIViewController" bundle:nil];
     if (self) {
-
+        // [customServerTF setPlaceholder:(NSString*)DEFAULT_SERVER_ADDR];
     }
     return self;
 }
 
 - (void)dealloc
 {
+    [customServerTF release];
     [nameTF release];
     [super dealloc];
 }

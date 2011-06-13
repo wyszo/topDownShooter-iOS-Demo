@@ -58,8 +58,9 @@ static int score;
 - (void)sendDummyHttpFrame {
     // fajnie by było, gdyby na tą dummy ramkę serwer zwracał aktualną listę highscoresów
     
-    if (HTTP_CONNECTION_ENABLED) 
-        [HTTPConnection sendDummyHttpFrame];
+    if (HTTP_CONNECTION_ENABLED) {
+        [HTTPConnection sendSimplePostRequest];        
+    }
 }
 
 - (id)init {

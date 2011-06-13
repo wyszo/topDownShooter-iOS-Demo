@@ -7,6 +7,9 @@
 //
 
 #import "HTTPConnection.h"
+#import "Util.h"
+#import "Crypto.h"
+
 
 @implementation HTTPConnection 
 static HTTPConnection* instance;
@@ -21,23 +24,36 @@ static HTTPConnection* instance;
 
 #pragma mark - send frame
 
-static NSString* SERVER_ADDRESS = @"http://127.0.0.1:8080";
-static const NSTimeInterval HTTP_CONNECTION_TIMEOUT = 60.0;
++(NSString*)removeSpacesFromString:(NSString*)str {
+    NSMutableString* result = [[NSMutableString alloc] initWithString:str];
+    [result replaceOccurrencesOfString:@" " withString:@"%20" options:NSLiteralSearch range:NSMakeRange(0, [str length])];
+    return result;
+}
 
++(NSString*)generateURL {
+    NSString* salt = @"a dzwony bily wciaz...";
+    NSString* md = [[NSString alloc] initWithFormat:@"%@%@%@", PLAYER_NAME, SCORE, salt];
+    md = [Crypto calculateMD5:md];
+    NSString* result = [NSString stringWithFormat:@"%@/~tomek/?name=%@&score=%d&h=%@", [Util getServerAddress], [HTTPConnection removeSpacesFromString:PLAYER_NAME], SCORE, md];
+    
+    NSLog(@"generated url: %@", result);    
+    return result;
+}
 
-+(void)sendDummyHttpFrame {
++(void)sendSimplePostRequest {
     HTTPConnection* conn = [HTTPConnection getInstance];
     
-    NSURL* url = [NSURL URLWithString:SERVER_ADDRESS];
+    NSURL* url = [NSURL URLWithString:[HTTPConnection generateURL]];
     
     NSMutableURLRequest* req = [NSMutableURLRequest requestWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:HTTP_CONNECTION_TIMEOUT];
     [req setHTTPMethod:@"POST"]; 
     
-    NSData* data = [NSData data];
-    [req setHTTPBody:data];
+    //NSData* data = [NSData data];
+    //[req setHTTPBody:data];
     
     NSURLConnection* connection = [NSURLConnection connectionWithRequest:req delegate:conn];
     [connection start];
+
 }
 
 #pragma mark - manager lifecycle
@@ -78,11 +94,6 @@ static const NSTimeInterval HTTP_CONNECTION_TIMEOUT = 60.0;
 - (void)connection:(NSURLConnection *)connection
   didFailWithError:(NSError *)error
 {
-    // release the connection, and the data object
-    [connection release];
-    // receivedData is declared as a method instance elsewhere
-    [receivedData release];
-    
     // inform the user
     NSLog(@"Connection failed! Error - %@ %@",
           [error localizedDescription],
@@ -95,9 +106,12 @@ static const NSTimeInterval HTTP_CONNECTION_TIMEOUT = 60.0;
     // receivedData is declared as a method instance elsewhere
     NSLog(@"Succeeded! Received %d bytes of data",[receivedData length]);
     
-    // release the connection, and the data object
-    [connection release];
-    [receivedData release];
+    NSString* strResponse = [[NSString alloc] initWithData:receivedData encoding:NSUTF8StringEncoding];
+    
+    NSLog(@"%@", strResponse);
+    
+    [strResponse release];
+    
 }
 
 @end
