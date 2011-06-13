@@ -55,7 +55,7 @@ static int score;
     [self addLabelWithText:[NSString stringWithFormat:@"Your score: %d",score] size:YOUR_SCORE_LBL_SIZE onPosition:CGPointMake(SCREEN_WIDTH/2, y)];
 }
 
-- (void)sendDummyHttpFrame {
+- (void)sendHttpFrame {
     // fajnie by było, gdyby na tą dummy ramkę serwer zwracał aktualną listę highscoresów
     
     if (HTTP_CONNECTION_ENABLED) {
@@ -68,7 +68,8 @@ static int score;
         self.isTouchEnabled = YES;
      
         [self addScreenLabels];
-        [self sendDummyHttpFrame];
+        [self sendHttpFrame];
+        SCORE = 0;
     }
     return self;
 }

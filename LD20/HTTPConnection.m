@@ -32,9 +32,12 @@ static HTTPConnection* instance;
 
 +(NSString*)generateURL {
     NSString* salt = @"a dzwony bily wciaz...";
-    NSString* md = [[NSString alloc] initWithFormat:@"%@%@%@", PLAYER_NAME, SCORE, salt];
+    NSString* md = [[NSString alloc] initWithFormat:@"%@%d%@", PLAYER_NAME, SCORE, salt];
+    
+    NSLog(@"str to md: %@", md);
+    
     md = [Crypto calculateMD5:md];
-    NSString* result = [NSString stringWithFormat:@"%@/~tomek/?name=%@&score=%d&h=%@", [Util getServerAddress], [HTTPConnection removeSpacesFromString:PLAYER_NAME], SCORE, md];
+    NSString* result = [NSString stringWithFormat:@"%@/~tomek/?name=%@&score=%d&h=%@&n=%d", [Util getServerAddress], [HTTPConnection removeSpacesFromString:PLAYER_NAME], SCORE, md, HIGHSCORE_LIST_LENGTH];
     
     NSLog(@"generated url: %@", result);    
     return result;
@@ -106,12 +109,19 @@ static HTTPConnection* instance;
     // receivedData is declared as a method instance elsewhere
     NSLog(@"Succeeded! Received %d bytes of data",[receivedData length]);
     
-    NSString* strResponse = [[NSString alloc] initWithData:receivedData encoding:NSUTF8StringEncoding];
+    NSString* strResponse = [[NSString alloc] initWithData:receivedData encoding:NSUTF8StringEncoding];    
+    NSLog(@"Received msg: %@", strResponse);
     
-    NSLog(@"%@", strResponse);
-    
+    // parse string
+    NSArray* rows = [strResponse componentsSeparatedByString:@";;||;;"];
+    for (NSString* row in rows) {
+        NSArray* elements = [row componentsSeparatedByString:@";;;"];
+        if ([elements count] == 2) {
+            NSLog(@"[%@, %@], ", [elements objectAtIndex:0], [elements objectAtIndex:1]);
+            
+        }
+    }    
     [strResponse release];
-    
 }
 
 @end
