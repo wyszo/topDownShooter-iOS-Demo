@@ -59,7 +59,31 @@ static int score;
     // fajnie by było, gdyby na tą dummy ramkę serwer zwracał aktualną listę highscoresów
     
     if (HTTP_CONNECTION_ENABLED) {
+        [HTTPConnection getInstance].delegate = self;
         [HTTPConnection sendSimplePostRequest];        
+    }
+}
+
+- (void)updateWithHighscores:(NSArray*)highscores {
+    NSLog(@"highscores: %@", highscores);
+
+    // Highscores
+    double y = SCREEN_HEIGHT - HIGHSCORES_TITLE_LBL_Y_OFFSET;
+    [self addLabelWithText:@"Highscores" size:HIGHSCORES_TITLE_LBL_SIZE onPosition:CGPointMake(SCREEN_WIDTH/2, y)];
+    
+    
+    y = SCREEN_HEIGHT - HIGHSCORES_TITLE_LBL_Y_OFFSET - HIGHSCORES_TITLE_LIST_LBL_Y_OFFSET;
+    
+    for (int i=0; i<[highscores count]; i+=2) {
+        // single item
+        NSString* name = [highscores objectAtIndex:i];
+        NSString* score = [highscores objectAtIndex:i+1];
+     
+        [self addLabelWithText:name size:HIGHSCORES_LBL_SIZE onPosition:CGPointMake(100, y)];
+
+        [self addLabelWithText:score size:HIGHSCORES_LBL_SIZE onPosition:CGPointMake(SCREEN_WIDTH - 50, y)];    
+        
+        y -= HIGHSCORES_LBL_VERTICAL_OFFSET;
     }
 }
 

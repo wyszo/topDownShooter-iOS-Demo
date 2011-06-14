@@ -163,6 +163,7 @@
 		404E1E5513A38A1800FC0C22 /* EnterNameUIViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EnterNameUIViewController.xib; sourceTree = "<group>"; };
 		4088F64313A6AD8A003CFF90 /* Crypto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Crypto.h; sourceTree = "<group>"; };
 		4088F64413A6AD8A003CFF90 /* Crypto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Crypto.m; sourceTree = "<group>"; };
+		4088F64713A6D7D6003CFF90 /* HTTPConnectionDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTPConnectionDelegate.h; sourceTree = "<group>"; };
 		40A8C34C13A0FF7A0009690E /* StarLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StarLayer.h; sourceTree = "<group>"; };
 		40A8C34D13A0FF7A0009690E /* StarLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StarLayer.m; sourceTree = "<group>"; };
 		40A8C34F13A107A00009690E /* Consts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Consts.h; sourceTree = "<group>"; };
@@ -453,6 +454,7 @@
 				404E1E4013A276A600FC0C22 /* HTTPConnection.m */,
 				4088F64313A6AD8A003CFF90 /* Crypto.h */,
 				4088F64413A6AD8A003CFF90 /* Crypto.m */,
+				4088F64713A6D7D6003CFF90 /* HTTPConnectionDelegate.h */,
 			);
 			name = Communication;
 			sourceTree = "<group>";

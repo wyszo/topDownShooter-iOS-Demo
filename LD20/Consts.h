@@ -71,6 +71,12 @@ static const int GAME_OVER_LBL_Y_OFFSET = 60;
 static const int PLAYER_NAME_LBL_Y_OFFSET = 105;
 static const int YOUR_SCORE_LBL_Y_OFFSET = 150;
 
+static const int HIGHSCORES_TITLE_LBL_Y_OFFSET = 200;
+static const int HIGHSCORES_TITLE_LBL_SIZE = 18;
+static const int HIGHSCORES_TITLE_LIST_LBL_Y_OFFSET = 45;
+static const int HIGHSCORES_LBL_VERTICAL_OFFSET = 30;
+static const int HIGHSCORES_LBL_SIZE = 16;
+
 static const int HIGHSCORE_LIST_LENGTH = 5;
 
 // connection params

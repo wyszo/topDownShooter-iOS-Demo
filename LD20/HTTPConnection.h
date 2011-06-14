@@ -6,12 +6,15 @@
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import "cocos2d.h"
+#import "HTTPConnectionDelegate.h"
 
 
 @interface HTTPConnection : NSObject {
     NSMutableData* receivedData;
 }
+
+@property (nonatomic, retain) NSObject<HTTPConnectionDelegate>* delegate;
 
 +(HTTPConnection*)getInstance;
 +(void)sendSimplePostRequest;

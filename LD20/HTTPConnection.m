@@ -12,6 +12,8 @@
 
 
 @implementation HTTPConnection 
+@synthesize delegate;
+
 static HTTPConnection* instance;
 
 +(HTTPConnection*)getInstance {
@@ -69,6 +71,7 @@ static HTTPConnection* instance;
 }
 
 - (void)dealloc {
+    [delegate release];
     [receivedData release];
     [super dealloc];
 }
@@ -113,15 +116,21 @@ static HTTPConnection* instance;
     NSLog(@"Received msg: %@", strResponse);
     
     // parse string
+    NSMutableArray* result = [NSMutableArray array];;
+    
     NSArray* rows = [strResponse componentsSeparatedByString:@";;||;;"];
     for (NSString* row in rows) {
         NSArray* elements = [row componentsSeparatedByString:@";;;"];
         if ([elements count] == 2) {
             NSLog(@"[%@, %@], ", [elements objectAtIndex:0], [elements objectAtIndex:1]);
             
+            [result addObject:[elements objectAtIndex:0]];
+            [result addObject:[elements objectAtIndex:1]];            
         }
     }    
     [strResponse release];
+    
+    [self.delegate updateWithHighscores:result];
 }
 
 @end

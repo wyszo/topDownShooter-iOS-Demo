@@ -7,14 +7,16 @@
 //
 
 #import "cocos2d.h"
+#import "HTTPConnectionDelegate.h"
 
 
-@interface ResultsScene : CCLayer {
+@interface ResultsScene : CCLayer <HTTPConnectionDelegate> {
     
 }
 
 +(CCScene*) scene;
 +(void) pushResultsScreen;
 +(void) setScore:(double)aScore;
+-(void) updateWithHighscores:(NSArray*)highscores;
 
 @end
