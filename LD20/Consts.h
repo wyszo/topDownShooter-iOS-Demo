@@ -84,7 +84,6 @@ static const BOOL HTTP_CONNECTION_ENABLED = YES;
 static const NSTimeInterval HTTP_CONNECTION_TIMEOUT = 60.0;
 extern const NSString* DEFAULT_SERVER_ADDR;
 
-
 // other
 static const int SCORE_INCREMENT_VAL = 10;
 

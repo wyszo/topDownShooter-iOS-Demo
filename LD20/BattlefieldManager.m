@@ -12,6 +12,8 @@
 #import "Util.h"
 #import "Enemy.h"
 #import "ResultsScene.h"
+#import "SimpleAudioEngine.h"
+
 
 @interface BattlefieldManager() 
 - (void)spawnEnemy;
@@ -184,6 +186,9 @@ NSString* BULLET_SPRITE_FNAME = @"bulletSmall.png";
     // add to canvas & bullets list
     [canvasLayer addChild:newBullet z:PLAYER_BULLET_Z];    
     [playerBullets addObject:newBullet];
+    
+    // play sound 
+    [[SimpleAudioEngine sharedEngine] playEffect:@"gunshot.wav"];
 }
 
 #pragma mark - collisions
@@ -200,6 +205,8 @@ NSString* BULLET_SPRITE_FNAME = @"bulletSmall.png";
                 [self resetState];
                 [ResultsScene setScore:score];
                 [ResultsScene pushResultsScreen];
+                
+                [[SimpleAudioEngine sharedEngine] playEffect:@"explosion.wav"];
             }
         }
 }

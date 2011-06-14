@@ -8,6 +8,7 @@
 
 #import "Player.h"
 #import "Consts.h"
+#import "SimpleAudioEngine.h"
 
 
 @implementation Player
@@ -27,6 +28,8 @@
         [layer addChild:sprite z:PLAYER_SHIP_Z];
         
         [self resetState];
+        
+        [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"music.mp3" loop:YES];
     }
     return self;
 }

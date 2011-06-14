@@ -9,6 +9,8 @@
 #import "Enemy.h"
 #import "Util.h"
 #import "Consts.h"
+#import "SimpleAudioEngine.h"
+
 
 @interface Enemy() 
 - (CCSprite*)createUfokSpriteOnLayer:(CCLayer*)layer withPos:(CGPoint)pos andZOrder:(int)zOrder;
@@ -72,6 +74,8 @@ NSString* UFOK_SPRITE_FNAME = @"ufok1Small.png";
         // usuń wierzchołek, usuń z listy wrogów
         [self destroySelf];
         SCORE += SCORE_INCREMENT_VAL;
+        
+        [[SimpleAudioEngine sharedEngine] playEffect:@"plop.wav"];
     }
 } 
 
