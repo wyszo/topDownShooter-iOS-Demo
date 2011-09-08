@@ -34,6 +34,11 @@ static const int ENEMY_BULLET_Z = 2;
 static const int ENEMY_SHIP_Z = 3;
 static const int PLAYER_SHIP_Z = 4;
 static const int GUI_LABELS_Z = 10;
+static const int LIVE_INDICATOR_ZORDER = 11;
+
+// lives indicator
+static const int LIVE_INDICATOR_POS_X = 24;
+static const int LIVE_INDICATOR_POS_Y = 19;
 
 // time constraints
 static const float CANNON_RELOAD_TIME = 0.28f;

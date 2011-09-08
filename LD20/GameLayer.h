@@ -13,6 +13,7 @@
     StarLayer* starLayer;
     BattlefieldManager* battlefield;
     CCLabelTTF* scoreLbl;
+    CCSprite* liveIndicator;
 }
 
 +(CCScene *) scene;

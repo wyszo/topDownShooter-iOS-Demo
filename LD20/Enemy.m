@@ -10,6 +10,7 @@
 #import "Util.h"
 #import "Consts.h"
 #import "SimpleAudioEngine.h"
+#import "Explosion.h"
 
 
 @interface Enemy() 
@@ -23,6 +24,9 @@
 @synthesize ufok1;
 
 NSString* UFOK_SPRITE_FNAME = @"ufok1Small.png";
+
+static CCLayer* lastSpriteLayer;
+static int lastZOrder;
 
 /**
  * Losuje czas, po jakim powinien spawnować się kolejny przeciwnik
@@ -41,6 +45,9 @@ NSString* UFOK_SPRITE_FNAME = @"ufok1Small.png";
 - (id)initOnLayer:(CCLayer*)layer withZOrder:(int)zOrder andParentCollection:(NSMutableArray*)collection
 {
 	if((self=[super init])) {
+        
+        lastZOrder = zOrder;
+        lastSpriteLayer = layer;
         
         // init vars
         hp = 100;
@@ -88,6 +95,10 @@ NSString* UFOK_SPRITE_FNAME = @"ufok1Small.png";
 - (void)destroySelf {
     [parentCollection removeObject:self];
     [ufok1 removeFromParentAndCleanup:YES]; 
+    
+    // create explosion
+    CGPoint pos = ufok1.position;
+    Explosion* expl = [[Explosion alloc] initOnLayer:lastSpriteLayer withZOrder:lastZOrder andPos:pos];
 }
 
 - (void)setupStrightDownMovement {

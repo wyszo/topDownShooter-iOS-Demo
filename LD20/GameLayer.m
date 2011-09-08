@@ -15,6 +15,9 @@
 #import "BattlefieldManager.h"
 
 
+NSString* LIVE_INDICATOR_SPRITE_FNAME = @"live.png";
+
+
 @interface GameLayer() 
 - (void)loadLevel;
 @end
@@ -55,6 +58,15 @@ CGPoint lastTapLocation;
     [self addChild: nameLbl z:GUI_LABELS_Z];
 }
 
+- (CCSprite*)createLiveIndicatorSpriteOnLayer:(CCLayer*)layer withPos:(CGPoint)pos andZOrder:(int)zOrder {
+    return [[Util getInstance] createRetainSpriteWithFName:LIVE_INDICATOR_SPRITE_FNAME onLayer:layer withPos:pos andZOrder:zOrder];
+}
+
+- (void)setupLiveIndicators {
+    CGPoint liveIndicatorPos = CGPointMake(LIVE_INDICATOR_POS_X, LIVE_INDICATOR_POS_Y);
+    liveIndicator = [self createLiveIndicatorSpriteOnLayer:self withPos:liveIndicatorPos andZOrder:LIVE_INDICATOR_ZORDER];
+}
+
 -(id) init
 {
 	if( (self=[super init])) {
@@ -65,6 +77,7 @@ CGPoint lastTapLocation;
         // setup labels
         [self setupScoreLabel];
         [self setupNameLabel];
+        [self setupLiveIndicators];
         
         // register for notifications
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(scoreUpdated) name:@"scoreUpdated" object:nil];
@@ -89,6 +102,7 @@ CGPoint lastTapLocation;
 
 - (void) dealloc
 {
+    [liveIndicator release];
     [battlefield release];
 	[super dealloc];
 }

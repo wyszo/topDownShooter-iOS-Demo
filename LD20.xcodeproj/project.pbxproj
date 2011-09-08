@@ -25,8 +25,11 @@
 		40A8C35513A10F8C0009690E /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = 40A8C35413A10F8C0009690E /* Player.m */; };
 		40A8C35713A11D460009690E /* playerSmall.png in Resources */ = {isa = PBXBuildFile; fileRef = 40A8C35613A11D460009690E /* playerSmall.png */; };
 		40A8C35B13A120400009690E /* BattlefieldManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 40A8C35A13A120400009690E /* BattlefieldManager.m */; };
-		40A8C35D13A123D70009690E /* bulletSmall.png in Resources */ = {isa = PBXBuildFile; fileRef = 40A8C35C13A123D70009690E /* bulletSmall.png */; };
 		40A8C35F13A124050009690E /* ufok1Small.png in Resources */ = {isa = PBXBuildFile; fileRef = 40A8C35E13A124050009690E /* ufok1Small.png */; };
+		40CD627B14185A0100D8F26F /* bulletSmall.png in Resources */ = {isa = PBXBuildFile; fileRef = 40CD627A14185A0100D8F26F /* bulletSmall.png */; };
+		40CD627D1418612F00D8F26F /* live.png in Resources */ = {isa = PBXBuildFile; fileRef = 40CD627C1418612F00D8F26F /* live.png */; };
+		40CD627F141865EA00D8F26F /* explosion1.png in Resources */ = {isa = PBXBuildFile; fileRef = 40CD627E141865E900D8F26F /* explosion1.png */; };
+		40CD6282141866D800D8F26F /* Explosion.m in Sources */ = {isa = PBXBuildFile; fileRef = 40CD6281141866D800D8F26F /* Explosion.m */; };
 		40FE3541136DD0560029BBB6 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40FE3540136DD0560029BBB6 /* QuartzCore.framework */; };
 		40FE3543136DD0560029BBB6 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40FE3542136DD0560029BBB6 /* OpenGLES.framework */; };
 		40FE3545136DD0560029BBB6 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40FE3544136DD0560029BBB6 /* OpenAL.framework */; };
@@ -181,8 +184,12 @@
 		40A8C35613A11D460009690E /* playerSmall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = playerSmall.png; path = Resources/playerSmall.png; sourceTree = "<group>"; };
 		40A8C35913A120400009690E /* BattlefieldManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BattlefieldManager.h; sourceTree = "<group>"; };
 		40A8C35A13A120400009690E /* BattlefieldManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BattlefieldManager.m; sourceTree = "<group>"; };
-		40A8C35C13A123D70009690E /* bulletSmall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bulletSmall.png; path = Resources/bulletSmall.png; sourceTree = "<group>"; };
 		40A8C35E13A124050009690E /* ufok1Small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ufok1Small.png; path = Resources/ufok1Small.png; sourceTree = "<group>"; };
+		40CD627A14185A0100D8F26F /* bulletSmall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bulletSmall.png; path = Resources/bulletSmall.png; sourceTree = "<group>"; };
+		40CD627C1418612F00D8F26F /* live.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = live.png; path = Resources/live.png; sourceTree = "<group>"; };
+		40CD627E141865E900D8F26F /* explosion1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = explosion1.png; path = Resources/explosion1.png; sourceTree = "<group>"; };
+		40CD6280141866D800D8F26F /* Explosion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Explosion.h; sourceTree = "<group>"; };
+		40CD6281141866D800D8F26F /* Explosion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Explosion.m; sourceTree = "<group>"; };
 		40FE353C136DD0560029BBB6 /* LD20.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LD20.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		40FE3540136DD0560029BBB6 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		40FE3542136DD0560029BBB6 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -519,6 +526,8 @@
 				40A8C35413A10F8C0009690E /* Player.m */,
 				40017D9B13A172490021B852 /* Enemy.h */,
 				40017D9C13A172490021B852 /* Enemy.m */,
+				40CD6280141866D800D8F26F /* Explosion.h */,
+				40CD6281141866D800D8F26F /* Explosion.m */,
 			);
 			name = Actors;
 			sourceTree = "<group>";
@@ -594,6 +603,7 @@
 				40FE36AC136DD9B70029BBB6 /* Sprites */,
 				40FE3554136DD0560029BBB6 /* fps_images.png */,
 				40FE355A136DD0560029BBB6 /* Icon-Small.png */,
+				40CD627C1418612F00D8F26F /* live.png */,
 				40FE355E136DD0560029BBB6 /* Icon.png */,
 				40FE3562136DD0560029BBB6 /* Info.plist */,
 				40FE3563136DD0560029BBB6 /* iTunesArtwork */,
@@ -851,8 +861,9 @@
 		40FE36AC136DD9B70029BBB6 /* Sprites */ = {
 			isa = PBXGroup;
 			children = (
+				40CD627E141865E900D8F26F /* explosion1.png */,
 				40A8C35613A11D460009690E /* playerSmall.png */,
-				40A8C35C13A123D70009690E /* bulletSmall.png */,
+				40CD627A14185A0100D8F26F /* bulletSmall.png */,
 				40A8C35E13A124050009690E /* ufok1Small.png */,
 			);
 			name = Sprites;
@@ -1011,13 +1022,15 @@
 				40FE373E136E2ABD0029BBB6 /* starBgr-1.png in Resources */,
 				40FE3740136E2CB90029BBB6 /* starBgr-2.png in Resources */,
 				40A8C35713A11D460009690E /* playerSmall.png in Resources */,
-				40A8C35D13A123D70009690E /* bulletSmall.png in Resources */,
 				40A8C35F13A124050009690E /* ufok1Small.png in Resources */,
 				404E1E5713A38A1800FC0C22 /* EnterNameUIViewController.xib in Resources */,
 				4088F64E13A6E7C9003CFF90 /* gunshot.wav in Resources */,
 				4088F65013A6E88D003CFF90 /* music.mp3 in Resources */,
 				4088F65213A6E8E3003CFF90 /* plop.wav in Resources */,
 				4088F65413A6E940003CFF90 /* explosion.wav in Resources */,
+				40CD627B14185A0100D8F26F /* bulletSmall.png in Resources */,
+				40CD627D1418612F00D8F26F /* live.png in Resources */,
+				40CD627F141865EA00D8F26F /* explosion1.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1140,6 +1153,7 @@
 				404E1E5113A3865600FC0C22 /* EnterNameScene.m in Sources */,
 				404E1E5613A38A1800FC0C22 /* EnterNameUIViewController.m in Sources */,
 				4088F64513A6AD8A003CFF90 /* Crypto.m in Sources */,
+				40CD6282141866D800D8F26F /* Explosion.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
