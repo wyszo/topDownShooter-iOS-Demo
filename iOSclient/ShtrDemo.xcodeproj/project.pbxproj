@@ -36,6 +36,7 @@
 		40052EE9160FBE0B0046F71C /* plop.wav in Resources */ = {isa = PBXBuildFile; fileRef = 40052ED0160FBE0B0046F71C /* plop.wav */; };
 		40052EEB160FC4040046F71C /* ShtrDemo_LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = 40052EEA160FC4040046F71C /* ShtrDemo_LICENSE.txt */; };
 		40052EED160FC6A10046F71C /* Readme.md in Resources */ = {isa = PBXBuildFile; fileRef = 40052EEC160FC6A10046F71C /* Readme.md */; };
+		4019FC6C167FD3E7008C2896 /* Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = 4019FC6B167FD3E7008C2896 /* Settings.m */; };
 		404E1E4113A276A600FC0C22 /* HTTPConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 404E1E4013A276A600FC0C22 /* HTTPConnection.m */; };
 		404E1E4E13A3854B00FC0C22 /* CCUIViewWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 404E1E4D13A3854B00FC0C22 /* CCUIViewWrapper.m */; };
 		404E1E5113A3865600FC0C22 /* EnterNameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 404E1E5013A3865600FC0C22 /* EnterNameScene.m */; };
@@ -191,6 +192,8 @@
 		40052ED0160FBE0B0046F71C /* plop.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = plop.wav; sourceTree = "<group>"; };
 		40052EEA160FC4040046F71C /* ShtrDemo_LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = ShtrDemo_LICENSE.txt; path = ../../ShtrDemo_LICENSE.txt; sourceTree = "<group>"; };
 		40052EEC160FC6A10046F71C /* Readme.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Readme.md; path = ../../Readme.md; sourceTree = "<group>"; };
+		4019FC69167FD3D8008C2896 /* Settings.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Settings.h; sourceTree = "<group>"; };
+		4019FC6B167FD3E7008C2896 /* Settings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Settings.m; sourceTree = "<group>"; };
 		404E1E3F13A276A600FC0C22 /* HTTPConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTPConnection.h; sourceTree = "<group>"; };
 		404E1E4013A276A600FC0C22 /* HTTPConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTTPConnection.m; sourceTree = "<group>"; };
 		404E1E4C13A3854B00FC0C22 /* CCUIViewWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCUIViewWrapper.h; sourceTree = "<group>"; };
@@ -549,6 +552,8 @@
 			children = (
 				40A8C34F13A107A00009690E /* Consts.h */,
 				40A8C35013A107A00009690E /* Consts.m */,
+				4019FC69167FD3D8008C2896 /* Settings.h */,
+				4019FC6B167FD3E7008C2896 /* Settings.m */,
 			);
 			name = Settings;
 			sourceTree = "<group>";
@@ -1217,6 +1222,7 @@
 				404E1E5613A38A1800FC0C22 /* EnterNameUIViewController.m in Sources */,
 				4088F64513A6AD8A003CFF90 /* HashFunctions.m in Sources */,
 				40CD6282141866D800D8F26F /* Explosion.m in Sources */,
+				4019FC6C167FD3E7008C2896 /* Settings.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,6 +7,7 @@
 
 #import "Player.h"
 #import "Consts.h"
+#import "Settings.h"
 #import "SimpleAudioEngine.h"
 
 
@@ -27,7 +28,9 @@
         
         [self resetState];
         
-        [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"music.mp3" loop:YES];
+        if (kSetting_MusicEnabled) {
+            [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"music.mp3" loop:YES];
+        }
     }
     return self;
 }

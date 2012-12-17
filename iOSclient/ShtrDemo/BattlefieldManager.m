@@ -12,6 +12,7 @@
 #import "Enemy.h"
 #import "ResultsScene.h"
 #import "SimpleAudioEngine.h"
+#import "Settings.h"
 
 static NSString* BULLET_SPRITE_FNAME = @"bulletSmall.png";
 
@@ -181,8 +182,9 @@ static NSString* BULLET_SPRITE_FNAME = @"bulletSmall.png";
     [canvasLayer addChild:newBullet z:PLAYER_BULLET_Z];    
     [playerBullets addObject:newBullet];
     
-    // play sound 
-    [[SimpleAudioEngine sharedEngine] playEffect:@"gunshot.wav"];
+    if (kSetting_SoundEnabled) {
+        [[SimpleAudioEngine sharedEngine] playEffect:@"gunshot.wav"];
+    }
 }
 
 #pragma mark - collisions
@@ -194,13 +196,15 @@ static NSString* BULLET_SPRITE_FNAME = @"bulletSmall.png";
             NSLog(@"DEAD!!!");
             double score = SCORE;
             
-            if (!CHEAT_PLAYER_INVINCIBLE) {
+            if (!kCheat_PlayerInvincible) {
                 [CANVAS stopAllActions];
                 [self resetState];
                 [ResultsScene setScore:score];
                 [ResultsScene pushResultsScreen];
                 
-                [[SimpleAudioEngine sharedEngine] playEffect:@"explosion.wav"];
+                if (kSetting_SoundEnabled) {
+                    [[SimpleAudioEngine sharedEngine] playEffect:@"explosion.wav"];
+                }
             }
         }
 }

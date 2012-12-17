@@ -59,9 +59,6 @@ static const float ENEMY_BEZIER_CONTROL_POINT_VERTICAL_SPAN = 50;
 static const int PLAYER_START_POS_X = 100;
 static const int PLAYER_START_POS_Y = 60;
 
-// cheats
-static const BOOL CHEAT_PLAYER_INVINCIBLE = NO;
-
 // bullets
 static const float BULLET_SPEED = 0.5f;
 static const int BULLET_HIT_TAKES_HP = 34;

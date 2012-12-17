@@ -8,6 +8,7 @@
 #import "Enemy.h"
 #import "Util.h"
 #import "Consts.h"
+#import "Settings.h"
 #import "SimpleAudioEngine.h"
 #import "Explosion.h"
 
@@ -79,7 +80,9 @@ static int lastZOrder;
         [self destroySelf];
         SCORE += SCORE_INCREMENT_VAL;
         
-        [[SimpleAudioEngine sharedEngine] playEffect:@"plop.wav"];
+        if (kSetting_SoundEnabled) {
+            [[SimpleAudioEngine sharedEngine] playEffect:@"plop.wav"];
+        }
     }
 } 
 
