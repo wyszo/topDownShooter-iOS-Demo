@@ -3,12 +3,11 @@
 //  LD20
 //
 //  Created by tomek on 6/10/11.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
 #import "HTTPConnection.h"
 #import "Util.h"
-#import "Crypto.h"
+#import "HashFunctions.h"
 
 
 @implementation HTTPConnection 
@@ -16,7 +15,7 @@
 
 static HTTPConnection* instance;
 
-+(HTTPConnection*)getInstance {
++ (HTTPConnection *)getInstance {
     @synchronized(self) {
         if (instance == NULL)
             instance = [[HTTPConnection alloc] init];
@@ -26,26 +25,26 @@ static HTTPConnection* instance;
 
 #pragma mark - send frame
 
-+(NSString*)removeSpacesFromString:(NSString*)str {
++ (NSString *)removeSpacesFromString:(NSString*)str {
     NSMutableString* result = [[NSMutableString alloc] initWithString:str];
     [result replaceOccurrencesOfString:@" " withString:@"%20" options:NSLiteralSearch range:NSMakeRange(0, [str length])];
     return result;
 }
 
-+(NSString*)generateURL {
++ (NSString *)generateURL {
     NSString* salt = @"a dzwony bily wciaz...";
     NSString* md = [[NSString alloc] initWithFormat:@"%@%d%@", PLAYER_NAME, SCORE, salt];
     
     NSLog(@"str to md: %@", md);
     
-    md = [Crypto calculateMD5:md];
+    md = [HashFunctions calculateMD5:md];
     NSString* result = [NSString stringWithFormat:@"%@/~tomek/?name=%@&score=%d&h=%@&n=%d", [Util getServerAddress], [HTTPConnection removeSpacesFromString:PLAYER_NAME], SCORE, md, HIGHSCORE_LIST_LENGTH];
     
     NSLog(@"generated url: %@", result);    
     return result;
 }
 
-+(void)sendSimplePostRequest {
++ (void)sendSimplePostRequest {
     HTTPConnection* conn = [HTTPConnection getInstance];
     
     NSURL* url = [NSURL URLWithString:[HTTPConnection generateURL]];

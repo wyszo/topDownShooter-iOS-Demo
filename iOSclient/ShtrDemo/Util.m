@@ -3,7 +3,6 @@
 //  LD20
 //
 //  Created by tomek on 6/9/11.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
 #import "Util.h"
@@ -15,7 +14,7 @@
 
 static Util* instance;
 
-+ (Util*)getInstance {
++ (Util *)getInstance {
     @synchronized(self) {
         if (instance == NULL) {
             instance = [[Util alloc] init];
@@ -56,15 +55,18 @@ static Util* instance;
 + (BOOL)pointWithX:(double)x y:(double)y colidedWithObjectWithX:(double)objX y:(double)objY width:(double)objWidth andHeight:(double)objHeight {
     BOOL result = NO;
     
-    // sprawdzenie  wysokości
-    if (y > objY && y < objY + objHeight) 
-        // sprawdzenie szerokości                
+    // check height
+    if (y > objY && y < objY + objHeight)
+        // check width
         if (x > objX && x < objX + objWidth) 
             result = YES;
     return result;
 }
 
-// 0 <= coef <= 1
+/**
+ * @param coef
+ *      0 <= coef <= 1
+ */
 + (CGRect)scaleRect:(CGRect)rect by:(double)coef {
     CGRect result = rect;
     
@@ -77,10 +79,10 @@ static Util* instance;
 }
 
 /**
- * tolerancja - oznacza przeskalowanie sprite'ów przed sprawdzeniem kolizji o zadany współczynnik
+ * @param tolerance 
+ *      Scale coefficient for sprite scalling before checking collision
  */
 + (BOOL)sprite:(CCSprite*)spr1 collidesWithSprite:(CCSprite*)spr2 withTolerance:(float)tolerance {
-    // set rects
     CGRect rect1 = spr1.textureRect; 
     rect1.origin = spr1.position;
     

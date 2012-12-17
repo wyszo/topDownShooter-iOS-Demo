@@ -3,7 +3,6 @@
 //  LD20
 //
 //  Created by tomek on 5/1/11.
-//  Copyright __MyCompanyName__ 2011. All rights reserved.
 //
 
 #import "cocos2d.h"
@@ -15,22 +14,18 @@
 #import "RootViewController.h"
 
 @implementation AppDelegate
-
 @synthesize window;
 
-- (void) removeStartupFlicker {
+- (void)removeStartupFlicker {
 }
 
-- (void) applicationDidFinishLaunching:(UIApplication*)application
-{
-	// Init the window
+- (void)applicationDidFinishLaunching:(UIApplication*)application {
 	window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 	
 	// Try to use CADisplayLink director
 	// if it fails (SDK < 3.1) use the default director
 	if( ! [CCDirector setDirectorType:kCCDirectorTypeDisplayLink] )
 		[CCDirector setDirectorType:kCCDirectorTypeDefault];
-	
 	
 	CCDirector *director = [CCDirector sharedDirector];
 	
@@ -109,11 +104,8 @@
 	CCDirector *director = [CCDirector sharedDirector];
 	
 	[[director openGLView] removeFromSuperview];
-	
 	[viewController release];
-	
 	[window release];
-	
 	[director end];	
 }
 

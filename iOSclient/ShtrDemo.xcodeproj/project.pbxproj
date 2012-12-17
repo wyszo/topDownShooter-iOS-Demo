@@ -41,7 +41,7 @@
 		404E1E5113A3865600FC0C22 /* EnterNameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 404E1E5013A3865600FC0C22 /* EnterNameScene.m */; };
 		404E1E5613A38A1800FC0C22 /* EnterNameUIViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 404E1E5413A38A1800FC0C22 /* EnterNameUIViewController.m */; };
 		404E1E5713A38A1800FC0C22 /* EnterNameUIViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 404E1E5513A38A1800FC0C22 /* EnterNameUIViewController.xib */; };
-		4088F64513A6AD8A003CFF90 /* Crypto.m in Sources */ = {isa = PBXBuildFile; fileRef = 4088F64413A6AD8A003CFF90 /* Crypto.m */; };
+		4088F64513A6AD8A003CFF90 /* HashFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 4088F64413A6AD8A003CFF90 /* HashFunctions.m */; };
 		40A8C34E13A0FF7A0009690E /* StarLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 40A8C34D13A0FF7A0009690E /* StarLayer.m */; };
 		40A8C35113A107A00009690E /* Consts.m in Sources */ = {isa = PBXBuildFile; fileRef = 40A8C35013A107A00009690E /* Consts.m */; };
 		40A8C35513A10F8C0009690E /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = 40A8C35413A10F8C0009690E /* Player.m */; };
@@ -200,8 +200,8 @@
 		404E1E5313A38A1800FC0C22 /* EnterNameUIViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnterNameUIViewController.h; sourceTree = "<group>"; };
 		404E1E5413A38A1800FC0C22 /* EnterNameUIViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnterNameUIViewController.m; sourceTree = "<group>"; };
 		404E1E5513A38A1800FC0C22 /* EnterNameUIViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EnterNameUIViewController.xib; sourceTree = "<group>"; };
-		4088F64313A6AD8A003CFF90 /* Crypto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Crypto.h; sourceTree = "<group>"; };
-		4088F64413A6AD8A003CFF90 /* Crypto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Crypto.m; sourceTree = "<group>"; };
+		4088F64313A6AD8A003CFF90 /* HashFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HashFunctions.h; sourceTree = "<group>"; };
+		4088F64413A6AD8A003CFF90 /* HashFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HashFunctions.m; sourceTree = "<group>"; };
 		4088F64713A6D7D6003CFF90 /* HTTPConnectionDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTPConnectionDelegate.h; sourceTree = "<group>"; };
 		40A8C34C13A0FF7A0009690E /* StarLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StarLayer.h; sourceTree = "<group>"; };
 		40A8C34D13A0FF7A0009690E /* StarLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StarLayer.m; sourceTree = "<group>"; };
@@ -544,16 +544,65 @@
 			path = Sfx;
 			sourceTree = "<group>";
 		};
-		404E1E3D13A2768900FC0C22 /* Communication */ = {
+		4019FC58167FBF1F008C2896 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				40A8C34F13A107A00009690E /* Consts.h */,
+				40A8C35013A107A00009690E /* Consts.m */,
+			);
+			name = Settings;
+			sourceTree = "<group>";
+		};
+		4019FC59167FBF3E008C2896 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				40017DA013A172FF0021B852 /* Util.m */,
+				40017D9F13A172FF0021B852 /* Util.h */,
+				4088F64313A6AD8A003CFF90 /* HashFunctions.h */,
+				4088F64413A6AD8A003CFF90 /* HashFunctions.m */,
+			);
+			name = Utils;
+			sourceTree = "<group>";
+		};
+		4019FC5A167FC503008C2896 /* App Delegate */ = {
+			isa = PBXGroup;
+			children = (
+				40FE369B136DD0590029BBB6 /* AppDelegate.h */,
+				40FE369C136DD0590029BBB6 /* AppDelegate.m */,
+			);
+			name = "App Delegate";
+			sourceTree = "<group>";
+		};
+		4019FC5B167FC516008C2896 /* Root VC */ = {
+			isa = PBXGroup;
+			children = (
+				40FE369E136DD0590029BBB6 /* RootViewController.h */,
+				40FE369F136DD0590029BBB6 /* RootViewController.m */,
+			);
+			name = "Root VC";
+			sourceTree = "<group>";
+		};
+		4019FC5C167FC833008C2896 /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				40FE3729136DFEC00029BBB6 /* Licenses */,
+				40FE3565136DD0560029BBB6 /* cocos2d */,
+				40FE3657136DD0580029BBB6 /* CocosDenshion */,
+				40FE3666136DD0580029BBB6 /* cocoslive */,
+				40FE3671136DD0580029BBB6 /* TouchJSON */,
+				40FE3685136DD0590029BBB6 /* FontLabel */,
+			);
+			name = Libraries;
+			sourceTree = "<group>";
+		};
+		404E1E3D13A2768900FC0C22 /* Network */ = {
 			isa = PBXGroup;
 			children = (
 				404E1E3F13A276A600FC0C22 /* HTTPConnection.h */,
 				404E1E4013A276A600FC0C22 /* HTTPConnection.m */,
-				4088F64313A6AD8A003CFF90 /* Crypto.h */,
-				4088F64413A6AD8A003CFF90 /* Crypto.m */,
 				4088F64713A6D7D6003CFF90 /* HTTPConnectionDelegate.h */,
 			);
-			name = Communication;
+			name = Network;
 			sourceTree = "<group>";
 		};
 		404E1E4B13A3852F00FC0C22 /* Wrappers */ = {
@@ -577,17 +626,13 @@
 			name = EnterName;
 			sourceTree = "<group>";
 		};
-		40A8C34B13A0FF660009690E /* Objects */ = {
+		40A8C34B13A0FF660009690E /* Animated Backgrounds */ = {
 			isa = PBXGroup;
 			children = (
 				40A8C34C13A0FF7A0009690E /* StarLayer.h */,
 				40A8C34D13A0FF7A0009690E /* StarLayer.m */,
-				40A8C34F13A107A00009690E /* Consts.h */,
-				40A8C35013A107A00009690E /* Consts.m */,
-				40017D9F13A172FF0021B852 /* Util.h */,
-				40017DA013A172FF0021B852 /* Util.m */,
 			);
-			name = Objects;
+			name = "Animated Backgrounds";
 			sourceTree = "<group>";
 		};
 		40A8C35213A10F7E0009690E /* Actors */ = {
@@ -648,19 +693,10 @@
 			isa = PBXGroup;
 			children = (
 				404E1E4B13A3852F00FC0C22 /* Wrappers */,
-				40FE3726136DFE910029BBB6 /* MyCode */,
-				40FE3729136DFEC00029BBB6 /* Licenses */,
-				40FE369B136DD0590029BBB6 /* AppDelegate.h */,
-				40FE369C136DD0590029BBB6 /* AppDelegate.m */,
-				40FE369E136DD0590029BBB6 /* RootViewController.h */,
-				40FE369F136DD0590029BBB6 /* RootViewController.m */,
+				40FE3726136DFE910029BBB6 /* Classes */,
 				40FE36A4136DD0590029BBB6 /* GameConfig.h */,
 				40052EB2160FBE0B0046F71C /* Resources */,
-				40FE3565136DD0560029BBB6 /* cocos2d */,
-				40FE3657136DD0580029BBB6 /* CocosDenshion */,
-				40FE3666136DD0580029BBB6 /* cocoslive */,
-				40FE3671136DD0580029BBB6 /* TouchJSON */,
-				40FE3685136DD0590029BBB6 /* FontLabel */,
+				4019FC5C167FC833008C2896 /* Libraries */,
 				40FE3697136DD0590029BBB6 /* Supporting Files */,
 			);
 			path = ShtrDemo;
@@ -935,16 +971,20 @@
 			name = Intro;
 			sourceTree = "<group>";
 		};
-		40FE3726136DFE910029BBB6 /* MyCode */ = {
+		40FE3726136DFE910029BBB6 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				404E1E3D13A2768900FC0C22 /* Communication */,
+				4019FC58167FBF1F008C2896 /* Settings */,
+				4019FC59167FBF3E008C2896 /* Utils */,
+				404E1E3D13A2768900FC0C22 /* Network */,
 				40A8C35813A120300009690E /* Managers */,
 				40A8C35213A10F7E0009690E /* Actors */,
-				40A8C34B13A0FF660009690E /* Objects */,
+				40A8C34B13A0FF660009690E /* Animated Backgrounds */,
 				40FE3721136DFE4A0029BBB6 /* Scenes */,
+				4019FC5A167FC503008C2896 /* App Delegate */,
+				4019FC5B167FC516008C2896 /* Root VC */,
 			);
-			name = MyCode;
+			name = Classes;
 			sourceTree = "<group>";
 		};
 		40FE3728136DFEAB0029BBB6 /* GameLayer */ = {
@@ -1002,6 +1042,9 @@
 /* Begin PBXProject section */
 		40FE3533136DD0560029BBB6 /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0450;
+			};
 			buildConfigurationList = 40FE3536136DD0560029BBB6 /* Build configuration list for PBXProject "ShtrDemo" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
@@ -1172,7 +1215,7 @@
 				404E1E4E13A3854B00FC0C22 /* CCUIViewWrapper.m in Sources */,
 				404E1E5113A3865600FC0C22 /* EnterNameScene.m in Sources */,
 				404E1E5613A38A1800FC0C22 /* EnterNameUIViewController.m in Sources */,
-				4088F64513A6AD8A003CFF90 /* Crypto.m in Sources */,
+				4088F64513A6AD8A003CFF90 /* HashFunctions.m in Sources */,
 				40CD6282141866D800D8F26F /* Explosion.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1225,7 +1268,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = ShtrDemo/Prefix.pch;
 				"GCC_THUMB_SUPPORT[arch=armv6]" = "";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "$(SRCROOT)/ShtrDemo/Resources/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				OTHER_LDFLAGS = "-lz";
 				PRODUCT_NAME = ShtrDemo;
 				WRAPPER_EXTENSION = app;
@@ -1240,7 +1285,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = ShtrDemo/Prefix.pch;
 				"GCC_THUMB_SUPPORT[arch=armv6]" = "";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "$(SRCROOT)/ShtrDemo/Resources/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				OTHER_LDFLAGS = "-lz";
 				PRODUCT_NAME = ShtrDemo;
 				VALIDATE_PRODUCT = YES;

@@ -3,19 +3,17 @@
 //  LD20
 //
 //  Created by tomek on 6/10/11.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
 #import "ResultsScene.h"
 #import "Consts.h"
 #import "HTTPConnection.h"
 
+static int score;
 
 @implementation ResultsScene
 
-static int score;
-
-+(CCScene*) scene {
++ (CCScene *)scene {
     CCScene* scene = [CCScene node];
     
     ResultsScene* layer = [ResultsScene node];
@@ -24,11 +22,11 @@ static int score;
     return scene;
 }
 
-+(void) setScore:(double)aScore {
++ (void)setScore:(double)aScore {
     score = aScore;
 }
 
-+(void)pushResultsScreen {
++ (void)pushResultsScreen {
     CCScene* resultsScene = [ResultsScene scene];
     [[CCDirector sharedDirector] pushScene:resultsScene];  
 }
@@ -56,7 +54,7 @@ static int score;
 }
 
 - (void)sendHttpFrame {
-    // fajnie by było, gdyby na tą dummy ramkę serwer zwracał aktualną listę highscoresów
+    // it'd be cool if server responded actual highscore list as a response for this dummy frame
     
     if (HTTP_CONNECTION_ENABLED) {
         [HTTPConnection getInstance].delegate = self;

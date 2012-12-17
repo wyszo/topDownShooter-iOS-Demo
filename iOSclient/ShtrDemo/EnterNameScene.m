@@ -13,7 +13,7 @@
 
 @implementation EnterNameScene
 
-+(CCScene*) scene {
++ (CCScene *) scene {
     CCScene* scene = [CCScene node];
     
     EnterNameScene* layer = [EnterNameScene node];
@@ -23,7 +23,6 @@
 }
 
 - (void)addUIView {
-    
     enterNameVC = [[EnterNameUIViewController alloc] init];
     view = enterNameVC.view;
     viewWrapper = [CCUIViewWrapper wrapperForUIView:view];
@@ -34,7 +33,6 @@
     if ((self = [super init])) {
         
         // self.isTouchEnabled = YES;
-        
         [self addUIView];
     }
     return self;

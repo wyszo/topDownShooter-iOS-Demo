@@ -3,7 +3,6 @@
 //  LD20
 //
 //  Created by tomek on 6/9/11.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
 #import "Consts.h"
@@ -19,7 +18,7 @@ const NSString* DEFAULT_SERVER_ADDR = @"http://wyszo.dyndns.org";
 
 static Consts* instance;
 
-+ (Consts*)getInstance {
++ (Consts *)getInstance {
     @synchronized(self) {
         if (instance == NULL)
             instance = [[Consts alloc] init];

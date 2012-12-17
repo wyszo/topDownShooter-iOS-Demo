@@ -3,7 +3,6 @@
 //  LD20
 //
 //  Created by tomek on 5/1/11.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
 #import "SceneSnippet.h"
@@ -11,7 +10,7 @@
 
 @implementation SceneSnippet
 
-+(CCScene*) scene {
++ (CCScene *) scene {
     CCScene* scene = [CCScene node];
     
     SceneSnippet* layer = [SceneSnippet node];

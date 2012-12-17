@@ -3,7 +3,6 @@
 //  LD20
 //
 //  Created by tomek on 6/9/11.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
 #import "BattlefieldManager.h"
@@ -13,6 +12,8 @@
 #import "Enemy.h"
 #import "ResultsScene.h"
 #import "SimpleAudioEngine.h"
+
+static NSString* BULLET_SPRITE_FNAME = @"bulletSmall.png";
 
 
 @interface BattlefieldManager() 
@@ -26,23 +27,20 @@
 @implementation BattlefieldManager
 @synthesize player;
 
-NSString* BULLET_SPRITE_FNAME = @"bulletSmall.png";
-
-
 - (void)resetObjectLists {
-    // reset - player bullets
+    // reset player bullets
     for (CCSprite* bullet in playerBullets) {
         [bullet removeFromParentAndCleanup:NO];
     }
     [playerBullets removeAllObjects];
     
-    // reset - enemies
+    // reset enemies
     for (Enemy* enemy in enemies) {
-        [enemy.ufok1 removeFromParentAndCleanup:YES];
+        [enemy.sprite removeFromParentAndCleanup:YES];
     }
     [enemies removeAllObjects];
     
-    // reset - enemy bullets
+    // reset enemy bullets
     for (CCSprite* enemyBullet in enemyBullets) {
         ;
     }
@@ -57,16 +55,13 @@ NSString* BULLET_SPRITE_FNAME = @"bulletSmall.png";
 }
 
 - (void)startGame {
-    // generowanie nowych wrogów     
     [self scheduleNextSpawnEnemyAction];
 }
 
 #pragma mark - class lifecycle
 
-- (id)initOnLayer:(CCLayer*)layer
-{
-	if((self=[super init])) {
-        // init vars
+- (id)initOnLayer:(CCLayer*)layer {
+	if (self = [super init]) {
         canvasLayer = layer;
         player = [[Player alloc] initOnLayer:layer];
         [self resetState];
@@ -106,7 +101,7 @@ NSString* BULLET_SPRITE_FNAME = @"bulletSmall.png";
 #pragma mark - bullets management
 
 - (void)checkBulletsCollisions {
-    // sprawdź każdy z każdym 
+    // check each one with each other
     int bulletX, bulletY, bulletWidth, bulletHeight;
     int bulletCenterX, bulletCenterY;
     int enemyX, enemyY, enemyWidth, enemyHeight;
@@ -128,15 +123,15 @@ NSString* BULLET_SPRITE_FNAME = @"bulletSmall.png";
             bulletCenterY = bulletY + bulletHeight/2;            
             
             // enemy info 
-            enemyWidth = enemy.ufok1.textureRect.size.width;
-            enemyHeight = enemy.ufok1.textureRect.size.height;
-            enemyX = enemy.ufok1.position.x - enemyWidth/2;
-            enemyY = enemy.ufok1.position.y;
+            enemyWidth = enemy.sprite.textureRect.size.width;
+            enemyHeight = enemy.sprite.textureRect.size.height;
+            enemyX = enemy.sprite.position.x - enemyWidth/2;
+            enemyY = enemy.sprite.position.y;
             
             // collision check
             if ([Util pointWithX:bulletX y:bulletY colidedWithObjectWithX:enemyX y:enemyY width:enemyWidth andHeight:enemyHeight]) {
 
-                // trafiony
+                // hit
                 [bulletsToRemove addObject:bullet];
                 [enemiesToBeHit addObject:enemy];
                 nextIteration = YES;
@@ -147,20 +142,19 @@ NSString* BULLET_SPRITE_FNAME = @"bulletSmall.png";
             continue;
     }
     
-    // usuń pociski, które trafiły w cel
+    // remove bullets which hit the target
     for (CCSprite* bullet in bulletsToRemove) 
         [bullet removeFromParentAndCleanup:YES];
     [playerBullets removeObjectsInArray:bulletsToRemove];
     
-    // usuń zabitych wrogów
+    // remove killed enemies
     for (Enemy* enemy in enemiesToBeHit) {
         [enemy injureWithHp:BULLET_HIT_TAKES_HP];
     }
 }
 
 - (void)spawnEnemyBulletFromPos:(CGPoint)point {
-    // jeśli już to to powinno być w klasie Enemy
-    
+    // this should be Enemy class method!
 }
 
 - (void)spawnPlayerBullet {
@@ -195,7 +189,7 @@ NSString* BULLET_SPRITE_FNAME = @"bulletSmall.png";
 
 - (void)checkPlayerEnemiesCollisions {    
     for (Enemy* enemy in enemies) 
-        if ([Util sprite:enemy.ufok1 collidesWithSprite:player.sprite withTolerance:0.35]) {
+        if ([Util sprite:enemy.sprite collidesWithSprite:player.sprite withTolerance:0.35]) {
             
             NSLog(@"DEAD!!!");
             double score = SCORE;
@@ -220,7 +214,7 @@ NSString* BULLET_SPRITE_FNAME = @"bulletSmall.png";
 }
 
 /**
- * Procedura obsługi tapnięć 
+ * Tap callback
  */ 
 - (void)userTappedAtPoint:(CGPoint)point {
     

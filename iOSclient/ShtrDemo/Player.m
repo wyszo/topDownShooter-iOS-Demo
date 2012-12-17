@@ -3,7 +3,6 @@
 //  LD20
 //
 //  Created by tomek on 6/9/11.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
 #import "Player.h"
@@ -19,11 +18,10 @@
     sprite.position = CGPointMake(PLAYER_START_POS_X, PLAYER_START_POS_Y);
 }
 
-- (id)initOnLayer:(CCLayer*)layer
-{
+- (id)initOnLayer:(CCLayer*)layer {
 	if((self=[super init])) {
         
-        // add player main sprite 
+        // add main player sprite 
         sprite = [[CCSprite spriteWithFile:@"playerSmall.png"] retain];
         [layer addChild:sprite z:PLAYER_SHIP_Z];
         
@@ -41,7 +39,7 @@
 
 - (void)moveWithSpeed:(double)speed {
     
-    // ogranicz prędkość
+    // constrain velocity
     /*
      int max = 10;
      if(speed > max)
@@ -50,7 +48,7 @@
      speed = -max;
      */
     
-    // Nie pozwól graczowi wylecieć poza obszar gry   
+    // Don't allow player to fly away from game area
     if((speed > 0 || sprite.position.x > sprite.textureRect.size.width) && (speed < 0 || sprite.position.x < [[Consts getInstance] windowSize].width - sprite.textureRect.size.width))
     [sprite setPosition:ccp(sprite.position.x + speed,sprite.position.y)];
 }

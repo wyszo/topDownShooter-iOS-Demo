@@ -8,5 +8,5 @@
 
 
 @protocol HTTPConnectionDelegate <NSObject>
-- (void)updateWithHighscores:(NSArray*)highscores;
+- (void)updateWithHighscores:(NSArray *)highscores;
 @end

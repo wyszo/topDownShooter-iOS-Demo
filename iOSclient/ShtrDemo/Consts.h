@@ -3,7 +3,6 @@
 //  LD20
 //
 //  Created by tomek on 6/9/11.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
 #import "cocos2d.h"
@@ -93,6 +92,7 @@ extern const NSString* DEFAULT_SERVER_ADDR;
 static const int SCORE_INCREMENT_VAL = 10;
 
 
+#pragma mark -
 @interface Consts : NSObject {
 }
 

@@ -3,7 +3,6 @@
 //  LD20
 //
 //  Created by tomek on 6/9/11.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
 #import "Enemy.h"
@@ -21,7 +20,7 @@
 
 
 @implementation Enemy
-@synthesize ufok1;
+@synthesize sprite;
 
 NSString* UFOK_SPRITE_FNAME = @"ufok1Small.png";
 
@@ -29,7 +28,7 @@ static CCLayer* lastSpriteLayer;
 static int lastZOrder;
 
 /**
- * Losuje czas, po jakim powinien spawnować się kolejny przeciwnik
+ * Returns random time interval before spawning next enemy.
  */
 + (float)randSpawnNextEnemyInterval {
     float min = SPAWN_NEXT_ENEMY_MIN_TIME_INTERVAL;
@@ -42,19 +41,17 @@ static int lastZOrder;
     return timeInterval;
 }
 
-- (id)initOnLayer:(CCLayer*)layer withZOrder:(int)zOrder andParentCollection:(NSMutableArray*)collection
-{
+- (id)initOnLayer:(CCLayer*)layer withZOrder:(int)zOrder andParentCollection:(NSMutableArray*)collection {
 	if((self=[super init])) {
         
         lastZOrder = zOrder;
         lastSpriteLayer = layer;
         
-        // init vars
         hp = 100;
         parentCollection = collection;
         
         // losowanie pozycji startowej 
-        float ufokTexWidth = ufok1.textureRect.size.width;
+        float ufokTexWidth = sprite.textureRect.size.width;
         float minX = ufokTexWidth;
         int spawnSpaceWidth = [[Consts getInstance] windowSize].width - 2*ufokTexWidth;
         
@@ -62,7 +59,7 @@ static int lastZOrder;
         CGPoint pos = CGPointMake(minX + arc4random() % spawnSpaceWidth, posY);
         
         // dodanie ufoka 
-        ufok1 = [self createUfokSpriteOnLayer:layer withPos:pos andZOrder:zOrder];
+        sprite = [self createUfokSpriteOnLayer:layer withPos:pos andZOrder:zOrder];
         
         [self setupMovement];
     }
@@ -70,7 +67,7 @@ static int lastZOrder;
 }
 
 - (void)dealloc {
-    [ufok1 release];
+    [sprite release];
     [super dealloc];
 }
 
@@ -78,7 +75,7 @@ static int lastZOrder;
     hp -= deltaHp;
     
     if (hp <= 0) {
-        // usuń wierzchołek, usuń z listy wrogów
+        // remove node, remove from enemy list
         [self destroySelf];
         SCORE += SCORE_INCREMENT_VAL;
         
@@ -94,10 +91,10 @@ static int lastZOrder;
 
 - (void)destroySelf {
     [parentCollection removeObject:self];
-    [ufok1 removeFromParentAndCleanup:YES]; 
+    [sprite removeFromParentAndCleanup:YES]; 
     
     // create explosion
-    CGPoint pos = ufok1.position;
+    CGPoint pos = sprite.position;
     Explosion* expl = [[Explosion alloc] initOnLayer:lastSpriteLayer withZOrder:lastZOrder andPos:pos];
 }
 
@@ -106,17 +103,17 @@ static int lastZOrder;
     float deltaY = [[Consts getInstance] windowSize].height + 2*ENEMY_SPAWN_POS_Y_OFFSET; 
      
     // setup movement & bullet cleanup after move anim 
-    id moveAction = [CCMoveTo actionWithDuration:movementLifetime position:CGPointMake(ufok1.position.x, ufok1.position.y - deltaY)];
+    id moveAction = [CCMoveTo actionWithDuration:movementLifetime position:CGPointMake(sprite.position.x, sprite.position.y - deltaY)];
     
     id removeAction = [CCCallBlockN actionWithBlock:^(CCNode *node) {
         [self destroySelf];
     }];
     
     id actionsSequence = [CCSequence actions:moveAction, removeAction, nil];
-    [ufok1 runAction:actionsSequence];
+    [sprite runAction:actionsSequence];
 }
 
-- (ccBezierConfig)createUfokBezierFrom:(CGPoint)startPos withHorizontalSpan:(int)span {
+- (ccBezierConfig)createEnemyBezierFrom:(CGPoint)startPos withHorizontalSpan:(int)span {
     float deltaY = [[Consts getInstance] windowSize].height + 2*ENEMY_SPAWN_POS_Y_OFFSET; 
     float controlPoint1_Y = 300;
     float controlPoint2_Y = 100;
@@ -141,11 +138,11 @@ static int lastZOrder;
 
 - (void)setupBezierDownMovement {
     float movementLifetime = 1.0/ENEMY_SPEED; 
-    CGPoint startPos = CGPointMake(ufok1.position.x, ufok1.position.y);
+    CGPoint startPos = CGPointMake(sprite.position.x, sprite.position.y);
     
-    ufok1.position = startPos;
+    sprite.position = startPos;
     
-    ccBezierConfig bezier = [self createUfokBezierFrom:startPos withHorizontalSpan:ENEMY_BEZIER_HORIZONTAL_SPAN];
+    ccBezierConfig bezier = [self createEnemyBezierFrom:startPos withHorizontalSpan:ENEMY_BEZIER_HORIZONTAL_SPAN];
     
     id bezierMoveAction = [CCBezierTo actionWithDuration:movementLifetime bezier:bezier];
     
@@ -154,7 +151,7 @@ static int lastZOrder;
     }];
     
     id actionsSequence = [CCSequence actions:bezierMoveAction, removeAction, nil];
-    [ufok1 runAction:actionsSequence];
+    [sprite runAction:actionsSequence];
 }
 
 - (void)setupMovement {

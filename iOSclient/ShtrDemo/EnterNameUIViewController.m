@@ -3,7 +3,6 @@
 //  LD20
 //
 //  Created by tomek on 6/11/11.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
 #import "EnterNameUIViewController.h"
@@ -15,8 +14,7 @@
 @implementation EnterNameUIViewController
 @synthesize nameTF, customServerTF;
 
-- (id)init
-{
+- (id)init {
     self = [super initWithNibName:@"EnterNameUIViewController" bundle:nil];
     if (self) {
         // [customServerTF setPlaceholder:(NSString*)DEFAULT_SERVER_ADDR];
@@ -33,14 +31,13 @@
 
 #pragma mark - View lifecycle
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
 #pragma mark - IBactions
 
--(IBAction)loginAndDeploy {
+- (IBAction)loginAndDeploy {
     if ([nameTF.text length])
         PLAYER_NAME = nameTF.text;
     
