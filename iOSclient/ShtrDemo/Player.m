@@ -19,7 +19,7 @@
     sprite.position = CGPointMake(PLAYER_START_POS_X, PLAYER_START_POS_Y);
 }
 
-- (id)initOnLayer:(CCLayer*)layer {
+- (id)initOnLayer:(CCLayer *)layer {
 	if((self=[super init])) {
         
         // add main player sprite 

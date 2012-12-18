@@ -12,6 +12,13 @@
 extern const BOOL kSetting_MusicEnabled;
 extern const BOOL kSetting_SoundEnabled;
 
+// Network
+extern const BOOL kSetting_NetworkEnabled;
+
+extern const NSTimeInterval kNetwork_httpConnectionTimeout;
+extern const NSString* kNetwork_DefaultServerAddr;
+
+
 // Cheats
 extern const BOOL kCheat_PlayerInvincible;
 

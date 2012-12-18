@@ -6,6 +6,7 @@
 //
 
 #import "Util.h"
+#import "Settings.h"
 
 
 @implementation Util
@@ -19,7 +20,7 @@ static Util* instance;
         if (instance == NULL) {
             instance = [[Util alloc] init];
             PLAYER_NAME = @"anonymous pilot";
-        }        
+        }
     }
     return instance; 
 }
@@ -27,7 +28,7 @@ static Util* instance;
 + (NSString*)getServerAddress {
     NSString* result = CUSTOM_SERVER_ADDR;
     if ([result length] == 0)
-        result = [NSString stringWithString:(NSString*)DEFAULT_SERVER_ADDR];
+        result = [NSString stringWithString:(NSString*)kNetwork_DefaultServerAddr];
     return result;
 }
 

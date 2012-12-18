@@ -11,7 +11,7 @@
 @implementation Explosion
 
 static float EXPLOSION_DURATION = 0.2;
-static NSString *EXPLOSION_SPRITE_FNAME = @"Explosion1.png";
+static NSString *EXPLOSION_SPRITE_FNAME = @"explosion1.png";
 
 
 - (id)initOnLayer:(CCLayer*)layer withZOrder:(int)ZOrder andPos:(CGPoint)pos {

@@ -7,6 +7,7 @@
 
 #import "ResultsScene.h"
 #import "Consts.h"
+#import "Settings.h"
 #import "HTTPConnection.h"
 
 static int score;
@@ -56,7 +57,7 @@ static int score;
 - (void)sendHttpFrame {
     // it'd be cool if server responded actual highscore list as a response for this dummy frame
     
-    if (HTTP_CONNECTION_ENABLED) {
+    if (kSetting_NetworkEnabled) {
         [HTTPConnection getInstance].delegate = self;
         [HTTPConnection sendSimplePostRequest];        
     }

@@ -16,6 +16,7 @@
 @property(nonatomic, retain) CCSprite* sprite;
 @property(nonatomic, readonly) BOOL cannonReloaded;
 
+- (id)initOnLayer:(CCLayer *)layer;
 - (void)resetState;
 - (void)moveWithSpeed:(double)speed;
 - (void)reloadCannon;

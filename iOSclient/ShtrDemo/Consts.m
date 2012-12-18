@@ -8,11 +8,6 @@
 #import "Consts.h"
 #import "cocos2d.h"
 
-
-const NSString* DEFAULT_SERVER_ADDR = @"http://wyszo.dyndns.org";
-// const NSString* DEFAULT_SERVER_ADDR = @"http://localhost";
-
-
 @implementation Consts
 @synthesize screenCenter, windowSize, canvasLayer;
 

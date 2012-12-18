@@ -7,6 +7,7 @@
 
 #import "HTTPConnection.h"
 #import "Util.h"
+#import "Settings.h"
 #import "HashFunctions.h"
 
 
@@ -49,7 +50,7 @@ static HTTPConnection* instance;
     
     NSURL* url = [NSURL URLWithString:[HTTPConnection generateURL]];
     
-    NSMutableURLRequest* req = [NSMutableURLRequest requestWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:HTTP_CONNECTION_TIMEOUT];
+    NSMutableURLRequest* req = [NSMutableURLRequest requestWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:kNetwork_httpConnectionTimeout];
     [req setHTTPMethod:@"POST"]; 
     
     //NSData* data = [NSData data];

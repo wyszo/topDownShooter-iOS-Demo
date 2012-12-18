@@ -80,11 +80,6 @@ static const int HIGHSCORES_LBL_SIZE = 16;
 
 static const int HIGHSCORE_LIST_LENGTH = 5;
 
-// connection params
-static const BOOL HTTP_CONNECTION_ENABLED = YES;
-static const NSTimeInterval HTTP_CONNECTION_TIMEOUT = 60.0;
-extern const NSString* DEFAULT_SERVER_ADDR;
-
 // other
 static const int SCORE_INCREMENT_VAL = 10;
 

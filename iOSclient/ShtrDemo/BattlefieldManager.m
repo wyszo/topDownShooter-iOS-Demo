@@ -189,24 +189,37 @@ static NSString* BULLET_SPRITE_FNAME = @"bulletSmall.png";
 
 #pragma mark - collisions
 
-- (void)checkPlayerEnemiesCollisions {    
-    for (Enemy* enemy in enemies) 
+- (void)checkPlayerEnemiesCollisions {
+    __block BOOL dead = NO;
+    
+    [enemies enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        Enemy *enemy = (Enemy *)obj;
         if ([Util sprite:enemy.sprite collidesWithSprite:player.sprite withTolerance:0.35]) {
-            
-            NSLog(@"DEAD!!!");
-            double score = SCORE;
-            
-            if (!kCheat_PlayerInvincible) {
-                [CANVAS stopAllActions];
-                [self resetState];
-                [ResultsScene setScore:score];
-                [ResultsScene pushResultsScreen];
-                
-                if (kSetting_SoundEnabled) {
-                    [[SimpleAudioEngine sharedEngine] playEffect:@"explosion.wav"];
-                }
-            }
+            dead = YES;
+            *stop = YES;
         }
+    }];
+    
+    if (dead) {
+        [self killPlayerPresentHighscores];
+    }
+}
+
+- (void)killPlayerPresentHighscores {
+    if (!kCheat_PlayerInvincible) {
+        NSLog(@"Player DEAD!!!");
+        double score = SCORE;
+        
+        [CANVAS stopAllActions];
+        [self resetState];
+        [ResultsScene setScore:score];
+        [ResultsScene pushResultsScreen];
+        [player resetState];
+        
+        if (kSetting_SoundEnabled) {
+            [[SimpleAudioEngine sharedEngine] playEffect:@"explosion.wav"];
+        }
+    }
 }
 
 #pragma mark - simulation step
